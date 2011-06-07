@@ -1,12 +1,18 @@
 #summary Tutorial for GUARDD
 
 = Goal =
-* The goal is to introduce basic GUARDD functions
+ * Introduce basic GUARDD functions
 
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+= Requirements =
+ # 60-90 min
+ # Matlab software [http://www.mathworks.com/ Mathworks]
+ # RD analysis program [download 350kb]
+  # Matlab '*'.m and *.fig files
+ # Tutorial files for this example [download 11Mb]
+  # tutorial-data/
+   # LIST DATA FILE
+  # tutorial-figures/
+   # Screen capture images linked within this tutorial
+   # tutorial-output/
+    # Output figures for some plots produced during tutorial
