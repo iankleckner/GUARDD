@@ -1,8 +1,7 @@
 #summary Tutorial for GUARDD
 
-= Introduction =
-
-The goal is to introduce basic GUARDD functions
+= Goal =
+* The goal is to introduce basic GUARDD functions
 
 
 = Details =
