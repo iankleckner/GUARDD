@@ -1,13 +1,93 @@
 #summary GUARDD Manual itemizes essential program functions
 
-= Introduction =
+== Contents == 
+<wiki:toc max_depth="5" />
 
-Add your content here.
+== Goals == 
+  * Background on general use and limitations
+  * Itemize details of GUARDD features
+
+== Main window ==
 
 
-= Details =
+== Loading the session ==
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+
+
+
+== RD Simulator ==
+
+=== Temperature dependent simulations ===
+
+
+
+
+
+== Data Manger ==
+ * *Question*: _How are the data organized?_
+
+
+=== Loading data ===
+
+==== File formats ====
+
+=== Creating groups ===
+
+=== Exporting data ===
+
+
+
+
+
+
+== Fit Dispersion ==
+
+=== Basic fitting ===
+
+=== Multi-temperature data ===
+
+=== Multi-curveset data ===
+
+=== Determining which parameters are OK ===
+
+
+
+== Batch task ==
+
+
+
+
+== Display Chi2 Map ==
+ * *Question*: _What is a good fit look like?_
+
+=== Display Monte Carlo Errors ===
+
+=== Select fit from grid search ===
+
+
+== Display Dispersion ==
+
+== Display Rates ==
+
+
+== Saving the session ==
+
+== Display table ==
+
+== Display groups ==
+
+
+
+
+== References ==
+
+
+
+
+== Author ==
+(C) Ian Kleckner
+Mark Foster's Lab
+The Ohio State University
+Columbus, OH, USA
+
+Last update 2011/06/08
