@@ -1,13 +1,10 @@
-#summary Wiki home page
-
-= Introduction =
-
-Add your content here.
+#summary Graphical User-Friendly Analysis of Relaxation Dispersion Data
 
 
-= Details =
+== Author ==
+(C) Ian Kleckner
+Mark Foster's Lab
+The Ohio State University
+Columbus, OH, USA
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Last update 2011/06/08
