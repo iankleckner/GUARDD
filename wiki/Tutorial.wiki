@@ -1,18 +1,63 @@
-#summary Tutorial for GUARDD
+#summary Introduce basic GUARDD functions
+#sidebar TableOfContents
 
-= Goal =
- * Introduce basic GUARDD functions
+<wiki:comment>
+This text will be removed from the rendered page.
+</wiki:comment>
 
 
-= Requirements =
- # 60-90 min
- # Matlab software [http://www.mathworks.com/ Mathworks]
- # RD analysis program [download 350kb]
-  # Matlab '*'.m and *.fig files
- # Tutorial files for this example [download 11Mb]
-  # tutorial-data/
-   # LIST DATA FILE
-  # tutorial-figures/
-   # Screen capture images linked within this tutorial
-   # tutorial-output/
-    # Output figures for some plots produced during tutorial
+
+
+== Contents == 
+<wiki:toc max_depth="2" />
+
+== Goals == 
+  * Load data from file
+  * Create groups for fitting  
+    * Iso-tempertaure
+    * Multi-temperature  
+  * Select residues with exchange
+  * Fit exchanging data via grid search
+  * Select best fit from grid search  
+  * Compute errors with Monte Carlo
+  * Determine which parameters which are OK
+  * View results via display cluster
+  * View results via table
+  * Simulate data and import to GUARDD
+  * Fit simulated data
+  * Export all groups
+
+
+== Requirements ==
+  # 60-90 min
+  # Matlab software [http://www.mathworks.com/ Mathworks]
+  # GUARDD program [http://code.google.com/p/guardd/downloads/list download]
+    # Matlab '*'.m and *.fig files
+  # Tutorial files for this example [http://code.google.com/p/guardd/downloads/list download]
+    # tutorial-data/
+      # LIST DATA FILES
+    # tutorial-figures/
+      # Screen capture images linked within this tutorial
+      # tutorial-output/
+      # Output figures for some plots produced during tutorial 
+
+
+== General tutorial notes ==  
+  # GUARDD utilizes multiple GUI windows (may need to be resized)
+    # Higher monitor resolution helps (1024x768 minimum)
+  # GUARDD main window *must remain open* (it controls other GUI elements) [Figure] 
+  # "Tooltips" are revealed by hovering mouse cursor over buttons, tables, etc.
+  # Statistics χ^2^ and SSE are considered equivalent in this tutorial (see [Manual])
+  # *Notation*: dwH = Δω,,H,,, Chi2 = χ^2^
+
+
+== Tutorial ==
+
+=== Sub-heading ===
+
+
+
+
+
+(C) Ian Kleckner
+Last update 2011/06/08
