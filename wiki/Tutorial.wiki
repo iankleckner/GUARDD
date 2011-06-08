@@ -2,31 +2,48 @@
 #sidebar TableOfContents
 
 <wiki:comment>
-This text will be removed from the rendered page.
+  This text will be removed from the rendered page.
+
+  <wiki:gadget url="http://mathml-gadget.googlecode.com/svn/trunk/mathml-gadget.xml" border="0" up_content="root3x + x^phi + x_1" height="15"/>
+
+  http://code.google.com/images/code_sm.png
+
+  # 1
+    # 2
+      # 3
+	# 4
+
+
+  * 1
+    * 2
+      * 3
+	* 4
+
+
+<ol>
+  <li>1</li>
+  <ol>
+    <li>2</li>
+    <ol>
+      <li>3</li>
+      <ol>
+	<li>4</li>
+      </ol>
+    </ol>
+  </ol>
+</ol>
+
+
 </wiki:comment>
 
-<wiki:gadget url="http://mathml-gadget.googlecode.com/svn/trunk/mathml-gadget.xml" border="0" up_content="root3x + x^phi + x_1" height="15"/>
 
 
-<script type="text/javascript">
-<!-- // THIS SCRIPT FROM BRAVENET
-// http://www.bravenet.com
-//THIS GOES ON THE MAIN PAGE
-function openPopUp(url,target,attributes) 
-{
-	popup = window.open(url,target,attributes);
-	//popup.moveTo((window.screen.availWidth -  640) / 2, (window.screen.availHeight - 480) / 2);//c
-						popup.focus();blur();
-			}
-	//   THIS GOES ON THE MAIN PAGE-->
-</script>
 
 
-http://code.google.com/images/code_sm.png
 
 
 == Contents == 
-<wiki:toc max_depth="4" />
+<wiki:toc max_depth="5" />
 
 == Goals == 
   * Load data from file
@@ -63,9 +80,31 @@ http://code.google.com/images/code_sm.png
   # GUARDD utilizes multiple GUI windows (may need to be resized)
     # Higher monitor resolution helps (1024x768 minimum)
   # GUARDD main window *must remain open* (it controls other GUI elements) [Figure] 
+  # Check Matlab command window for additional output
+  # GUARDD is sometimes slow. Turn on CPU monitor to see when program is processing
+    # *Win*: Ctrl+Alt+Del, click _Task Manager_
+    # *Mac*: ?    
   # "Tooltips" are revealed by hovering mouse cursor over buttons, tables, etc.
-  # Statistics χ^2^ and SSE are considered equivalent in this tutorial (see [Manual])
-  # *Notation*: dwH = Δω,,H,,, Chi2 = χ^2^
+
+== Notation ==  
+  * NMR = Nuclear Magnetic Resonance
+  * GUARDD = Graphical User-friendly Analysis of Relaxation Dispersion Data
+  * RD = Relaxation Disperion  
+  * dwH = Δω,,H,,, = ^1^H chemical shift difference between states A and B (ppm, rad/s, Hz)
+  * dwX = Δω,,X,,, = ^A^X chemical shift difference between states A and B (ppm, rad/s, Hz)
+  * P,,A,, = Population fraction of A state (fraction, %)
+  * k,,ex,, = k,,A,, + k,,B,, = Total exchange rate between states (/s)
+  * R,,2,,^0^ = Transverse relaxation rate in the absence of exchange (Hz)
+  * SQ = Single Quantum (signal detected in NMR)
+  * MQ = Multiple Quantum (signal detected in NMR)
+
+  * GUI = Graphical User Interface  
+  * <u>Underlined</u> items are GUARDD window titles
+  * *Boldface* items are commands (buttons, menus) and important points
+
+  * MC = Monte Carlo (randomization method used here for error analysis)
+  * Chi2 = χ^2^ = Goodness of fit metric (smaller value indicates better fit)
+    * Statistics χ^2^ and SSE are considered equivalent in this tutorial (see [Manual])  
 
 == Tutorial ==
 
@@ -77,15 +116,70 @@ http://code.google.com/images/code_sm.png
     # GUARDD/
 
 === Start GUARDD ===
+  # Start *Matlab*  
+  # Open Matlab command window: *Desktop...Command Window*
+  # Navigate to GUARDD/ directory and start program
+    # <u>Matlab command window</u>: _cd 'c:\My_Favorite_Folder'_
+    # <u>Matlab command window</u>: _GUARDDD_
+  # *Important*: Main window must remain open (it controls all other GUI windows)
+  # Check Matlab command window for additional output
 
+=== Load data ===
+  * *Goal*: _Get RD data into the program for analysis_
+  * *Tip*: _A variety of input types are available (see [Manual])_
 
-=== Load data from file ===
+  # <u>Main</u>
+    # *Input...Data manager...*
+  # <u>Data Manager</u>
+    # *Input...Script...*
+      # tutorial/data/GUARDD-Data-ApoTRAP-Kleckner.txt            
+    # *Input...Sequence...*
+      # tutorial/data/TRAP-Ste-A26I-AAseq.txt
+  # 14 datasets loaded    
+    # 600 and 800 MHz
+    # 25, 32, and 37^o^C
+    # SQ and MQ coherence
 
 
 === Create groups for fitting ===
-  * Iso-tempertaure
-  * Multi-temperature  
+  * *Goal*: _Aggregate RD curves from the same NMR signal (assignment) for group fitting_  
+  
+  
+
+[[File:http://guardd.googlecode.com/files/figure-data_management.png|thumb |alt=Example alt text |Example caption]]
+
+  # <u>Data Manager</u>    
+    # *Group...Generate from subset of data...*
+  # <u>Create Groups</u>
+    # Constrain residue to Ile
+      # Click the checkbox
+      # Type _Ile_
+    # Constrain temperature to 25^o^C
+      # Click the checkbox
+      # Type _25_
+    # Click *Generate groups*
+  # <u>Data Manager</u>
+    # *Group...Generate from subset of data...*
+  # <u>Create Groups</u>
+    # Constrain index to 22
+      # Click the checkbox
+      # Type _22_
+  # <u>Data Manager</u>
+    # *Group...Sort groups*
+  # Close the <u>Data Manager</u> window
+
 === Select residues with exchange ===
+  * *Goal*: _Determine which groups exhibit flexibility, and warrant further analysis_  
+
+  # <u>Main</u>
+    # Click *Refresh* to show loaded groups
+    # Use *<* and *>* to cycle through groups
+    # Check *Exch?* if the data are not flat (i.e., R,,ex,, > 0)
+      # Only Ile 61δ,,1,, and Ile 68δ,,1,, do not exhibit exchange
+
+=== Fit group manually ===
+  * *Goal*: _Fit one group manually via Fit RD window_
+
 === Fit exchanging data via grid search ===
 === Select best fit from grid search ===
 === Compute errors with Monte Carlo ===
@@ -97,6 +191,6 @@ http://code.google.com/images/code_sm.png
 === Export all groups ===
 
 
-== Footer ==
+== References ==
 (C) Ian Kleckner
 Last update 2011/06/08
