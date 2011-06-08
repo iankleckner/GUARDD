@@ -46,27 +46,13 @@
 <wiki:toc max_depth="5" />
 
 == Goals == 
-  * Load data from file
-  * Create groups for fitting  
-    * Iso-tempertaure
-    * Multi-temperature  
-  * Select residues with exchange
-  * Fit exchanging data via grid search
-  * Select best fit from grid search  
-  * Compute errors with Monte Carlo
-  * Determine which parameters which are OK
-  * View results via display cluster
-  * View results via table
-  * Simulate data and import to GUARDD
-  * Fit simulated data
-  * Export all groups
-
+  * Become familiar with basic features of GUARDD
 
 == Requirements ==
   # 60-90 min
   # Matlab software [http://www.mathworks.com/ Mathworks]
   # GUARDD program [http://code.google.com/p/guardd/downloads/list download]
-    # Matlab '*'.m and *.fig files
+    # Matlab .m and .fig files
   # Tutorial files for this example [http://code.google.com/p/guardd/downloads/list download]
     # tutorial-data/
       # LIST DATA FILES
@@ -89,14 +75,17 @@
 == Notation ==  
   * NMR = Nuclear Magnetic Resonance
   * GUARDD = Graphical User-friendly Analysis of Relaxation Dispersion Data
-  * RD = Relaxation Disperion  
-  * dwH = Δω,,H,,, = ^1^H chemical shift difference between states A and B (ppm, rad/s, Hz)
-  * dwX = Δω,,X,,, = ^A^X chemical shift difference between states A and B (ppm, rad/s, Hz)
-  * P,,A,, = Population fraction of A state (fraction, %)
-  * k,,ex,, = k,,A,, + k,,B,, = Total exchange rate between states (/s)
-  * R,,2,,^0^ = Transverse relaxation rate in the absence of exchange (Hz)
+  * RD = Relaxation Disperion
+  * 4-5 parameters are required to fit a single RD curve
+    # dwH = Δω,,H,,, = ^1^H chemical shift difference between states A and B (ppm, rad/s, Hz) - *MQ only*
+    # dwX = Δω,,X,,, = ^A^X chemical shift difference between states A and B (ppm, rad/s, Hz)
+    # P,,A,, = Population fraction of A state (fraction, %)
+    # k,,ex,, = k,,A,, + k,,B,, = Total exchange rate between states (/s)
+    # R,,2,,^0^ = Transverse relaxation rate in the absence of exchange (Hz)
   * SQ = Single Quantum (signal detected in NMR)
+    * *Note*: SQ curves that pulse on ^A^X nucleus are sensitive _only_ to dwX (i.e., dwH is fixed to zero)
   * MQ = Multiple Quantum (signal detected in NMR)
+    * *Note*: MQ RD curves are sensitive to _both_ dwH and dwX
 
   * GUI = Graphical User Interface  
   * <u>Underlined</u> items are GUARDD window titles
@@ -142,55 +131,183 @@
 
 
 === Create groups for fitting ===
-  * *Goal*: _Aggregate RD curves from the same NMR signal (assignment) for group fitting_  
-  
-  
-
-[[File:http://guardd.googlecode.com/files/figure-data_management.png|thumb |alt=Example alt text |Example caption]]
+  * *Goal*: _Aggregate RD curves from the same NMR signal (assignment) for group fitting_
+  * *Details*: Read more in the [Manual]
+  http://guardd.googlecode.com/files/figure-data_management.png
 
   # <u>Data Manager</u>    
     # *Group...Generate from subset of data...*
   # <u>Create Groups</u>
-    # Constrain residue to Ile
-      # Click the checkbox
+    # Make groups only for Ile residues at 25^o^C
+      # Check _Residue_
       # Type _Ile_
-    # Constrain temperature to 25^o^C
-      # Click the checkbox
+      # Check _TempC_
       # Type _25_
     # Click *Generate groups*
   # <u>Data Manager</u>
     # *Group...Generate from subset of data...*
   # <u>Create Groups</u>
-    # Constrain index to 22
-      # Click the checkbox
+    # Make groups only for index 22
+      # Check _Residue_
       # Type _22_
+    # Click *Generate groups*
   # <u>Data Manager</u>
     # *Group...Sort groups*
   # Close the <u>Data Manager</u> window
 
 === Select residues with exchange ===
   * *Goal*: _Determine which groups exhibit flexibility, and warrant further analysis_  
+  * *Details*: Read more in the [Manual]
 
   # <u>Main</u>
     # Click *Refresh* to show loaded groups
     # Use *<* and *>* to cycle through groups
-    # Check *Exch?* if the data are not flat (i.e., R,,ex,, > 0)
-      # Only Ile 61δ,,1,, and Ile 68δ,,1,, do not exhibit exchange
+    # Check *Exch?* if the data are not horizontal (i.e., R,,ex,, > 0)
+      # *Note*: only Ile 61δ,,1,, and Ile 68δ,,1,, do not exhibit exchange
 
-=== Fit group manually ===
-  * *Goal*: _Fit one group manually via Fit RD window_
+
+=== Fit iso-temperature group manually ===
+  * *Goal*: _Fit simple data from one group manually via Fit RD window_
+  * *Goal*: _Demonstrate simple fitting options_
+
+  # <u>Main</u>
+    # Select _Ile 26_
+    # Check _Fit dispersion_
+    # Click *Update displays*
+  # <u>Fit RD</u>
+    # _Contains 6 panels for sequential fitting tasks_
+    # (1a) Procedure: *Individual*
+    # (1b) Task: *Simulate*
+    # (2) Individual initial conditions: (Leave default)
+      # One may change PA, kex, dwH, and dwX
+      # There are _five_ parameters required for each RD curve: _dwH, dwX, PA, kex,_ and _R20_
+    # Click *Go!*
+    # (1b) Task: *Optimize fit*
+    # Click *Go!*
+    # (3) Select and view fit results
+      # There are three fits to data: NoEx, Sim-1, and Fit-1
+      # Select each at a time, and note that _Sim-1_ is the best (lines go through data in (4))
+      # Select _Sim-1_
+      # Click *Set best fit*
+    # (6) Designate which parameters are OK
+      # Check *Best fit is OK*
+      # Click *All*
+
+
+=== Fit multi-temperature group manually ===
+  * *Goal*: _Fit multi-temperature data from one group manually via Fit RD window_
+  * *Goal*: _Demonstrate multi-temperature fitting options with constrain rate analysis_
+  * *Goal*: _Demonstrate need for grid search_
+  * *Details*: Read more in the [Manual]
+
+  # <u>Main</u>
+    # Select _Leu 22δ1_
+    # Check _Fit dispersion_
+    # Click *Update displays*
+  # <u>Fit RD</u>
+    # Fit without rate constraints
+    # (1a) Procedure: *Individual*
+    # (1b) Task: *Simulate*
+    # Uncheck *Constrain Rates*
+    # (2) Individual initial conditions
+      # TempC PA kex
+      # These determined the parameters required for each RD curve: _dwH, dwX, PA, kex,_ and _R20_
+    # Click *Go!*
+    # (1b) Task: *Optimize fit*
+    # Click *Go!*
+
+    # Fit with rate constraints
+    # (1a) Procedure: *Individual*
+    # (1b) Task: *Simulate*
+    # Check *Constrain Rates*
+    # (2) Individual initial conditions
+      # Temp0 PA0 kex0 dH Eab
+      # There are _five_ parameters required for each RD curve: _dwH, dwX, PA, kex,_ and _R20_
+    # Click *Go!*
+    # (1b) Task: *Optimize fit*
+    # Click *Go!*
+
+
+
+    # (2) Another set of individial initial conditions
+      # *Issue*: Final optimized fit depends on initial conditions! (Which one is best?)
+      # *Solution*: Use grid search to automatically sample many different initial conditions
+
+    # Select the best fit
+    # (6) Designate which parameters are OK
+      # Check *Best fit is OK*
+      # Click *All*
+
 
 === Fit exchanging data via grid search ===
+  * *Goal*: _If the fit is sensitive to initial conditions (noisy and/or many data), use a grid search to fit many times_
+  * *Details*: Read more in the [Manual]
+
+
 === Select best fit from grid search ===
+  * *Goal*: _Assess the extent to which fitting is sensitive to initial conditions_
+  * *Details*: Read more in the [Manual]
+
+
+=== Determine which parameters are OK ===
+  * *Goal*: _Often, some parameters cannot be determined via fitting (e.g., fast exchange precludes knowledge of P,,A,, and Δω)_
+
+  # Check exchange-timescale parameter α
+  # Check sensitivity of fit to initial conditions (grid search)
+  # Check sensitivity of fit to errors in data (Monte Carlo errors)
+
 === Compute errors with Monte Carlo ===
+  * *Goal*: _Assess the extent to which fitting is sensitive to noise in the data_
+  * *Details*: Read more in the [Manual]
+
+
 === Determine which parameters which are OK ===
+  * *Goal*: _Only use fitted parameters which are trustworthy_
+  
+
 === View results via display cluster ===
+  * *Goal*: _Aggregate and output any/all results for dissemination_
+
+
 === View results via table ===
+  * *Goal*: _Aggregate and output any/all results for dissemination_
+
+=== Export data and groups ===
+  * *Goal*: _Aggregate and output results for dissemination_
+
+
+=== Perform batch task ===
+  * *Goal*: _Fit several groups sequentially to obviate need for user input_
+
+  # <u>Main</u>
+    # *Analysis...Batch task...*
+  # <u>Batch</u>
+    # Select groups for analysis    
+    # Specify the task
+      # Grid search: *Optimize*
+      # Constrain rates: *Unchecked*
+      # Errors: *Unchecked*
+    # Specify grid search limits
+
+|| || *dwH(ppm)* || *dwX(ppm)* || *PA0(%)* || *kex0(/s)* ||
+|| *Min* || 0.01  || 0.1  || 80  || 500  ||
+|| *Max* || 0.1  || 3.00  || 99.9  || 3000  ||
+|| *Steps*|| 1  || 2  || 2  || 3  ||
+
+  # <u>Batch</u>
+    # Click *Go!*
+      # Takes ~14 min at 10 sec/step
+
 === Simulate data and import to GUARDD ===
+  * *Goal*: _Explore the nature of RD phenomena_
+  * *Question*: What are limits of detection (i.e., when is R,,ex,,>0)?_
+  
+
 === Fit simulated data ===
-=== Export all groups ===
+  * *Goal*: _Assess accuracy of fitting procedure by analyzing data with "known" solution_
 
 
 == References ==
 (C) Ian Kleckner
+
 Last update 2011/06/08
