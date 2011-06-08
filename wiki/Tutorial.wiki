@@ -133,7 +133,7 @@
 === Create groups for fitting ===
   * *Goal*: _Aggregate RD curves from the same NMR signal (assignment) for group fitting_
   * *Details*: Read more in the [Manual]
-  http://guardd.googlecode.com/files/figure-data_management.png
+  [http://guardd.googlecode.com/files/figure-data_management.png]
 
   # <u>Data Manager</u>    
     # *Group...Generate from subset of data...*
@@ -300,14 +300,17 @@
 
 === Simulate data and import to GUARDD ===
   * *Goal*: _Explore the nature of RD phenomena_
-  * *Question*: What are limits of detection (i.e., when is R,,ex,,>0)?_
+  * *Question*: _What are limits of detection (i.e., when is R,,ex,,>0)?_
   
 
 === Fit simulated data ===
   * *Goal*: _Assess accuracy of fitting procedure by analyzing data with "known" solution_
 
 
-== References ==
+== Author ==
 (C) Ian Kleckner
+Mark Foster's Lab
+The Ohio State University
+Columbus, OH, USA
 
 Last update 2011/06/08
