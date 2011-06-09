@@ -130,14 +130,12 @@ OBJECT TYPE (Doesn't work)
   # Open Matlab command window: *Desktop...Command Window*
   # Navigate to GUARDD/ directory and start program
     # <u>Matlab command window</u>: {{{cd 'c:\My_Favorite_Folder\GUARDD--YYYY-MM-DD\'}}}
-    # *Note*: {{{YYYY-MM-DD}}} is replaced by the date corresponding to the GUARDD version (e.g., {{{2011-06-08}}}_
+    # *Note*: {{{YYYY-MM-DD}}} is replaced by the date corresponding to the GUARDD version (e.g., {{{2011-06-08}}})_
     # <u>Matlab command window</u>: {{{GUARDD}}}
   # *Important*: Main window must remain open (it controls all other GUI windows)
   # Check Matlab command window for additional output
 
-HTML+Link (Works)
-
-<a href="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--01.png"> <img src="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--01" alt="image" width="200"> </a>
+<a href="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--01.png"> <img src="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--01" alt="[UNLOADED IMAGE]" width="200">
 
 === Load data ===
   * *Goal*: _Get RD data into the program for analysis_
@@ -147,15 +145,15 @@ HTML+Link (Works)
     # *Input...Data manager...*
   # <u>Data Manager</u>
     # *Input...Script...*
-      # tutorial/data/GUARDD-Data-ApoTRAP-Kleckner.txt            
+      # _tutorial/data/GUARDD-Data-ApoTRAP-Kleckner.txt_
     # *Input...Sequence...*
-      # tutorial/data/TRAP-Ste-A26I-AAseq.txt
+      # _tutorial/data/TRAP-Ste-A26I-AAseq.txt_
   # 14 datasets loaded    
     # 600 and 800 MHz
     # 25, 32, and 37^o^C
     # SQ and MQ coherence
 
-
+<a href="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--02.png"> <img src="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--02" alt="[UNLOADED IMAGE]" width="200">
 
 === Create groups for fitting ===
   * *Goal*: _Aggregate RD curves from the same NMR signal (assignment) for group fitting_
@@ -182,6 +180,8 @@ HTML+Link (Works)
     # *Group...Sort groups*
   # Close the <u>Data Manager</u> window
 
+<a href="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--03.png"> <img src="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--03" alt="[UNLOADED IMAGE]" width="200">
+
 === Select residues with exchange ===
   * *Goal*: _Determine which groups exhibit flexibility, and therefore warrant further analysis_  
   * *Details*: Read more in the [Manual]
@@ -192,6 +192,7 @@ HTML+Link (Works)
     # Check *Exch?* if the data are not horizontal (i.e., R,,ex,, > 0)
       # *Note*: all residues exhibit exchange except Ile 61δ,,1,, and Ile 68δ,,1,,
 
+<a href="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--04.png"> <img src="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--04" alt="[UNLOADED IMAGE]" width="200">
 
 === Fit simple group manually ===
   * *Goal*: _Use <u>Fit RD</u> window to manually fit one group_
@@ -224,6 +225,10 @@ HTML+Link (Works)
       # Check *Best fit is OK*
       # Click *All*
       # *Note*: In general, one should more carefully check if the best fit is OK (see [Manual])
+
+
+<a href="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--05.png"> <img src="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--05" alt="[UNLOADED IMAGE]" width="200">
+
 
   * *Goal*: _If unsure about which initial conditions to use, the grid search fits multiple times with different initial conditions_
       # (1a) Procedure: *Grid search*
