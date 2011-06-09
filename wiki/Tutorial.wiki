@@ -34,12 +34,19 @@
 </ol>
 
 
+Wiki
+http://guardd.googlecode.com/files/figure-data_management.png
+
+Link
+[http://guardd.googlecode.com/files/figure-data_management.png image]
+
+HTML+Link (Works)
+<a href="http://guardd.googlecode.com/files/figure-data_management.png"> <img src="http://guardd.googlecode.com/files/figure-data_management.png" alt="image" width="100"> </a>
+
+OBJECT TYPE (Doesn't work)
+<object type="image/png" data="http://guardd.googlecode.com/files/figure-data_management.png" width="300" >
+
 </wiki:comment>
-
-
-
-
-
 
 
 == Contents == 
@@ -47,6 +54,8 @@
 
 == Goals == 
   * Become familiar with basic features of GUARDD
+
+
 
 == Requirements ==
   # 60-90 min
@@ -111,16 +120,24 @@
   # Unpack files
     # E.g., "/home/user/Desktop/" or "C:\My_Favorite_Folder\"
   # Ensure proper directory structure
-    # GUARDD/
+    # GUARDD-YYYY-MM-DD/	(*Note*: {{{YYYY-MM-DD}}} codes for the date (e.g., {{{2011-06-08}}}))
+      # tutorial/
+      # (Many .m files)
+      # (Many .fig files)
 
 === Start GUARDD ===
   # Start *Matlab*  
   # Open Matlab command window: *Desktop...Command Window*
   # Navigate to GUARDD/ directory and start program
-    # <u>Matlab command window</u>: _cd 'c:\My_Favorite_Folder'_
-    # <u>Matlab command window</u>: _GUARDD_
+    # <u>Matlab command window</u>: {{{cd 'c:\My_Favorite_Folder\GUARDD--YYYY-MM-DD\'}}}
+    # *Note*: {{{YYYY-MM-DD}}} is replaced by the date corresponding to the GUARDD version (e.g., {{{2011-06-08}}}_
+    # <u>Matlab command window</u>: {{{GUARDD}}}
   # *Important*: Main window must remain open (it controls all other GUI windows)
   # Check Matlab command window for additional output
+
+HTML+Link (Works)
+
+<a href="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--01.png"> <img src="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--01" alt="image" width="200"> </a>
 
 === Load data ===
   * *Goal*: _Get RD data into the program for analysis_
@@ -137,6 +154,7 @@
     # 600 and 800 MHz
     # 25, 32, and 37^o^C
     # SQ and MQ coherence
+
 
 
 === Create groups for fitting ===
