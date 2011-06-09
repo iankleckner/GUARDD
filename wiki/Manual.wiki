@@ -42,6 +42,15 @@
 
 == Fit Dispersion ==
 
+== Naming fits ==
+
+FIT vs SIM
+-1 vs -G
+`[--]` vs `[CR]`
+Chi2 = ###
+`[Date]`
+
+
 === Basic fitting ===
 
 === Multi-temperature data ===
