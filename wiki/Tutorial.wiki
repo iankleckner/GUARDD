@@ -135,7 +135,7 @@ OBJECT TYPE (Doesn't work)
   # *Important*: Main window must remain open (it controls all other GUI windows)
   # Check Matlab command window for additional output
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--01.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--01.png" alt="[UNLOADED IMAGE]" width="200">
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--01.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--01.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 === Load data ===
   * *Goal*: _Get RD data into the program for analysis_
@@ -153,7 +153,7 @@ OBJECT TYPE (Doesn't work)
     # 25, 32, and 37^o^C
     # SQ and MQ coherence
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--02.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--02.png" alt="[UNLOADED IMAGE]" width="200">
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--02.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--02.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 === Create groups for fitting ===
   * *Goal*: _Aggregate RD curves from the same NMR signal (assignment) for group fitting_
@@ -180,7 +180,7 @@ OBJECT TYPE (Doesn't work)
     # *Group...Sort groups*
   # Close the <u>Data Manager</u> window
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--03.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--03.png" alt="[UNLOADED IMAGE]" width="200">
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--03.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--03.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 === Select residues with exchange ===
   * *Goal*: _Determine which groups exhibit flexibility, and therefore warrant further analysis_  
@@ -192,7 +192,7 @@ OBJECT TYPE (Doesn't work)
     # Check *Exch?* if the data are not horizontal (i.e., R,,ex,, > 0)
       # *Note*: all residues exhibit exchange except Ile 61δ,,1,, and Ile 68δ,,1,,
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--04.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--04.png" alt="[UNLOADED IMAGE]" width="200">
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--04.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--04.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 === Fit simple group manually ===
   * *Goal*: _Use <u>Fit RD</u> window to manually fit one group_
@@ -227,7 +227,7 @@ OBJECT TYPE (Doesn't work)
       # *Note*: In general, one should more carefully check if the best fit is OK (see [Manual])
 
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--05.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--05.png" alt="[UNLOADED IMAGE]" width="200">
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--05.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--05.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
   * *Goal*: _If unsure about which initial conditions to use, the grid search fits multiple times with different initial conditions_
@@ -239,6 +239,7 @@ OBJECT TYPE (Doesn't work)
 || *Max* 	|| 0.1  	|| 3.00  	|| 99.9  	|| 3000  	||
 || *Steps*	|| 1  		|| 2  		|| 2  		|| 3  		||
 
+      # Click *Save*
       # (1b): Task: *Optimize fit*
       # Click *Go!* (5-10 sec/fit x 12 fits = 60-120 sec)
       # (3) Select and view fit results
@@ -247,6 +248,8 @@ OBJECT TYPE (Doesn't work)
 	# Click *All*
       # *Note*: _Becuase this the initial conditions were appropriate (above), it yields the same best fit as the 12 starting points from the grid search_
       # *Note*: _The grid search can demonstrate a successful fit, if the fit is *insensitive* to inital conditions_
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--06.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--06.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 === Fit multi-temperature group manually ===
   * *Goal*: _Use <u>Fit RD</u> window to manually fit one group acquired at multiple temperatures_
@@ -289,6 +292,9 @@ OBJECT TYPE (Doesn't work)
       # Check *Best fit is OK*
       # Click *All*
 
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--07.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--07.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+
     # Fit with rate constraints
     # (1a) Procedure: *Individual*
     # (1b) Task: *Simulate*
@@ -312,6 +318,8 @@ OBJECT TYPE (Doesn't work)
       # Check *Best fit is OK*
       # Click *All*
 
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--08.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--08.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
   * *Goal*: _Use <u>Rates</u> window to examine temperature-dependence of rates (vant Hoff and Arrenius)_
   # <u>Main</u>
     # Select _Leu 22delta1_
@@ -326,6 +334,8 @@ OBJECT TYPE (Doesn't work)
     # Close <u>Rates</u>
   # <u>Main</u>
     # Uncheck *Dsplay rates*
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--09.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--09.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 === Fit multi-curveset, multi-temperature group manually ===   
   * *Goal*: _Use <u>Data Manager</u> to create a group with multiple curvesets_
@@ -348,6 +358,9 @@ OBJECT TYPE (Doesn't work)
     # *Group...Sort groups...*
     # Make sure that group _Leu 22_ contains two curvesets: _Cp(Leu 22\delta1)_ and _Cp(Leu 22\delta2)_
     # Close <u>Data Manager</u>
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--10.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--10.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
 
  * *Goal*: _Use <u>Fit RD</u> window to manually fit one group containing multiple curvesets_
     * _Determine optimal P,,A,,, and k,,ex,,, at each temperature (x3) -> propagate to all curves in group_
@@ -383,6 +396,10 @@ OBJECT TYPE (Doesn't work)
       # Check *Best fit is OK*
       # Click *All*
 
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--11.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--12.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+
     # Fit with rate constraints
     # (1a) Procedure: *Individual*
     # (1b) Task: *Optimize fit*
@@ -401,6 +418,9 @@ OBJECT TYPE (Doesn't work)
     # (6) Designate that all parameters are OK
       # Check *Best fit is OK*
       # Click *All*
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--12.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--12.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
   
   * *Goal*: _Demonstrate issue that some optimized fits are sensitive to initial conditions (especially noisy and/or many data)_  
   # <u>Fit RD</u>
@@ -426,6 +446,9 @@ OBJECT TYPE (Doesn't work)
       # Click *All*
 
     # *Note*: _This optimized fit is significantly different than the prior fit (compare Chi2, P,,A,,, k,,ex,,, etc.)_
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--13.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--13.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
 
 
 === Select best fit from grid search ===
@@ -479,6 +502,9 @@ OBJECT TYPE (Doesn't work)
       # X-Axis: *Residue*
       # Y-Axis: *dwX_ppm* or *kex* or *alpha* or *Rex*
 
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--14.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--14.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
 === View results via table ===
   * *Goal*: _Aggregate and output any/all results for dissemination_
 
@@ -517,9 +543,11 @@ OBJECT TYPE (Doesn't work)
 || *Max* 	|| 0.1  	|| 3.00  	|| 99.9  	|| 3000  	||
 || *Steps*	|| 1  		|| 2  		|| 2  		|| 3  		||
 
-  # <u>Batch</u>
+    # Click *Save to Selected*
     # Click *Go!*
-      # Takes ~14 min at 10 sec/step
+      # Takes ~18 min at 10 sec/step
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--15.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--15.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 === Simulate data and import to GUARDD ===
   * *Goal*: _Explore the nature of RD phenomena_
