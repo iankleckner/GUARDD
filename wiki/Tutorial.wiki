@@ -135,7 +135,7 @@ OBJECT TYPE (Doesn't work)
   # *Important*: Main window must remain open (it controls all other GUI windows)
   # Check Matlab command window for additional output
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--01.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--01.png.png" alt="[UNLOADED IMAGE]" width="200">
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--01.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--01.png" alt="[UNLOADED IMAGE]" width="200">
 
 === Load data ===
   * *Goal*: _Get RD data into the program for analysis_
@@ -153,7 +153,7 @@ OBJECT TYPE (Doesn't work)
     # 25, 32, and 37^o^C
     # SQ and MQ coherence
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--02.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--02.png.png" alt="[UNLOADED IMAGE]" width="200">
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--02.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--02.png" alt="[UNLOADED IMAGE]" width="200">
 
 === Create groups for fitting ===
   * *Goal*: _Aggregate RD curves from the same NMR signal (assignment) for group fitting_
