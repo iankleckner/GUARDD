@@ -135,7 +135,7 @@ OBJECT TYPE (Doesn't work)
   # *Important*: Main window must remain open (it controls all other GUI windows)
   # Check Matlab command window for additional output
 
-<a href="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--01.png"> <img src="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--01" alt="[UNLOADED IMAGE]" width="200">
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--01.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--01" alt="[UNLOADED IMAGE]" width="200">
 
 === Load data ===
   * *Goal*: _Get RD data into the program for analysis_
@@ -153,7 +153,7 @@ OBJECT TYPE (Doesn't work)
     # 25, 32, and 37^o^C
     # SQ and MQ coherence
 
-<a href="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--02.png"> <img src="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--02" alt="[UNLOADED IMAGE]" width="200">
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--02.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--02" alt="[UNLOADED IMAGE]" width="200">
 
 === Create groups for fitting ===
   * *Goal*: _Aggregate RD curves from the same NMR signal (assignment) for group fitting_
@@ -180,7 +180,7 @@ OBJECT TYPE (Doesn't work)
     # *Group...Sort groups*
   # Close the <u>Data Manager</u> window
 
-<a href="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--03.png"> <img src="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--03" alt="[UNLOADED IMAGE]" width="200">
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--03.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--03" alt="[UNLOADED IMAGE]" width="200">
 
 === Select residues with exchange ===
   * *Goal*: _Determine which groups exhibit flexibility, and therefore warrant further analysis_  
@@ -192,7 +192,7 @@ OBJECT TYPE (Doesn't work)
     # Check *Exch?* if the data are not horizontal (i.e., R,,ex,, > 0)
       # *Note*: all residues exhibit exchange except Ile 61δ,,1,, and Ile 68δ,,1,,
 
-<a href="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--04.png"> <img src="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--04" alt="[UNLOADED IMAGE]" width="200">
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--04.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--04" alt="[UNLOADED IMAGE]" width="200">
 
 === Fit simple group manually ===
   * *Goal*: _Use <u>Fit RD</u> window to manually fit one group_
@@ -227,7 +227,7 @@ OBJECT TYPE (Doesn't work)
       # *Note*: In general, one should more carefully check if the best fit is OK (see [Manual])
 
 
-<a href="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--05.png"> <img src="http://guardd.googlecode.com/files/tutorial-GUARDD-2011.06.09--05" alt="[UNLOADED IMAGE]" width="200">
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--05.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD-tutorial/tutorial-GUARDD-2011.06.09--05" alt="[UNLOADED IMAGE]" width="200">
 
 
   * *Goal*: _If unsure about which initial conditions to use, the grid search fits multiple times with different initial conditions_
