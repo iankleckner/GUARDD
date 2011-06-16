@@ -568,5 +568,3 @@ OBJECT TYPE (Doesn't work)
 Mark Foster's Lab
 The Ohio State University
 Columbus, OH, USA
-
-Last update 2011/06/08
