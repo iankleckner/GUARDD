@@ -94,9 +94,9 @@
 
   * *Input...*
     * *Script...*
-      * Loads a script file [http://code.google.com/p/guardd/w/edit.do#Input:_Script_file_to_load_data here]
+      * Loads a script file [FileFormats#Input:_Script_file_to_load_data here]
     * *Sequence file...*
-      * Load a sequence file [http://code.google.com/p/guardd/w/edit.do#Input:_Sequence_file here]
+      * Load a sequence file [FileFormats#Input:_Sequence_file here]
     * *Dataset...*
       * *Sort curves (this dataset)* → Curves sorted by {{{index}}} and {{{atom}}} are easier to browse
       * *Sort curves (all datasets)*
