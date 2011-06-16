@@ -7,12 +7,106 @@
   * Background on general use and limitations
   * Itemize details of GUARDD features
 
+
+== Describing dispersions ==
+ * Equations
+ * Intensity -> R2eff
+ * R2eff(vcpmg) -> paramters required
+ * Quantum coherence
+
+== Organizing data ==
+
+
+=== Dataset ===
+  * *Goal*: _Describe a series CPMG NMR data under a set of experimental conditions_
+  * Properties
+    * *name*: _Name of dataset (e.g., 'MQ 800MHz 25C')_
+    * *AX_String*: _13C or 15N_
+    * *B0*: _Magnetic field strength (^1^H MHz)_
+    * *Temp*: _Temperature (K)_
+    * *TCPMG*: _Total CPMG time in pulse sequence_
+    * *SQX*: _True=Single Quantum dataset (Δω,,H,, fixed to zero), False=Multiple Quantum dataset (Δω,,H,, may be non-zero)_
+  * Data for each dispersion curve
+    * Intensity values and errors
+    * R2eff values and errors
+    * ν,,CPMG,, values
+    * Pointers to [Curve Curves] which also hold this information
+
+=== Curve ===
+  * *Goal*: _Describe an NMR dispersion curve (R,,2,,^Eff^(ν,,CPMG,,)) under a set of experimental conditions corresponding to its parentDataset_
+
+  * Each curve is unique
+  * Curves cannot be copied, but multiple _appearances_ can be created (e.g., in different groups)
+  * Each appearance of a curve merely _points_ to the same source data
+  * Any changes to a curve will alter every apperance of that curve (e.g., in all the groups it is part of)
+
+  * Each curve is described by 4-5 parameters
+    # Δω,,H,, (MQ only; for SQ, Δω,,H,, is fixed to zero)
+    # Δω,,X,,
+    # P,,A,,
+    # k,,ex,,
+    # R,,2,,^0^
+
+=== Curveset ===
+  * *Goal*: _Describe a *set* of curves (same NMR probe/assignment) using a single pair of chemical shift differences (Δω,,H,, and Δω,,C,,)_
+
+=== Group ===
+  * *Goal*: _Describe a *group* of curvesets (multiple NMR probes) using a single set of exchange kinetics (P,A, and k,,ex,, at each temperature)_
+
+=== Assigning parameters for fitting ===
+
+  * Check the command window output for itemization of each parameter
+
+=== FitResult ===
+
+
+=== RateAnalysis ===
+
+
+=== Examples for fitting ===
+
+
+
 == Main window ==
 
+== Input ==
 
-== Loading the session ==
+=== Clear session ===
+  * Clears the session, as if the program was just opened
+
+=== Load session ===
+  * Clears the current session
+  * Loads a previously saved GUARDD session (a ".mat" MATLAB variables file)
+  * This may take a relatively long time to load
+    * 1 Mb file takes ~0.5 min
+    * 10 Mb file takes ~5 min
+
+=== Settings ===
+  * Change program settings here
+  * Take special note of OUTPUT_DEBUG flags, which are helpful to see program logic during execution
+  * The items on this list are set in the code via {{{Session.param_info}}}
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/manual-GUARDD-2011.06.16--settings.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/manual-GUARDD-2011.06.16--settings.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
+=== Data Manger ===
+  * *Goal*: _Manage datasets, curves, curvesets, and groups for analysis (input and basic output)_
+
+  * *Input...*
+    * *Script...*
+      * Loads a script file [http://code.google.com/p/guardd/w/edit.do#Input:_Script_file_to_load_data here]
+    * *Sequence file...*
+      * Load a sequence file [http://code.google.com/p/guardd/w/edit.do#Input:_Sequence_file here]
+    * *Dataset...*
+      * *Sort curves (this dataset)* → Curves sorted by {{{index}}} and {{{atom}}} are easier to browse
+      * *Sort curves (all datasets)*
+    * *Group...*
+      * *Sort groups* → Groups sorted by {{{index}}} and {{{name}}} are easier to browse
+    * *Curveset...*
+    * *Curve...*
+    * *Output...*
+
+	
 
 
 == RD Simulator ==
@@ -23,8 +117,7 @@
 
 
 
-== Data Manger ==
- * *Question*: _How are the data organized?_
+
 
 
 === Loading data ===
@@ -62,7 +155,7 @@ Chi2 = ###
 
 
 == Batch task ==
-
+ * Batch task: procedure for selection of sets to include doesn't seem right (requires clicking item, then "include"; checkbox doesn't work)
 
 
 
