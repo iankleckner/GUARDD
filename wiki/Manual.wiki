@@ -30,7 +30,7 @@
     * Intensity values and errors
     * R2eff values and errors
     * ν,,CPMG,, values
-    * Pointers to [Curve Curves] which also hold this information
+    * Pointers to [Manual#Curve Curves] which also hold this information
 
 === Curve ===
   * *Goal*: _Describe an NMR dispersion curve (R,,2,,^Eff^(ν,,CPMG,,)) under a set of experimental conditions corresponding to its parentDataset_
