@@ -12,8 +12,8 @@
   * GUARDD = Graphical User-friendly Analysis of Relaxation Dispersion Data
   * RD = Relaxation Disperion
   * 4-5 parameters are required to fit a single RD curve
-    # Δω,,H,, = Δω,,H,,, = ^1^H chemical shift difference between states A and B (ppm, rad/s, Hz) - *MQ only*
-    # Δω,,X,, = Δω,,X,,, = ^A^X chemical shift difference between states A and B (ppm, rad/s, Hz)
+    # |Δω,,H,,| = ^1^H chemical shift difference between states A and B (ppm, rad/s, Hz) - *MQ only*
+    # |Δω,,X,,| = ^A^X chemical shift difference between states A and B (ppm, rad/s, Hz)      
     # P,,A,, = Population fraction of A state (fraction, %)
     # k,,ex,, = k,,A,, + k,,B,, = Total exchange rate between states (/s)
     # R,,2,,^0^ = Transverse relaxation rate in the absence of exchange (Hz)
@@ -26,13 +26,19 @@
     * Method B - Constrain rate analysis via ΔH and E,,AB,,
       * Define P,,A,, and k,,ex,, at a single temperature, T,,0,,
       * Define ΔH for temperature-dependence of P,,A,, (vant Hoff)
-      * Define E,,AB,, for temperature-dependence of k,,A,, and, using ΔH, k,,B,, (Arrhenius)
+      * Define E,,AB,, for temperature-dependence of k,,A,, and, using ΔH, k,,B,, and therefore k,,ex,, = k,,A,,+k,,B,, (Arrhenius), and therefore k,,ex,, = k,,A,,+k,,B,,
       * ΔH = H,,B,, - H,,A,, = Enthalpy difference to exchange from A->B (cal/mol)
       * E,,AB,, = E,,B,, - E,,A,, = Activation energy to exchange from A->B (cal/mol)
   * SQ = Single Quantum (signal detected in NMR)
     * *Note*: SQ curves that pulse on ^A^X nucleus are sensitive _only_ to Δω,,X,, (Δω,,H,, is fixed to zero)
   * MQ = Multiple Quantum (signal detected in NMR)
     * *Note*: MQ RD curves are sensitive to _both_ Δω,,H,, and Δω,,X,,
+
+  * ^A^X = ^13^C or ^15^N
+  * ω,,X,,^(rad/s)^ = 2πB,,0,,γ,,X,,ω,,X,,^(ppm)^
+  * ν,,X,,^(Hz)^ = B,,0,,γ,,X,,ω,,X,,^(ppm)^
+  * B,,0,, = Magnetic field strength (Tesla)
+  * γ,,X,, = Gyromagnetic ratio for nucleus X (MHz/Tesla)
 
   * GUI = Graphical User Interface  
   * <u>Underlined</u> items are GUARDD window titles
@@ -44,6 +50,9 @@
 
 == Describing dispersions ==
  * Equations
+
+<wiki:gadget url="http://mathml-gadget.googlecode.com/svn/trunk/mathml-gadget.xml" border="0" up_content="root3x + x^phi + x_1" height="15"/>
+
  * Intensity -> R2eff
  * R2eff(vcpmg) -> paramters required
  * Quantum coherence
@@ -138,7 +147,7 @@
 
 
 ===== Rate Analysis =====
-  * *Goal*: _Store the results of a 
+  * *Goal*: _Store the results of a temperature-dependent analysis of the P,,A,, and k,,ex,,_
 
 === Session ===
   * *Goal*: _Store the program data and settings_
@@ -155,11 +164,12 @@
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/figure-data_management-large.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/figure-data_management-large.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
  * Each Curve is described by 4-5 parameters
-    # Δω,,H,, (For SQ curves, Δω,,H,, is fixed to zero and therefore does not need to be specified in a fit)
-    # Δω,,X,,
-    # P,,A,,
-    # k,,ex,,
-    # R,,2,,^0^
+    # |Δω,,H,,| = ^1^H chemical shift difference between states A and B (ppm, rad/s, Hz)
+      * *Note*: For SQ curves, Δω,,H,, is fixed to zero and therefore does not need to be specified in a fit
+    # |Δω,,X,,| = ^A^X chemical shift difference between states A and B (ppm, rad/s, Hz)
+    # P,,A,, = Population fraction of A state (fraction, %)
+    # k,,ex,, = k,,A,, + k,,B,, = Total exchange rate between states (/s)
+    # R,,2,,^0^ = Transverse relaxation rate in the absence of exchange (Hz)
 
   * Curves are combined into Curvesets, which all share the same chemical shift differences |Δω,,H,,| and |Δω,,X,,|
     * These are specified in ppm and converted to rad/s
@@ -178,15 +188,17 @@
     * Method B - Constrain rate analysis via ΔH and E,,AB,,
       * Define P,,A,, and k,,ex,, at a single temperature, T,,0,,
       * Define ΔH for temperature-dependence of P,,A,, (vant Hoff)
-      * Define E,,AB,, for temperature-dependence of k,,A,, and, using ΔH, k,,B,, (Arrhenius)
+      * Define E,,AB,, for temperature-dependence of k,,A,, and, using ΔH, k,,B,, and therefore k,,ex,, = k,,A,,+k,,B,, (Arrhenius)
 
   
 
 === Examples for fitting ===
   * *Goal*: _Check the command window output for itemization of each parameter in a given group_
+    * Use the debugging output option {{{OUTPUT_DEBUG_UPDATE_FIT_PARAMS}}} (in [Manual#Settings Settings window], on by default)
 
-  * *Example*: _Group 2: Ile 10δ1 + Leu 22δ1 from figure_
-  * Use the debugging output option {{{OUTPUT_DEBUG_UPDATE_FIT_PARAMS}}} (on by default)  
+  * *Example*: _Group 2: Ile 10δ1 + Leu 22δ1 from [http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/figure-data_management-large.png figure]_  
+  * Method A - No constraint on rate analysis
+      * Define P,,A,, and k,,ex,, at each temperature
 
 {{{
 FUNCTION: Group.updateFitParams
@@ -230,7 +242,12 @@ Working on CS=2, Leu 22\delta_1
 		Itemizing parameter 14 (R20 @ CS2, C3)
 }}}
 
-  * Same example, but constraining Arrhenius analysis
+  * *Example*: _Group 2: Ile 10δ1 + Leu 22δ1 from [http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/figure-data_management-large.png figure]_ 
+    * Method B - Constrain rate analysis via ΔH and E,,AB,,
+      * Define P,,A,, and k,,ex,, at a single temperature, T,,0,,
+      * Define ΔH for temperature-dependence of P,,A,, (vant Hoff)
+      * Define E,,AB,, for temperature-dependence of k,,A,, and, using ΔH, k,,B,, and therefore k,,ex,, = k,,A,,+k,,B,, (Arrhenius)
+      * *Note*: this uses ΔH and E,,AB,, instead of P,,A,,(37C) and k,,ex,,(37C)
 
 {{{
 FUNCTION: Group.updateFitParams
@@ -286,7 +303,6 @@ Working on CS=2, Leu 22\delta_1
   * *Location in code*: {{{FitResult.fitMe()}}}
 
 === Grid search ===
-
   * *Goal*: _Fit data multiple times to assess sensitivity of final fit to initial conditions_
 
   * *Location in code*: {{{Group.gridSearch()}}}
@@ -352,10 +368,12 @@ Working on CS=2, Leu 22\delta_1
     * *Curve...*
     * *Output...*
 
-===== Creating groups ======
+===== Creating groups =====
 
-====== Exporting data =====
+  * Nomenclature on selection process
 
+
+===== Exporting data =====
 
 
 ==== RD Simulator ====
@@ -439,16 +457,15 @@ Chi2 = ###
   * Shameless plug for a review on protein dynamics via NMR
     * Kleckner, I. R., & Foster, M. P. (2010). An introduction to NMR-based approaches for measuring protein dynamics. Biochimica et biophysica acta, 1814(8), 942-968. Elsevier B.V. doi: 10.1016/j.bbapap.2010.10.012.
 
-
-
 == Acknowledgements ==
-  * Advisor Mark Foster
-  * The Ohio State University Biophysics Program
-  * The Ohio State University  
-  * National Institutes of Health
+  * Advisor Prof. Mark Foster [http://chemistry.osu.edu/~foster.281/ link]
+  * The Ohio State University Biochemistry Dept. [http://www.biosci.ohio-state.edu/~biochem/ link]
+  * The Ohio State University Biophysics Program [http://www.biosci.ohio-state.edu/~biophys/ link]
+  * The Ohio State University [http://www.osu.edu/ link]
+  * National Institutes of Health [http://www.nih.gov/ link]
 
 == Author ==
   * (C) Ian Kleckner
-  * (Mark Foster's Lab
-  * (The Ohio State University
-  * (Columbus, OH, USA
+  * Mark Foster's Lab
+  * The Ohio State University
+  * Columbus, OH, USA
