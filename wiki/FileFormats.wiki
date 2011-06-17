@@ -410,8 +410,6 @@ Group 1/10
 == Output: GUARDD Simulator ==
   * Contains all simulation specifications for each Curveset and Curve
   * Useful for loading into other programs
-  * Example part of an output file (created using the tutorial session file)
-
   * Part of example file from tutorial: {{{tutorial/data/example_files/output-GUARDD-Sim--2011.06.17-13-29.txt}}}
 
 
@@ -474,10 +472,15 @@ Obs	vcpmg(Hz)	R2Eff(Hz)	eR2Eff(Hz)	Intensity	eIntensity
   # NMRPipe [http://spin.niddk.nih.gov/NMRPipe/ link]
   # Tutorial on preparing NMRPipe nlin.tab files [http://guardd.googlecode.com/files/Processing-RD--2008.07.07.zip here]
 
-== Author ==
-(C) Ian Kleckner
-Mark Foster's Lab
-The Ohio State University
-Columbus, OH, USA
+== Acknowledgements ==
+  * Advisor Prof. Mark Foster [http://chemistry.osu.edu/~foster.281/ link]
+  * The Ohio State University Biochemistry Dept. [http://www.biosci.ohio-state.edu/~biochem/ link]
+  * The Ohio State University Biophysics Program [http://www.biosci.ohio-state.edu/~biophys/ link]
+  * The Ohio State University [http://www.osu.edu/ link]
+  * National Institutes of Health [http://www.nih.gov/ link]
 
-Last update 2011/06/16
+== Author ==
+  * (C) Ian Kleckner
+  * Mark Foster's Lab
+  * The Ohio State University
+  * Columbus, OH, USA
