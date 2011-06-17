@@ -407,6 +407,68 @@ Group 1/10
       10	600.000000	67.720409	1.000000
 }}}
 
+== Output: GUARDD Simulator ==
+  * Contains all simulation specifications for each Curveset and Curve
+  * Useful for loading into other programs
+  * Example part of an output file (created using the tutorial session file)
+
+  * Part of example file from tutorial: {{{tutorial/data/example_files/output-GUARDD-Sim--2011.06.17-13-29.txt}}}
+
+
+{{{
+GUARDD v.2011.06.17
+(C) Ian Kleckner 2010-2011
+Exported data from RD Simulator
+Created on 2011.06.17-13-29
+
+Curveset 1/2, General Specifications
+NameCurveset	Simple
+NumCurves	2
+dwH	0.000000	ppm
+dwX	1.000000	ppm
+AX	13C	-
+Eab	2000.000000	cal/mol
+Pab	2900.000000	/sec
+Eba	12000.000000	cal/mol
+Pba	580000000000.000000	/sec
+dH	-10000.000000	cal/mol
+dS	-37.900000	cal/mol/K
+Temp0	25.000000	C
+PA0	90.000000	%
+kex0	1000.000000	/sec
+
+Curveset 1/2, Curve 1/2
+NameCurve	500-SQ-25C
+NameParentCurveset	Simple
+Temp	25.000000	C
+B0	500.000000	MHz
+TCPMG	0.020000	sec
+SQX	1	-
+dwH	0.000000	Hz
+dwX	125.714706	Hz
+PA	89.906866	%
+kex	978.687224	/sec
+R20	10.000000	Hz
+
+NObs	15
+Noise	0.050000
+Obs	vcpmg(Hz)	R2Eff(Hz)	eR2Eff(Hz)	Intensity	eIntensity
+1	100.000000	36.618398	1.823631	0.480769	0.017535
+2	164.285714	27.535028	1.445293	0.576546	0.016666
+3	228.571429	23.550549	1.153789	0.624371	0.014408
+4	292.857143	19.830905	0.959081	0.672591	0.012901
+5	357.142857	17.339377	0.831317	0.706956	0.011754
+6	421.428571	14.397469	0.745641	0.749800	0.011182
+7	485.714286	14.035805	0.686368	0.755243	0.010367
+8	550.000000	12.945965	0.644058	0.771885	0.009943
+9	614.285714	12.765964	0.612980	0.774669	0.009497
+10	678.571429	12.107498	0.589570	0.784938	0.009256
+11	742.857143	11.944019	0.571542	0.787509	0.009002
+12	807.142857	11.074233	0.557389	0.801328	0.008933
+13	871.428571	10.841380	0.546088	0.805069	0.008793
+14	935.714286	11.279721	0.536931	0.798042	0.008570
+15	1000.000000	9.463950	0.529412	0.827556	0.008762
+}}}
 
 == References ==
   # NMRPipe [http://spin.niddk.nih.gov/NMRPipe/ link]
