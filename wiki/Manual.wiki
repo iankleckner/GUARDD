@@ -7,6 +7,40 @@
   * Background on general use and limitations
   * Itemize details of GUARDD features
 
+== Notation ==  
+  * NMR = Nuclear Magnetic Resonance
+  * GUARDD = Graphical User-friendly Analysis of Relaxation Dispersion Data
+  * RD = Relaxation Disperion
+  * 4-5 parameters are required to fit a single RD curve
+    # Δω,,H,, = Δω,,H,,, = ^1^H chemical shift difference between states A and B (ppm, rad/s, Hz) - *MQ only*
+    # Δω,,X,, = Δω,,X,,, = ^A^X chemical shift difference between states A and B (ppm, rad/s, Hz)
+    # P,,A,, = Population fraction of A state (fraction, %)
+    # k,,ex,, = k,,A,, + k,,B,, = Total exchange rate between states (/s)
+    # R,,2,,^0^ = Transverse relaxation rate in the absence of exchange (Hz)
+  * Exchange kinetics can be described as follows
+    * k,,A,, = (1-P,,A,,)k,,ex,, = Rate of exchange from A->B
+    * k,,B,, = P,,A,,k,,ex,, = Rate of exchange from B->A
+    * There are at least *two methods* to specify P,,A,, and k,,ex,, at each temperature
+    * Method A - No constraint on rate analysis
+      * Define P,,A,, and k,,ex,, at each temperature
+    * Method B - Constrain rate analysis via ΔH and E,,AB,,
+      * Define P,,A,, and k,,ex,, at a single temperature, T,,0,,
+      * Define ΔH for temperature-dependence of P,,A,, (vant Hoff)
+      * Define E,,AB,, for temperature-dependence of k,,A,, and, using ΔH, k,,B,, (Arrhenius)
+      * ΔH = H,,B,, - H,,A,, = Enthalpy difference to exchange from A->B (cal/mol)
+      * E,,AB,, = E,,B,, - E,,A,, = Activation energy to exchange from A->B (cal/mol)
+  * SQ = Single Quantum (signal detected in NMR)
+    * *Note*: SQ curves that pulse on ^A^X nucleus are sensitive _only_ to Δω,,X,, (Δω,,H,, is fixed to zero)
+  * MQ = Multiple Quantum (signal detected in NMR)
+    * *Note*: MQ RD curves are sensitive to _both_ Δω,,H,, and Δω,,X,,
+
+  * GUI = Graphical User Interface  
+  * <u>Underlined</u> items are GUARDD window titles
+  * *Boldface* items are commands (buttons, menus) and important points
+
+  * MC = Monte Carlo (randomization method used here for error analysis)
+  * Chi2 = χ^2^ = Goodness of fit metric (smaller value indicates better fit)
+    * Statistics χ^2^ and SSE are considered equivalent in this tutorial (see [Manual])  
 
 == Describing dispersions ==
  * Equations
@@ -15,10 +49,12 @@
  * Quantum coherence
 
 == Organizing data ==
+ * *Goal*: _Organize storage of data via and provide framework for complex fitting procedures_
 
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/figure-data_management-large.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/figure-data_management-large.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 === Dataset ===
-  * *Goal*: _Describe a series CPMG NMR data under a set of experimental conditions_
+  * *Goal*: _Store a CPMG NMR dataset and the experimental conditions during acquisition_
 
   * Properties
     * *name*: _Name of dataset (e.g., 'MQ 800MHz 25C')_
@@ -35,7 +71,7 @@
     * Pointers to [Manual#Curve Curves] which also hold this information
 
 === Curve ===
-  * *Goal*: _Hold data for an NMR dispersion curve (R,,2,,^Eff^(ν,,CPMG,,)) under a set of experimental conditions corresponding to its parentDataset_
+  * *Goal*: _Store an NMR dispersion curve (R,,2,,^Eff^(ν,,CPMG,,)) and the experimental conditions during acquisition, which correspond to its parent [Manual#Dataset Dataset]_
 
   * Properties
     * *name*: _Name of the curve (e.g., 'Leu 12\delta_2')_
@@ -59,16 +95,9 @@
   * Each curve is unique, but can have multiple _appearances_, each of which points to the same source data
     * Multiple _appearances_ can occur in different [Manual#Curveset Curvesets]    
     * Any changes to a curve will alter every apperance of that curve (e.g., in all curvesets that point to it)
-
-  * Each curve is described by 4-5 parameters
-    # Δω,,H,, (MQ only; for SQ, Δω,,H,, is fixed to zero)
-    # Δω,,X,,
-    # P,,A,,
-    # k,,ex,,
-    # R,,2,,^0^
-
+  
 === Curveset ===
-  * *Goal*: _Describe a *set* of curves (same NMR probe/assignment) using a single pair of chemical shift differences (Δω,,H,, and Δω,,C,,)_
+  * *Goal*: _Store a *set* of [Manual#Curve Curves] (each from the same NMR probe/assignment) which all share a single pair of chemical shift differences (Δω,,H,, and Δω,,X,,)_
 
   * Properties
     * *name*: _Name of curve set_
@@ -83,7 +112,7 @@
   * Each curveset only appears *once* (unlike Curves)    
 
 === Group ===
-  * *Goal*: _Describe a *group* of curvesets (multiple NMR probes) using a single set of exchange kinetics (P,A, and k,,ex,, at each temperature), and all the fits to the group_
+  * *Goal*: _Store a *group* of [Manual#Curveset Curvesets] (each from different NMR probes/assignments) which all share a single set of exchange kinetics (P,A, and k,,ex,, at each temperature), and store any [Manual#Fit_Result Fit Results] for this group_
 
   * Properties
     * *name*: _Name of group_
@@ -101,38 +130,204 @@
   * Groups contain _pointers_ to [Manual#Curveset Curvesets], each of which only appears once
   * Each group points to a parent [Manual#Session Session] which contains settings, etc.
 
+
+==== Fit Result ====
+  * *Goal*: _Pefrorm a single fit to a Group of RD data, and store the results_
+
+
+
+
+===== Rate Analysis =====
+  * *Goal*: _Store the results of a 
+
 === Session ===
-  * *Goal*: _Store program data, settings, etc._
+  * *Goal*: _Store the program data and settings_
 
-=== Assigning parameters for fitting ===
-
-  * Check the command window output for itemization of each parameter
-
-=== FitResult ===
+  * Store all [Manual#Dataset Datasets]
+  * Store all [Manual#Group Groups]
 
 
-=== RateAnalysis ===
 
+
+== Assigning parameters for fitting ==
+  * *Goal*: _Fitting RD data requries five parameters per curve, but often these parameters can be shared when they are aggregated into curvesets, which are aggregated into groups_
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/figure-data_management-large.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/figure-data_management-large.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+ * Each Curve is described by 4-5 parameters
+    # Δω,,H,, (For SQ curves, Δω,,H,, is fixed to zero and therefore does not need to be specified in a fit)
+    # Δω,,X,,
+    # P,,A,,
+    # k,,ex,,
+    # R,,2,,^0^
+
+  * Curves are combined into Curvesets, which all share the same chemical shift differences |Δω,,H,,| and |Δω,,X,,|
+    * These are specified in ppm and converted to rad/s
+      * rad/s is requried for trigonometric functions, like tangent
+      * ω,,X,,^(rad/s)^ = 2πB,,0,,γ,,X,,ω,,X,,^(ppm)^
+      * B,,0,, = Magnetic field strength (Tesla)
+      * γ,,X,, = Gyromagnetic ratio for nucleus X (MHz/Tesla)
+    * The chemical shift difference can also be specified in Hz
+      * Hz = /s is useful for direct comparison to k,,ex,, (also in /s) in determining exchange timescale
+      * ν,,X,,^(Hz)^ = B,,0,,γ,,X,,ω,,X,,^(ppm)^
+
+  * Curvesets are combined into Groups, which all share the same kinetic parameters (P,,A,, and k,,ex,, at each temperature)
+    * There are at least *two methods* to specify P,,A,, and k,,ex,, at each temperature
+    * Method A - No constraint on rate analysis
+      * Define P,,A,, and k,,ex,, at each temperature
+    * Method B - Constrain rate analysis via ΔH and E,,AB,,
+      * Define P,,A,, and k,,ex,, at a single temperature, T,,0,,
+      * Define ΔH for temperature-dependence of P,,A,, (vant Hoff)
+      * Define E,,AB,, for temperature-dependence of k,,A,, and, using ΔH, k,,B,, (Arrhenius)
+
+  
 
 === Examples for fitting ===
+  * *Goal*: _Check the command window output for itemization of each parameter in a given group_
+
+  * *Example*: _Group 2: Ile 10δ1 + Leu 22δ1 from figure_
+  * Use the debugging output option {{{OUTPUT_DEBUG_UPDATE_FIT_PARAMS}}} (on by default)  
+
+{{{
+FUNCTION: Group.updateFitParams
+Working on CS=1, Ile 10\delta_1
+	Working on C=1 (CTOT=1), 800-MQ-25C
+		Itemizing parameter 1 (dwH @ CS1, C1)
+		Itemizing parameter 2 (dwX @ CS1, C1)
+		Itemizing parameter 3 (PA @ 298K) *PA0*
+		Itemizing parameter 4 (kex @ 298K) *kex0*
+		Itemizing parameter 5 (R20 @ CS1, C1)
+	Working on C=2 (CTOT=2), 600-MQ-25C
+		Linking dwH to parameter 1, scaled by 0.750091x
+		Linking dwX to parameter 2, scaled by 0.750091x
+		Linking PA to parameter 3, scaled by 1.000000x
+		Linking kex to parameter 4, scaled by 1.000000x
+		Itemizing parameter 6 (R20 @ CS1, C2)
+	Working on C=3 (CTOT=3), 800-MQ-37C
+		Linking dwH to parameter 1, scaled by 1.000000x
+		Linking dwX to parameter 2, scaled by 1.000000x
+		Itemizing parameter 7 (PA @ 310K) *PA0*
+		Itemizing parameter 8 (kex @ 310K) *kex0*
+		Itemizing parameter 9 (R20 @ CS1, C3)
+Working on CS=2, Leu 22\delta_1
+	Working on C=1 (CTOT=4), 800-MQ-25C
+		Itemizing parameter 10 (dwH @ CS2, C1)
+		Itemizing parameter 11 (dwX @ CS2, C1)
+		Linking PA to parameter 3, scaled by 1.000000x
+		Linking kex to parameter 4, scaled by 1.000000x
+		Itemizing parameter 12 (R20 @ CS2, C1)
+	Working on C=2 (CTOT=5), 600-MQ-25C
+		Linking dwH to parameter 10, scaled by 0.750091x
+		Linking dwX to parameter 11, scaled by 0.750091x
+		Linking PA to parameter 3, scaled by 1.000000x
+		Linking kex to parameter 4, scaled by 1.000000x
+		Itemizing parameter 13 (R20 @ CS2, C2)
+	Working on C=3 (CTOT=6), 800-MQ-37C
+		Linking dwH to parameter 10, scaled by 1.000000x
+		Linking dwX to parameter 11, scaled by 1.000000x
+		Linking PA to parameter 7, scaled by 1.000000x
+		Linking kex to parameter 8, scaled by 1.000000x
+		Itemizing parameter 14 (R20 @ CS2, C3)
+}}}
+
+  * Same example, but constraining Arrhenius analysis
+
+{{{
+FUNCTION: Group.updateFitParams
+		Number of temperatures 2 > 1
+		Itemizing parameter 1 (dH)
+		Itemizing parameter 2 (Eab)
+Working on CS=1, Ile 10\delta_1
+	Working on C=1 (CTOT=1), 800-MQ-25C
+		Itemizing parameter 3 (dwH @ CS1, C1)
+		Itemizing parameter 4 (dwX @ CS1, C1)
+		Itemizing parameter 5 (PA @ 298K) *PA0*
+		Itemizing parameter 6 (kex @ 298K) *kex0*
+		Itemizing parameter 7 (R20 @ CS1, C1)
+	Working on C=2 (CTOT=2), 600-MQ-25C
+		Linking dwH to parameter 3, scaled by 0.750091x
+		Linking dwX to parameter 4, scaled by 0.750091x
+		Linking PA to parameter 5, scaled by 1.000000x
+		Linking kex to parameter 6, scaled by 1.000000x
+		Itemizing parameter 8 (R20 @ CS1, C2)
+	Working on C=3 (CTOT=3), 800-MQ-37C
+		Linking dwH to parameter 3, scaled by 1.000000x
+		Linking dwX to parameter 4, scaled by 1.000000x
+		Linking PA @ 310K to PA0 @ T0=298K (param 5) via Temp (310K), dH (param 1), and Eab (param 2)
+		Linking kex @ 310K to kex0 @ T0=298K (param 6) via Temp (310K), dH (param 1), and Eab (param 2)
+		Itemizing parameter 9 (R20 @ CS1, C3)
+Working on CS=2, Leu 22\delta_1
+	Working on C=1 (CTOT=4), 800-MQ-25C
+		Itemizing parameter 10 (dwH @ CS2, C1)
+		Itemizing parameter 11 (dwX @ CS2, C1)
+		Linking PA to parameter 5, scaled by 1.000000x
+		Linking kex to parameter 6, scaled by 1.000000x
+		Itemizing parameter 12 (R20 @ CS2, C1)
+	Working on C=2 (CTOT=5), 600-MQ-25C
+		Linking dwH to parameter 10, scaled by 0.750091x
+		Linking dwX to parameter 11, scaled by 0.750091x
+		Linking PA to parameter 5, scaled by 1.000000x
+		Linking kex to parameter 6, scaled by 1.000000x
+		Itemizing parameter 13 (R20 @ CS2, C2)
+	Working on C=3 (CTOT=6), 800-MQ-37C
+		Linking dwH to parameter 10, scaled by 1.000000x
+		Linking dwX to parameter 11, scaled by 1.000000x
+		Linking PA to parameter 5, scaled by 1.000000x
+		Linking kex to parameter 6, scaled by 1.000000x
+		Itemizing parameter 14 (R20 @ CS2, C3)
+}}}
+
+
+== Computational procedures ==
+
+=== Fitting data ===
+ * *Goal*: _Minimize the sum of squares target function_
+
+  * *Location in code*: {{{FitResult.fitMe()}}}
+
+=== Grid search ===
+
+  * *Goal*: _Fit data multiple times to assess sensitivity of final fit to initial conditions_
+
+  * *Location in code*: {{{Group.gridSearch()}}}
+
+=== Arrhenius: Determining activation energy ===
+  * Negative or positive?
+
+  * *Location in code*: {{{RateAnalysis.analyzeMe()}}}
+
+=== vant Hoff: Determining enthalpy ===
+
+  * Entropy is unreliable
+
+  * *Location in code*: {{{RateAnalysis.analyzeMe()}}}
+
+=== Exchange timescale alpha ===
+
+  * *Location in code*: {{{FitResult.analyzeMe()}}}
+
+
+=== Monte Carlo error estimation ===
+
+  * *Location in code*: {{{FitResult.calculateErrors()}}}
 
 
 
-== Main window ==
+== GUARDD Graphical Interface ==
 
-== Input ==
+=== GUARDD Input ===
 
-=== Clear session ===
+==== Clear session ====
   * Clears the session, as if the program was just opened
 
-=== Load session ===
+==== Load session ====
   * Clears the current session
   * Loads a previously saved GUARDD session (a ".mat" MATLAB variables file)
   * This may take a relatively long time to load
     * 1 Mb file takes ~0.5 min
     * 10 Mb file takes ~5 min
 
-=== Settings ===
+==== Settings ====
   * Change program settings here
   * Take special note of OUTPUT_DEBUG flags, which are helpful to see program logic during execution
   * The items on this list are set in the code via {{{Session.param_info}}}
@@ -140,7 +335,7 @@
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/manual-GUARDD-2011.06.16--settings.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/manual-GUARDD-2011.06.16--settings.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
-=== Data Manger ===
+==== Data Manger ====
   * *Goal*: _Manage datasets, curves, curvesets, and groups for analysis (input and basic output)_
 
   * *Input...*
@@ -157,36 +352,24 @@
     * *Curve...*
     * *Output...*
 
-	
+===== Creating groups ======
 
-
-== RD Simulator ==
-
-=== Temperature dependent simulations ===
+====== Exporting data =====
 
 
 
+==== RD Simulator ====
+
+
+===== Temperature dependent simulations =====
 
 
 
+=== GUARDD Analysis ===
 
+==== Fit Dispersion ====
 
-=== Loading data ===
-
-==== File formats ====
-
-=== Creating groups ===
-
-=== Exporting data ===
-
-
-
-
-
-
-== Fit Dispersion ==
-
-== Naming fits ==
+===== Naming fits =====
 
 FIT vs SIM
 -1 vs -G
@@ -195,50 +378,77 @@ Chi2 = ###
 `[Date]`
 
 
-=== Basic fitting ===
+===== Basic fitting =====
 
-=== Multi-temperature data ===
+===== Multi-temperature data =====
 
-=== Multi-curveset data ===
+===== Multi-curveset data =====
 
-=== Determining which parameters are OK ===
-
-
-
-== Batch task ==
- * Batch task: procedure for selection of sets to include doesn't seem right (requires clicking item, then "include"; checkbox doesn't work)
+===== Determining which parameters are OK =====
 
 
 
-== Display Chi2 Map ==
+==== Batch Task ====
+  * Batch task: procedure for selection of sets to include doesn't seem right (requires clicking item, then "include"; checkbox doesn't work)
+
+==== Notes ====
+
+==== Debug ====
+
+
+
+
+=== GUARDD Output ===
+
+==== Save session ====
+  * *Goal*: _Write [Manual#Session Session] to MATLAB file to save data and program state_
+
+==== Display Dispersion ====
+
+==== Display Chi2 Map ====
  * *Question*: _What is a good fit look like?_
 
-=== Display Monte Carlo Errors ===
+===== Display Monte Carlo Errors =====
 
-=== Select fit from grid search ===
-
-
-== Display Dispersion ==
-
-== Display Rates ==
+===== Select fit from grid search =====
 
 
-== Saving the session ==
+==== Display rates ====
 
-== Display table ==
 
-== Display groups ==
+==== Display group results ====
+
+==== Display results table ====
+
+
 
 
 
 
 == References ==
+  * Temperature-dependence of rate and equilibrium constants (Arrhenius and vant Hoff analyses)
+    *  Winzor, D. J., & Jackson, C. M. (2006). Interpretation of the temperature dependence of equilibrium and rate constants. Journal of Molecular Recognition, c(August), 389-407. doi: 10.1002/jmr.
+  * MQ dispersion
+    * Korzhnev, D. M., Kloiber, K., & Kay, L. E. (2004). Multiple-quantum relaxation dispersion NMR spectroscopy probing millisecond time-scale dynamics in proteins: theory and application. Journal of the American Chemical Society, 126(23), 7320-9. doi: 10.1021/ja049968b.
+  * Quantum Coherences in dispersion
+    * Korzhnev, D. M., Neudecker, P., Mittermaier, A., Orekhov, V. Y., & Kay, L. E. (2005). Multiple-site exchange in proteins studied with a suite of six NMR relaxation dispersion experiments: an application to the folding of a Fyn SH3 domain mutant. Journal of the American Chemical Society, 127(44), 15602-11. doi: 10.1021/ja054550e.
+  * Exchange timescale α
+    * Millet, O., Loria, J. P., Kroenke, C. D., Pons, M., & Palmer, A. G. (2000). The Static Magnetic Field Dependence of Chemical Exchange Linebroadening Defines the NMR Chemical Shift Time Scale. Journal of the American Chemical Society, 122(12), 2867-2877. doi: 10.1021/ja993511y.
+  * Fitting RD data is poorly determined
+    * Kovrigin, E. L., Kempf, J. G., Grey, M. J., & Loria, J. P. (2006). Faithful estimation of dynamics parameters from CPMG relaxation dispersion measurements. Journal of magnetic resonance (San Diego, Calif. : 1997), 180(1), 93-104. doi: 10.1016/j.jmr.2006.01.010.
+  * Shameless plug for a review on protein dynamics via NMR
+    * Kleckner, I. R., & Foster, M. P. (2010). An introduction to NMR-based approaches for measuring protein dynamics. Biochimica et biophysica acta, 1814(8), 942-968. Elsevier B.V. doi: 10.1016/j.bbapap.2010.10.012.
 
 
 
+== Acknowledgements ==
+  * Advisor Mark Foster
+  * The Ohio State University Biophysics Program
+  * The Ohio State University  
+  * National Institutes of Health
 
 == Author ==
-(C) Ian Kleckner
-Mark Foster's Lab
-The Ohio State University
-Columbus, OH, USA
+  * (C) Ian Kleckner
+  * (Mark Foster's Lab
+  * (The Ohio State University
+  * (Columbus, OH, USA
