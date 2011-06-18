@@ -60,7 +60,7 @@
 == Organizing data ==
  * *Goal*: _Organize storage of data via and provide framework for complex fitting procedures_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/figure-data_management-large.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/figure-data_management-large.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-data_management-large.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-data_management-large.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 === Dataset ===
   * *Goal*: _Store a CPMG NMR dataset and the experimental conditions during acquisition_
@@ -161,7 +161,7 @@
 == Assigning parameters for fitting ==
   * *Goal*: _Fitting RD data requries five parameters per curve, but often these parameters can be shared when they are aggregated into curvesets, which are aggregated into groups_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/figure-data_management-large.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/figure-data_management-large.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-data_management-large.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-data_management-large.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
  * Each Curve is described by 4-5 parameters
     # |Δω,,H,,| = ^1^H chemical shift difference between states A and B (ppm, rad/s, Hz)
@@ -196,7 +196,7 @@
   * *Goal*: _Check the command window output for itemization of each parameter in a given group_
     * Use the debugging output option {{{OUTPUT_DEBUG_UPDATE_FIT_PARAMS}}} (in [Manual#Settings Settings window], on by default)
 
-  * *Example*: _Group 2: Ile 10δ1 + Leu 22δ1 from [http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/figure-data_management-large.png figure]_  
+  * *Example*: _Group 2: Ile 10δ1 + Leu 22δ1 from [http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-data_management-large.png figure]_  
   * Method A - No constraint on rate analysis
       * Define P,,A,, and k,,ex,, at each temperature
 
@@ -242,7 +242,7 @@ Working on CS=2, Leu 22\delta_1
 		Itemizing parameter 14 (R20 @ CS2, C3)
 }}}
 
-  * *Example*: _Group 2: Ile 10δ1 + Leu 22δ1 from [http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/figure-data_management-large.png figure]_ 
+  * *Example*: _Group 2: Ile 10δ1 + Leu 22δ1 from [http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-data_management-large.png figure]_ 
     * Method B - Constrain rate analysis via ΔH and E,,AB,,
       * Define P,,A,, and k,,ex,, at a single temperature, T,,0,,
       * Define ΔH for temperature-dependence of P,,A,, (vant Hoff)
@@ -348,7 +348,7 @@ Working on CS=2, Leu 22\delta_1
   * Take special note of OUTPUT_DEBUG flags, which are helpful to see program logic during execution
   * The items on this list are set in the code via {{{Session.param_info}}}
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/manual-GUARDD-2011.06.16--settings.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images-manual/manual-GUARDD-2011.06.16--settings.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/manual-GUARDD-2011.06.16--settings.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/manual-GUARDD-2011.06.16--settings.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
 ==== Data Manger ====
