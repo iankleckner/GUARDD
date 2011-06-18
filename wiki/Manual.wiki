@@ -7,7 +7,7 @@
   * Background on general use and limitations
   * Itemize details of GUARDD features
 
-== Notation ==  
+== Glossary ==  
   * NMR = Nuclear Magnetic Resonance
   * GUARDD = Graphical User-friendly Analysis of Relaxation Dispersion Data
   * RD = Relaxation Disperion
@@ -18,8 +18,8 @@
     # k,,ex,, = k,,A,, + k,,B,, = Total exchange rate between states (/s)
     # R,,2,,^0^ = Transverse relaxation rate in the absence of exchange (Hz)
   * Exchange kinetics can be described as follows
-    * k,,A,, = (1-P,,A,,)k,,ex,, = Rate of exchange from A->B
-    * k,,B,, = P,,A,,k,,ex,, = Rate of exchange from B->A
+    * k,,A,, = (1-P,,A,,)k,,ex,, = Rate of exchange from A→B
+    * k,,B,, = P,,A,,k,,ex,, = Rate of exchange from B→A
     * There are at least *two methods* to specify P,,A,, and k,,ex,, at each temperature
     * Method A - No constraint on rate analysis
       * Define P,,A,, and k,,ex,, at each temperature
@@ -27,139 +27,112 @@
       * Define P,,A,, and k,,ex,, at a single temperature, T,,0,,
       * Define ΔH for temperature-dependence of P,,A,, (vant Hoff)
       * Define E,,AB,, for temperature-dependence of k,,A,, and, using ΔH, k,,B,, and therefore k,,ex,, = k,,A,,+k,,B,, (Arrhenius), and therefore k,,ex,, = k,,A,,+k,,B,,
-      * ΔH = H,,B,, - H,,A,, = Enthalpy difference to exchange from A->B (cal/mol)
-      * E,,AB,, = E,,B,, - E,,A,, = Activation energy to exchange from A->B (cal/mol)
+      * ΔH = H,,B,, - H,,A,, = Enthalpy difference to exchange from A→B (cal/mol)
+      * E,,AB,, = E,,B,, - E,,A,, = Activation energy to exchange from A→B (cal/mol)
   * SQ = Single Quantum (signal detected in NMR)
     * *Note*: SQ curves that pulse on ^A^X nucleus are sensitive _only_ to Δω,,X,, (Δω,,H,, is fixed to zero)
   * MQ = Multiple Quantum (signal detected in NMR)
     * *Note*: MQ RD curves are sensitive to _both_ Δω,,H,, and Δω,,X,,
 
-  * ^A^X = ^13^C or ^15^N
-  * ω,,X,,^(rad/s)^ = 2πB,,0,,γ,,X,,ω,,X,,^(ppm)^
-  * ν,,X,,^(Hz)^ = B,,0,,γ,,X,,ω,,X,,^(ppm)^
+  * ^A^X = Any nucleus with mass number A and chemical symbol X (e.g,.^1^H, ^13^C, ^15^N)
   * B,,0,, = Magnetic field strength (Tesla)
   * γ,,X,, = Gyromagnetic ratio for nucleus X (MHz/Tesla)
-
-  * GUI = Graphical User Interface  
-  * <u>Underlined</u> items are GUARDD window titles
-  * *Boldface* items are commands (buttons, menus) and important points
-
+  * NMR probe = one nucleus in the target molecule that can be observed via NMR
+    * Each probe has a unique residue number (e.g., 1,2,3,...) and atom (e.g,. H^N^, C^O^, Cδ,,2,,)
+    * A probe can be unassigned
+  * GUI = Graphical User Interface
   * MC = Monte Carlo (randomization method used here for error analysis)
   * Chi2 = χ^2^ = Goodness of fit metric (smaller value indicates better fit)
-    * Statistics χ^2^ and SSE are considered equivalent in this tutorial (see [Manual])  
+    * Statistics χ^2^ and SSE are considered equivalent in this tutorial (see [Manual])
 
-== Describing dispersions ==
- * Equations
-
-<wiki:gadget url="http://mathml-gadget.googlecode.com/svn/trunk/mathml-gadget.xml" border="0" up_content="root3x + x^phi + x_1" height="15"/>
-
- * Intensity -> R2eff
- * R2eff(vcpmg) -> paramters required
- * Quantum coherence
-
-== Organizing data ==
- * *Goal*: _Organize storage of data via and provide framework for complex fitting procedures_
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-data_management-large.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-data_management-large.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
-
-=== Dataset ===
-  * *Goal*: _Store a CPMG NMR dataset and the experimental conditions during acquisition_
-
-  * Properties
-    * *name*: _Name of dataset (e.g., 'MQ 800MHz 25C')_
-    * *AX_String*: _13C or 15N_
-    * *B0*: _Magnetic field strength (^1^H MHz)_
-    * *Temp*: _Temperature (K)_
-    * *TCPMG*: _Total CPMG time in pulse sequence_
-    * *SQX*: _True=Single Quantum dataset (Δω,,H,, fixed to zero), False=Multiple Quantum dataset (Δω,,H,, may be non-zero)_
-
-  * Data for each dispersion curve
-    * Intensity values and errors
-    * R2eff values and errors
-    * ν,,CPMG,, values
-    * Pointers to [Manual#Curve Curves] which also hold this information
-
-=== Curve ===
-  * *Goal*: _Store an NMR dispersion curve (R,,2,,^Eff^(ν,,CPMG,,)) and the experimental conditions during acquisition, which correspond to its parent [Manual#Dataset Dataset]_
-
-  * Properties
-    * *name*: _Name of the curve (e.g., 'Leu 12\delta_2')_
-    * *index*: _Residue number_
-    * *atom*: _Name of atom (N, H\alpha, C\delta_1, etc.)_
-    * *residue*: _Name of residue (Ile, Leu, Arg, etc.)_
-
-  * Properties from its parent [Manual#Dataset Dataset] (copied to each curve for convenience)
-    * *AX_String*: _13C or 15N_
-    * *B0*: _Magnetic field strength (^1^H MHz)_
-    * *Temp*: _Temperature (K)_
-    * *TCPMG*: _Total CPMG time in pulse sequence_
-    * *SQX*: _True=Single Quantum dataset (Δω,,H,, fixed to zero), False=Multiple Quantum dataset (Δω,,H,, may be non-zero)_    
-
-  * Data from its parent [Manual#Dataset Dataset]  (copied to each curve for convenieice)
-    * *Nobs*: _Number of observations_    
-    * *vcpmg*: _Array of vcpmg values (Hz)_
-    * *R2eff*: _Array of R2eff values (Hz)_
-    * *eR2eff*: _Array of errors in R2eff (Hz)_
-
-  * Each curve is unique, but can have multiple _appearances_, each of which points to the same source data
-    * Multiple _appearances_ can occur in different [Manual#Curveset Curvesets]    
-    * Any changes to a curve will alter every apperance of that curve (e.g., in all curvesets that point to it)
-  
-=== Curveset ===
-  * *Goal*: _Store a *set* of [Manual#Curve Curves] (each from the same NMR probe/assignment) which all share a single pair of chemical shift differences (Δω,,H,, and Δω,,X,,)_
-
-  * Properties
-    * *name*: _Name of curve set_
-    * *index*: _Residue number_        
-    * *atom*: _Name of atom (N, H\alpha, C\delta_1, etc.)_
-    * *residue*: _Name of residue (Ile, Leu, Arg, etc.)_
-
-  * Curvesets contain _pointers_ to curves (selected from Datasets)
-    * *Nc*: _Number of curves in the curveset_
-    * Pointers to [Manual#Curve Curves] which hold the actual data and experimental conditions
-
-  * Each curveset only appears *once* (unlike Curves)    
-
-=== Group ===
-  * *Goal*: _Store a *group* of [Manual#Curveset Curvesets] (each from different NMR probes/assignments) which all share a single set of exchange kinetics (P,A, and k,,ex,, at each temperature), and store any [Manual#Fit_Result Fit Results] for this group_
-
-  * Properties
-    * *name*: _Name of group_
-    * *index*: _Index of the group (for sorting; this may correspond to residue number)_
-
-  * Storage of fitting results
-    * *exhibitsExchange*: _This group exhibits exchange (true/false)_
-    * *bestFitIsOK*: _The best fit to this group is OK (true/false)_
-    * *Nf*: _Number of fit results_
-    * *fitResults_Grid*: _Array of FitResults for the grid search_
-    * *fitResults*: _Array of FitResults for arbitrary fits (ex and no-ex)_
-    * *fitResult_NoEx*: _Fit result to no exchange model_
-    * *fitResult_Best*: _Best fit result out of all fits (ex and no-ex)_
-
-  * Groups contain _pointers_ to [Manual#Curveset Curvesets], each of which only appears once
-  * Each group points to a parent [Manual#Session Session] which contains settings, etc.
-
-
-==== Fit Result ====
-  * *Goal*: _Pefrorm a single fit to a Group of RD data, and store the results_
+== General use ==
+  # Acquire CPMG RD NMR spectra [nmr instructions]
+  # Multiple temperatures, B,,0,, fields, SQ and/or MQ dispersion for either ^13^C or ^15^N sites
+  # Extract peak intensities wtih NMRPipe [processing instructions]
+  # Analyze dispersion data using RD Analysis program [flowchart pdf; flowchart txt] [flowchart]
+  # Load data [tutorial step]
+  # Grid search over initial conditions for each site via batch mode [tutorial step]
+  # Optimize fitted values for each site [χ2 space; tutorial step]
+  # Determine which parameters are OK [χ2 space; tutorial step]
+  # Calculate errors on best fits via batch mode [tutorial step]
+  # Examine motions of entire protein via group analysis [tutorial step]
 
 
 
+== Theroetical and technical details == 
 
-===== Rate Analysis =====
-  * *Goal*: _Store the results of a temperature-dependent analysis of the P,,A,, and k,,ex,,_
+=== Scientific questions addressed by RD NMR ===
 
-=== Session ===
-  * *Goal*: _Store the program data and settings_
+  * *Question*: Is this molecule flexible in the μs-ms time window?
+    * *Answer*:  via R,,ex,, from visual inspection of single RD NMR experiment
 
-  * Store all [Manual#Dataset Datasets]
-  * Store all [Manual#Group Groups]
+  * *Question*: If so, what is the nature of this exchange process?
+    * *Note*: Typically, exchange processes are considered as at least one site of a single molecule which occupies at least two distinct local structures (AKA states or configurations), denoted A and B [link]
+
+  * *Question*: What is the chemical environment (e.g., structure) of this alternate configuration?
+    * *Answer*:  via chemical shift difference Δω obtained from at least one RD NMR experiment [link]
+
+  * *Question*: On average, how often is this alternate configuration sampled?
+    * *Answer*:  via total exchange rate k,,ex,, from at least one RD NMR experiment [link]
+
+  * *Question*: What is the relative population of this alternate configuration?
+    * *Answer*:  via population P,,A,, from at least one RD NMR experiment [link]
+
+  * *Question*: How much activation energy is required to access this alternate configuration?
+    * *Answer*:  via activation energies E(A→B) and E(B→A) from several RD experiments (Arrhenius analysis) [link]
+
+  * *Question*: What is the relative energy, enthalpy and entropy of this alternate configuration?
+    * *Answer*:  via energy ΔG (via P,,A,,), enthalpy ΔH, entropy ΔS from several RD experiments (van't Hoff analysis) [link]
+
+  * *Question*: Is the alternate configuration a well-defined fold? Is it unfolded?
+    * *Answer*:  via chemical shift difference Δω, enthalpy ΔH, entropy ΔS from several RD experiments
+
+  * *Question*: Are motions in this molecule unified, coupled or independent?
+    * *Answer*:  via exchange rates k,,A,, and k,,B,,, enthalpy ΔH, entropy ΔS and activation energies E(A→B) and E(B→A) for several sites from several RD experiments [link]
 
 
+=== Chemical exchange phenomenon ===
+_Adapted from Kleckner and Foster, 2010_
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chemical_exchange/figure-chem_exchange_NMR-GUARDD.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chemical_exchange/figure-chem_exchange_NMR-GUARDD.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+  * Certain dynamic processes in the μs-ms time window lead to characteristic broadening of the NMR signal
+  * This "exchange broadening" can obscure the observables and in some cases render the NMR signal undetectable
+  * However, this contains valuable information on the underlying dynamic process
+  * The relaxation dispersion (RD) NMR experiment can access this information by use of a spin-echo pulse train
+
+=== The RD experiment refocuses chemical exchange broadening R,,ex,, ===
+_From Kleckner and Foster, 2010_
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-CPMG_RD/figure-CPMG_RD--experiment.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-CPMG_RD/figure-CPMG_RD--experiment.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+
+Carr-Purcell Meiboom-Gill Relaxation Dispersion (CPMG RD) uses spin-echo pulse trains to suppress relaxation due to exchange processes on the µs-ms timescale. (a) The number of spin-echo pulses applied during the fixed relaxation time directly determines the CPMG frequency via νCPMG = 1 / (4τ). The applied CPMG pulse train is shown above each relaxation delay (νCPMG = 100, 500 and 1100 Hz). These pulses reduce the signal relaxation rate during the relaxation delay by refocusing exchange broadening (i.e., reducing R,,ex,,). (b) The observed signal intensity remaining at the end of the TCPMG relaxation delay is used to obtain an effective relaxation rate , where I0 is the signal intensity in the absence of the relaxation delay (i.e., when TCPMG = 0). (c) The dispersion curve reports on dynamics by plotting relaxation rate as a function of refocusing frequency. R,,2,,^Obs^ is altered in a νCPMG-frequency-dependent manner such that significant refocusing is typically achieved when νCPMG exceeds half the exchange rate k,,ex,,. *The observed relationship between site-specific R,,2,,^Obs^ and νCPMG is used to fit an exchange model described by the chemical shift differences between the exchanging states Δν = Δω / (2π), population fraction of the A state P,,A,, with P,,A,, + P,,B,, = 1, total exchange rate between the states k,,ex,, = k,,A,, + k,,B,,, and the intrinsic relaxation rate in the absence of exchange R,,2,,^0^, which can be used to determine the exchange broadening R,,ex,,.* This dispersion curve is simulated using Δν = 400 Hz, P,,A,, = 90%, k,,ex,, = 400 /s and R,,2,,^0^ = 10 Hz with the three νCPMG values from (a) and (b) marked with vertical arrows. Note that the R,,2,,^Obs^ curve begins to "break" at νCPMG = k,,ex,, / 2 = 200 /s. 
+
+== Two-state exchange model ==
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-two_state_exchange/figure-two_state_exchange-Kleckner.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-two_state_exchange/figure-two_state_exchange-Kleckner.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+  * *Structural parameters (1 or 2 per NMR probe)*
+    # |Δω,,H,,| (rad/s): Magnitude of ^1^H chemical shift difference between A and B states (for MQ curves only)
+    # |Δω,,X,,| (rad/s): Magnitude of ^A^X chemical shift difference between A and B states (AX = ^13^C or ^15^N)
+
+  * *Kinetic parameters (2 per temperature per NMR probe)*
+    * Parameters used in fitting equations
+      # k,,ex,, (/s): Total exchange rate between state A and B; k,,ex,, = k,,A,, + k,,B,, 
+      # P,,A,, (-): Population fraction of state A; P,,A,, = k,,B,, / (k,,A,,+k,,B,,) with P,,A,, + P,,B,, = 1    
+
+    * Alternate physical parameterization, which requires knowledge of both k,,ex,, and P,,A,,
+      # k,,A,, (/s): Average frequency (not velocity!) of transition from state A to state B
+      # k,,B,, (/s): Average frequency (not velocity!) of transition from state B to state A
+
+  * *Relaxation parameter (1 per curve per NMR probe)*
+    # R,,2,,^0^ (Hz): Relaxation rate of the A state in the absence of exchange 
 
 
 == Assigning parameters for fitting ==
   * *Goal*: _Fitting RD data requries five parameters per curve, but often these parameters can be shared when they are aggregated into curvesets, which are aggregated into groups_
+    * Details on Curves, Curvesets, and Groups are [Manual#Organizing_Data here]
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-data_management-large.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-data_management-large.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
@@ -171,15 +144,30 @@
     # k,,ex,, = k,,A,, + k,,B,, = Total exchange rate between states (/s)
     # R,,2,,^0^ = Transverse relaxation rate in the absence of exchange (Hz)
 
+  * *Assume*: Relaxation rates of states A and B are equal
+    * R,,2A,,^0^ = R,,2B,,^0^
+  * Therefore, one fitting parameter can be eliminated from the optimization process (good!)
+
   * Curves are combined into Curvesets, which all share the same chemical shift differences |Δω,,H,,| and |Δω,,X,,|
     * These are specified in ppm and converted to rad/s
-      * rad/s is requried for trigonometric functions, like tangent
-      * ω,,X,,^(rad/s)^ = 2πB,,0,,γ,,X,,ω,,X,,^(ppm)^
+
+  * *NMR*: An experiment may be designed to detect a particular quantum coherence
+    * Single Quantum (SQ) experiments are sensitive to only |ΔωH| or |ΔωX|
+    * Multiple Quantum (MQ) experiments are sensitive to the sum |ΔωH + ΔωX|
+    * Therefore, each unique quantum coherence yields an independent measure of |ΔωH| and/or |ΔωX|
+    * See Korzhnev, et al. (2005) for more information
+
+  * *NMR*: Resonance frequency scales with magnetic field strength
+    * |ΔωX|(rad/s) = γ,,X,,B,,0,, |Δω,,X,,|(ppm)
       * B,,0,, = Magnetic field strength (Tesla)
       * γ,,X,, = Gyromagnetic ratio for nucleus X (MHz/Tesla)
-    * The chemical shift difference can also be specified in Hz
-      * Hz = /s is useful for direct comparison to k,,ex,, (also in /s) in determining exchange timescale
-      * ν,,X,,^(Hz)^ = B,,0,,γ,,X,,ω,,X,,^(ppm)^
+    * Therefore, each unique B,,0,, field yields an independent measure of |Δω,,X,,|
+    * *Note* rad/s is requried for trigonometric functions, like tangent    
+    * *Note*: Hz = /s is useful for direct comparison to k,,ex,, (also in /s) in determining exchange timescale
+      * ν,,X,,^(Hz)^ = Δω,,X,, / 2π
+
+  * *Assume*: |ΔωH| (ppm) and |ΔωX| (ppm) are independent of temperature
+    * Therefore, each unique temperature yields an independent measure of |ΔωH| and/or |ΔωX|
 
   * Curvesets are combined into Groups, which all share the same kinetic parameters (P,,A,, and k,,ex,, at each temperature)
     * There are at least *two methods* to specify P,,A,, and k,,ex,, at each temperature
@@ -190,7 +178,10 @@
       * Define ΔH for temperature-dependence of P,,A,, (vant Hoff)
       * Define E,,AB,, for temperature-dependence of k,,A,, and, using ΔH, k,,B,, and therefore k,,ex,, = k,,A,,+k,,B,, (Arrhenius)
 
-  
+  * *Physics*: Kinetic parameters are determined by experimental conditions
+    * (E.g., temperature, buffer, sometimes concentration but NOT magnetic field strength)
+    * (Therefore, each repeat condition (same or different B,,0,,) yields an independent measure of k,,A,, and k,,B,,
+
 
 === Examples for fitting ===
   * *Goal*: _Check the command window output for itemization of each parameter in a given group_
@@ -295,22 +286,140 @@ Working on CS=2, Leu 22\delta_1
 }}}
 
 
+
+== Organizing data ==
+ * *Goal*: _Organize storage of data via and provide framework for complex fitting procedures_
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-data_management-large.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-data_management-large.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+=== Dataset ===
+  * *Goal*: _Store a CPMG NMR dataset and the experimental conditions during acquisition_
+
+  * Properties
+    * *name*: _Name of dataset (e.g., 'MQ 800MHz 25C')_
+    * *AX_String*: _^13^C or ^15^N_
+    * *B,,0,,*: _Magnetic field strength (^1^H MHz)_
+    * *Temp*: _Temperature (K)_
+    * *TCPMG*: _Total CPMG time in pulse sequence_
+    * *SQX*: _True=Single Quantum dataset (Δω,,H,, fixed to zero), False=Multiple Quantum dataset (Δω,,H,, may be non-zero)_
+
+  * Data for each dispersion curve
+    * Intensity values and errors
+    * R2eff values and errors
+    * ν,,CPMG,, values
+    * Pointers to [Manual#Curve Curves] which also hold this information
+
+=== Curve ===
+  * *Goal*: _Store an NMR dispersion curve (R,,2,,^Eff^(ν,,CPMG,,)) and the experimental conditions during acquisition, which correspond to its parent [Manual#Dataset Dataset]_
+
+  * Properties
+    * *name*: _Name of the curve (e.g., 'Leu 12\delta_2')_
+    * *index*: _Residue number_
+    * *atom*: _Name of atom (N, H\alpha, C\delta_1, etc.)_
+    * *residue*: _Name of residue (Ile, Leu, Arg, etc.)_
+
+  * Properties from its parent [Manual#Dataset Dataset] (copied to each curve for convenience)
+    * *AX_String*: _^13^C or ^15^N_
+    * *B,,0,,*: _Magnetic field strength (^1^H MHz)_
+    * *Temp*: _Temperature (K)_
+    * *TCPMG*: _Total CPMG time in pulse sequence_
+    * *SQX*: _True=Single Quantum dataset (Δω,,H,, fixed to zero), False=Multiple Quantum dataset (Δω,,H,, may be non-zero)_    
+
+  * Data from its parent [Manual#Dataset Dataset]  (copied to each curve for convenieice)
+    * *Nobs*: _Number of observations_    
+    * *vcpmg*: _Array of vcpmg values (Hz)_
+    * *R2eff*: _Array of R2eff values (Hz)_
+    * *eR2eff*: _Array of errors in R2eff (Hz)_
+
+  * Each curve is unique, but can have multiple _appearances_, each of which points to the same source data
+    * Multiple _appearances_ can occur in different [Manual#Curveset Curvesets]    
+    * Any changes to a curve will alter every apperance of that curve (e.g., in all curvesets that point to it)
+  
+=== Curveset ===
+  * *Goal*: _Store a *set* of [Manual#Curve Curves] (each from the same NMR probe/assignment) which all share a single pair of chemical shift differences (Δω,,H,, and Δω,,X,,)_
+
+  * Properties
+    * *name*: _Name of curve set_
+    * *index*: _Residue number_        
+    * *atom*: _Name of atom (N, H\alpha, C\delta_1, etc.)_
+    * *residue*: _Name of residue (Ile, Leu, Arg, etc.)_
+
+  * Curvesets contain _pointers_ to curves (selected from Datasets)
+    * *Nc*: _Number of curves in the curveset_
+    * Pointers to [Manual#Curve Curves] which hold the actual data and experimental conditions
+
+  * Each curveset only appears *once* (unlike Curves)    
+
+=== Group ===
+  * *Goal*: _Store a *group* of [Manual#Curveset Curvesets] (each from different NMR probes/assignments) which all share a single set of exchange kinetics (P,A, and k,,ex,, at each temperature), and store any [Manual#Fit_Result Fit Results] for this group_
+
+  * Properties
+    * *name*: _Name of group_
+    * *index*: _Index of the group (for sorting; this may correspond to residue number)_
+
+  * Storage of fitting results
+    * *exhibitsExchange*: _This group exhibits exchange (true/false)_
+    * *bestFitIsOK*: _The best fit to this group is OK (true/false)_
+    * *Nf*: _Number of fit results_
+    * *fitResults_Grid*: _Array of FitResults for the grid search_
+    * *fitResults*: _Array of FitResults for arbitrary fits (ex and no-ex)_
+    * *fitResult_NoEx*: _Fit result to no exchange model_
+    * *fitResult_Best*: _Best fit result out of all fits (ex and no-ex)_
+
+  * Groups contain _pointers_ to [Manual#Curveset Curvesets], each of which only appears once
+  * Each group points to a parent [Manual#Session Session] which contains settings, etc.
+
+
+==== Fit Result ====
+  * *Goal*: _Pefrorm a single fit to a Group of RD data, and store the results_
+
+
+===== Rate Analysis =====
+  * *Goal*: _Store the results of a temperature-dependent analysis of the P,,A,, and k,,ex,,_
+
+
+=== Session ===
+  * *Goal*: _Store the program data and settings_
+
+  * Store all [Manual#Dataset Datasets]
+  * Store all [Manual#Group Groups]
+
+
+
+
 == Computational procedures ==
+
+=== Carver-Richards Jones for MQ disperstionss ===
+
+  * Reference
+
+
+=== Convert NMR signal intensity to relaxation rate ===
+
+* Intensity → R2eff
+
+=== Converting ppm to rad/s ===
+
+<wiki:gadget url="http://mathml-gadget.googlecode.com/svn/trunk/mathml-gadget.xml" border="0" up_content="root3x + x^phi + x_1" height="15"/>
+
+  * ω,,X,,^(rad/s)^ = 2πB,,0,,γ,,X,,ω,,X,,^(ppm)^
+  * ν,,X,,^(Hz)^ = B,,0,,γ,,X,,ω,,X,,^(ppm)^
 
 === Fitting data ===
  * *Goal*: _Minimize the sum of squares target function_
 
   * *Location in code*: {{{FitResult.fitMe()}}}
 
-=== Grid search ===
-  * *Goal*: _Fit data multiple times to assess sensitivity of final fit to initial conditions_
+  * Reference: MATLAB {{{fmincon}}}
 
-  * *Location in code*: {{{Group.gridSearch()}}}
+
 
 === Arrhenius: Determining activation energy ===
   * Negative or positive?
 
   * *Location in code*: {{{RateAnalysis.analyzeMe()}}}
+
+  * Reference
 
 === vant Hoff: Determining enthalpy ===
 
@@ -318,14 +427,27 @@ Working on CS=2, Leu 22\delta_1
 
   * *Location in code*: {{{RateAnalysis.analyzeMe()}}}
 
+  * Reference
+
 === Exchange timescale alpha ===
 
   * *Location in code*: {{{FitResult.analyzeMe()}}}
 
+  * Reference
+
+
+=== Grid search ===
+  * *Goal*: _Fit data multiple times to assess sensitivity of final fit to initial conditions_
+
+  * *Location in code*: {{{Group.gridSearch()}}}
+
+  * Reference
 
 === Monte Carlo error estimation ===
 
   * *Location in code*: {{{FitResult.calculateErrors()}}}
+
+  * Reference
 
 
 
@@ -439,8 +561,91 @@ Chi2 = ###
 ==== Display results table ====
 
 
+== Tips for optimal use ==
+
+=== General tips ===
+    * If unsure about the fit, then don't use it
+    * Additional inaccurate information will likely obscure proper interpretation of the dynamics
+    * Check for outliers in fitted data
+          o Check sequence mapping for outliers
+          o Check χ2 and fits for those outliers
+          o Are they real?
+          o What type of exchange do proximal residues exhibit?
+    * Note: Important tool tips can be revealed by hovering the mouse cursor over an element of the program
+
+=== Fitting tips ===
+    * Usually dispersions with larger R,,ex,, have a more well-defined solution
+    * Small R,,ex,, and/or noisy data are usually accompanied by challenges in fitting
+    * It is NOT SUFFICIENT to simply check if the fitted curve passes through the data
+    * Neighboring residues
+          o Check dispersions for neighboring residues to get an idea of the type of motions one may expect in that region of the structure
+          o If there is concerted motion, then k,,ex,, and Pa (and their temperature-dependence Ea(A → B), Ea (B → A), dH, dS) will be the same (or close) for residues close in structure
+          o Note: There is no requirement that neighboring residues be similar though
+    * Aim to select the fit in the minimum and center of the χ2 well
+          o If the grid is sparse, use the χ2-fitting tool to help
+          o Zoom in on regions of χ2 space to get a better idea of setting initial conditions
+          o Use the data cursor to examine specific values of (P,χ2)
+          o FIGURE OF ZOOM + DATA CURSOR
+    * k,,ex,, is most sensitive parameter
+          o k,,ex,, should increase with temperature (e.g., Arrhenius)
+          o Pa may increase (dH<0), decrease (dH>0) or remain constant (dH=0) with temperature
+    * Goal: Determine whether curve set exhibits exchange or not
+          o Statistical comparison of NoEx and Grid fits
+          o Which has lower MSE (χ2Red)? → Statistically favored fit
+          o Is R,,ex,, > 2 Hz → Exchange is reasonable
+          o Smaller R,,ex,, values are challenging to fit
+          o These may hint at some parameters for exchange
+    * Goal: Refine best fit for maximum accuracy
+          o Examine χ2-space to determine quality of fit
+          o For RD there are a variety of typical shapes encountered
+          o Check k,,ex,, first then P,,A,,
+          o Zoom in on χ2 space
+          o Examine top 80%, top 50%, top 20%, top 10%
+          o Top 80% may reveal otherwise-unseen reasonable solution
+          o They should reveal decreasing range of acceptable fit values
+          o Matlab fitting algorithm is good at finding best Δω from starting condition
+          o It is NOT good at finding best k,,ex,,
+          o Therefore it is important to help direct the fit towards the best k,,ex,,
+          o Select initial fit conditions to drive fitting process towards most reasonable solution
+          o Try k,,ex,, towards a more reasonable solution with existing P,,A,,'s
+          o Try again with all P,,A,,'s equal at 0.9 or 0.99
+          o k,,ex,, should double for each 10C increase in temperature (Arrhenius)
 
 
+=== Analysis tips ===
+    * Goal: Examine dynamic motion of entire molecule
+          o Use sequence mapping tool
+          o Find outlying fit results and re-examine fits to dispersions
+          o Check fits for crosspeaks which exhibit maximum k,,ex,,, ΔωX, ΔH and ΔS
+          o All activation energies should be positive
+          o If not, adjust fit so k,,A,, and k,,B,, increases with temperature (~2x per +10C)
+          o k,,A,, = P,,B,,*k,,ex,,; k,,B,, = P,,A,,*k,,ex,,
+          o If this is not possible, then reject fit as “not good”
+          o Make sure fits which show no exchange have “NoEx” model selected as best
+          o When using data cursor, make sure you are selecting the actual data bar (it is possible to select the edge of the errorbar and therefore indicate the adjacent data point)
+          o It can help to zoom in on the data to avoid this mistake
+
+
+=== Program tips ===
+    * Do not make other changes when performing grid search or error estimates
+          o Data can be viewed but not altered
+          o This is because data structures are stored before the batch run (or a single grid search or single error estimation) then re-saved upon completion of a batch step or single grid search or single error estimation
+    * Save frequently
+    * Drawing windows is relatively slow
+          o Use the main display window to only update displays of interest
+
+
+
+== Limitations ==
+  * Matlab is relatively slow
+
+== Future work ==
+  # Load candidate B state: chemical shifts, etc.
+  # Produce correlation plot Δω vs. Δδ
+  * Future work listed in the Issues page [http://code.google.com/p/guardd/issues/list here]
+
+== Bugs ==
+  * Please report bugs, suggestions, etc. in the Issues page [http://code.google.com/p/guardd/issues/list here]
 
 
 == References ==
