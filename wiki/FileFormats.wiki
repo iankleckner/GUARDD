@@ -6,7 +6,6 @@
 == Goals == 
   * Detail specifications for file formats
 
-
 == General notes ==
   * Most files provided are ASCII text files (read/write via text editor)
   * Some files can be read/prepared with spreadsheet programs like Excel, OpenOffice, or Gnumeric
@@ -19,7 +18,6 @@
   * Contains commands to load data files and/or specifies data itself
   * *This is the preferred method for loading data into GUARDD*
   * Example for the tutorial: {{{tutorial/data/example_files/GUARDD-import-example-01.txt}}}
-  
 
 {{{
 # Ian Kleckner
@@ -176,7 +174,6 @@ SCRIPTFILE	tutorial/data/example_files/GUARDD-import-example-02.txt
 # (5) Add a sequence file (only specify this one, anywhere in file)
 # This will overwrite the RESIDUE specified above
 SEQUENCEFILE	tutorial/data/example_files/TRAP-Ste-A26I-AAseq.txt
-
 }}}
 
 == Input: NMRPipe nlin.tab and taufile.txt ==
@@ -220,7 +217,6 @@ FORMAT %5d %9.3f %9.3f %6.3f %6.3f %8.3f %8.3f %9.3f %9.3f %7.3f %7.3f %8.3f %8.
    20   489.978   869.457  0.069  0.073    0.686   14.136   548.731  2844.167  11.800   9.486   25.360   29.820  484  496  865  875 +2.714812e+07 +3.310500e+04 +3.443310e+09 0.00000 1 \delta_1    6    1  1.0000  0.3060  0.3602  0.3526  0.3406  0.2932  0.3260  0.3176  0.3568  0.3358  0.2928  0.3480  0.3619
    26   482.693   943.255  0.064  0.140    0.705   12.983   564.387  2612.175  11.717  12.315   25.181   38.714  477  489  937  949 +1.931959e+07 +3.288200e+04 +3.158574e+09 0.00000 1 \delta_1    7    1  1.0000  0.1854  0.2769  0.2571  0.2380  0.1705  0.2191  0.2058  0.2682  0.2299  0.1705  0.2503  0.2750
    53   663.541   954.156  1.054  0.744    0.220   12.813   175.722  2577.906  17.740  15.165   38.125   47.673  653  673  946  962 +4.213144e+06 +3.281408e+04 +1.284343e+09 0.00000 1 \delta_1    8    1  1.0000  0.0788  0.1022  0.0926  0.0919  0.0714  0.0842  0.0789  0.1000  0.0924  0.0648  0.0929  0.1015
-
 }}}
 
   * Taufile
@@ -242,7 +238,6 @@ FORMAT %5d %9.3f %9.3f %6.3f %6.3f %8.3f %8.3f %9.3f %9.3f %7.3f %7.3f %8.3f %8.
 100
 700
 1000
-
 }}}
 
 == Input: Sequence file ==
@@ -282,14 +277,14 @@ Gly
   * Contains all the data from each loaded dataset
   * This is useful for saving all the data loaded from multiple different files
   * This can also used as a ScriptFile loaded via the Data Manager [Input: Script to load data]
-  * Example file (part of the file from the tutorial input)
+  * Part of example file from tutorial: {{{tutorial/data/example_files/output-GUARDD-Datasets--2011.06.18-23-24.txt}}}
 
 {{{
-# GUARDD v.2011.06.09
-# (C) Ian Kleckner, 2010-2011
+# GUARDD v.2011.06.17
+# (C) Ian Kleckner 2010-2011
 # Exported RD Data from datasets
 # This file can be loaded as a script via Data Manager
-# Created on 2011.06.09-13-04
+# Created on 2011.06.18-23-24
 
 # Dataset 1/14
 DATASET
@@ -341,12 +336,13 @@ ADDDATA
   * Contains all the groups of curves currently in the session
   * Useful for listing *how* your data are organized for fitting
   * Example part of an output file (created using the tutorial session file)
+  * Part of example file from tutorial: {{{tutorial/data/example_files/output-GUARDD-Groups--2011.06.18-23-24.txt}}}
 
 {{{
-GUARDD v.2011.06.14
+GUARDD v.2011.06.17
 (C) Ian Kleckner 2010-2011
 Exported groups made from datasets
-Created on 2011.06.16-12-07
+Created on 2011.06.18-23-24
 
 Group 1/10
   Name	Ile 10\delta_1 RIle 25C
@@ -467,6 +463,26 @@ Obs	vcpmg(Hz)	R2Eff(Hz)	eR2Eff(Hz)	Intensity	eIntensity
 14	935.714286	11.279721	0.536931	0.798042	0.008570
 15	1000.000000	9.463950	0.529412	0.827556	0.008762
 }}}
+
+== Output: Parameter Table ==
+  * Contains information on groups, fit results, and notes
+  * Useful for loading into other programs and creating tables for sharing results
+  * Part of example file from tutorial: {{{tutorial/data/example_files/GUARDD-Paramter_Table-2011.06.18-23-23-formatted.csv}}}
+
+{{{
+GUARDD v.2011.06.17												
+(C) Ian Kleckner 2010-2011												
+Exported results table												
+Created on 2011.06.18-23-24												
+												
+AA|Num	Residue	Atom	Group|Name	B0|(MHz)	Temp|(C)	Exchange?	Best fit|OK?	Constrain|Rates?	dwH|(ppm)	dwX|(ppm)	Pa|(Percent)	kex|(/s)
+  10	  Ile	  -delta_1	Ile 10-delta_1 RIle 25C	  600.13	  25.0	TRUE	TRUE	FALSE	Param Not OK	Param Not OK	Param Not OK	 1775.8±145.3
+  20	  Ile	  -delta_1	Ile 20-delta_1 RIle 25C	  600.13	  25.0	TRUE	TRUE	FALSE	 0.0±0.0	 1.5±0.2	 98.6±0.3	 1315.5±311.6
+  22	  Leu	  -delta_1	Leu 22	  600.13	  25.0	TRUE	TRUE	FALSE	 0.1±0.0	 0.5±0.0	 87.3±0.6	 1105.2±42.3
+  22	  Leu	  -delta_2	Leu 22	  600.13	  25.0	TRUE	TRUE	FALSE	 0.1±0.0	 1.0±0.0	 87.3±0.6	 1105.2±42.3
+
+}}}
+
 
 == References ==
   # NMRPipe [http://spin.niddk.nih.gov/NMRPipe/ link]
