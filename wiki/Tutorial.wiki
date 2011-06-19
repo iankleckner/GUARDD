@@ -155,9 +155,9 @@ OBJECT TYPE (Doesn't work)
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--02.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--02.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 === Create groups for fitting ===
-  * *Goal*: _Aggregate RD curves from the same NMR signal (assignment) for group fitting_
-  
-  * Essential notes on data organization
+  * *Goal*: _Aggregate RD curves from the same NMR signal (assignment) for group fitting_  
+
+  * *Essential notes on data organization*
     * *Datasets* designate experimental conditions
     * *Datasets* contain *Curves*, which contain RD data
     * *Curves* are aggregated across common NMR probes (assignment) into *Curvesets* (to share Δω values)
@@ -193,8 +193,7 @@ OBJECT TYPE (Doesn't work)
 
 === Select groups that exhibit exchange ===
   * *Goal*: _Determine which groups exhibit flexibility, and therefore warrant further analysis_  
-  * *Details*: Read more about describing dispersions in the [Manual#Describing_dispersions Manual]
-
+    * *Details*: Read more about describing dispersions in the [Manual#Describing_dispersions Manual]
   # <u>Main</u>
     # Click *Refresh* to show loaded groups
     # Use *<* and *>* to cycle through groups
@@ -243,7 +242,6 @@ OBJECT TYPE (Doesn't work)
       # Click *All*
       # *Note*: In general, one should more carefully check if the best fit is OK (see [Manual#Determining_which_parameters_are_OK Manual])
 
-
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--06.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--06.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
@@ -273,10 +271,8 @@ OBJECT TYPE (Doesn't work)
 
  * *Note*: Saving data and output plots are discussed [Tutorial#View_results_in_display_cluster below]
 
-
 ==== Save GUARDD session to file ====
   * *Goal*: _Save progress (loaded data and fits) to resume a GUARDD session later_
-
   # <u>Main</u>
     # *Output...Save session as...*
     # _GUARDD will create an output folder named with the date, and suggest a filename for you_
@@ -294,12 +290,12 @@ OBJECT TYPE (Doesn't work)
     * Method B (Impose rate constraint): _Determine optimal P,,A,, and k,,ex,, at some temperature T,,0,,, with ΔH and E,,AB,, to determine P,,A,, and k,,ex,, at an arbitrary temperature_  
     * *Details*: Read more about assigning fitting parameters in the [Manual#Assigning_parameters_for_fitting Manual]
 
+  * *Goal*: _Fit without rate constraints (Method A)_
   # <u>Main</u>
     # Select _Leu 22delta1_
     # _The <u>Fit RD</u> window should automatically open (no double-click required)_
       # _If it does not open, check *Fit dispersion* then select *Leu 22delta1*_
-  # <u>Fit RD</u>
-    # *Goal*: _Fit without rate constraints (Method A)_
+  # <u>Fit RD</u>    
     # (1a) Procedure: *Individual*
     # (1b) Task: *Simulate*
     # Uncheck *Use Arrhenius*
@@ -327,7 +323,8 @@ OBJECT TYPE (Doesn't work)
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--08.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--08.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
-    # *Goal*: _Fit with rate constraints (Method B)_
+  * *Goal*: _Fit with rate constraints (Method B)_
+  # <u>Fit RD</u>    
     # (1a) Procedure: *Individual*
     # (1b) Task: *Simulate*
     # Check *Use Arrhenius*
@@ -371,11 +368,10 @@ OBJECT TYPE (Doesn't work)
 ==== View fits to RD data ====
   * *Goal*: _Use <u>Display RD</u> window to assess the fit to the RD data, and prepare an output figure_
 
+  * *Goal*: _Create a 3D plot that highlights the amount of data in the set_
   # <u>Main</u>    
     # _Make sure *Leu 22delta1* is selected_
     # *Output...Display RD...*
-
-  * *Goal*: _Create a 3D plot that highlights the amount of data in the set_
   # <u>Display RD</u>
     # Select all the curves in the Curveset(Curve) list
     # Select fit {{{Fit-1[CR]}}} from fit list
@@ -387,7 +383,6 @@ OBJECT TYPE (Doesn't work)
     # Type *ps* to save as a postscript file and click *Save* (or hit *Enter*)
     
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--11.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--11.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
-
 
   * *Goal*: _Create a 2D plot with residuals that highlights the fit to some of the data_
   # <u>Display RD</u>
@@ -448,16 +443,14 @@ OBJECT TYPE (Doesn't work)
     * _Determine optimal P,,A,,, and k,,ex,,, at each temperature (x3) -> propagate to all curves in group_
     * _Determine optimal Δω,,H,,, Δω,,X,,, for each curveset (x2) -> propagated to all curves in curveset_
     * _Determine and R,,2,,^0^ for each curve (x20)_
-
+  
   # <u>Main</u>
     # Uncheck *Fit dispersion* so the window does not open automatically     
     # Click *Refresh* so the new group appears    
     # Select *Leu 22*
     # Check *Exch?*
     # *Analysis...Fit dispersion...*
-
-  # <u>Fit RD</u>
-    # *Goal*: _Fit without rate constraints (Method A)_
+  # <u>Fit RD</u>    
     # (1a) Procedure: *Individual*
     # (1b) Task: *Optimize fit*
     # Uncheck *Use Arrhenius*
@@ -505,7 +498,7 @@ OBJECT TYPE (Doesn't work)
       # Check *Best fit is OK*
       # Click *All*
 
-    # *Note*: _This optimized fit is significantly different than pevious {{{Fit-1[--]}}}
+  * *Observe*: _This optimized fit is significantly different than pevious {{{Fit-1[--]}}}
 
 || *Fit*	|| *PA(%)* 	|| *kex(/s)*	|| *Chi2*	||
 || First	|| 87.4		|| 1094.0	|| 394.78	||
@@ -523,7 +516,6 @@ OBJECT TYPE (Doesn't work)
 
 ==== Perform batch task ====
   * *Goal*: _Fit several groups sequentially to obviate need for user input_
-
   # <u>Main</u>
     # *Analysis...Batch task...*
   # <u>Batch</u>
@@ -588,18 +580,18 @@ OBJECT TYPE (Doesn't work)
       # Select tutorial file: {{{tutorial/data/GUARDD-Session--Tutorial.mat}}}
     * This session contains data from above, with completed 60-point grid search and MC errors
     * Focus on two examples
-      # *Leu 22delta1 *, a good fit with known parameters
-	* Medium dataset (10 curves)
-	* α = 1.0: intermediate exchange
-	* Grid search: fit *is* sensitive to ICs, but well-defined solution at min(χ^2^)
-	* MC Errors: model example, symmetric about optimum solution
-	* Parameters: All are known
-      # *Ile 43*, a good fit with unknown parameters
-	* Small dataset (4 curves)
-	* α = 1.4-1.9: fast exchange
-	* Grid search: two solution with different values
-	* MC Errors: very wide, reflecting many fitting soltuions
-	* Parameters: P,,A,, and Δω unknown
+    # *Leu 22delta1 *, a good fit with known parameters
+      * Medium dataset (10 curves)
+      * α = 1.0: intermediate exchange
+      * Grid search: fit *is* sensitive to ICs, but well-defined solution at min(χ^2^)
+      * MC Errors: model example, symmetric about optimum solution
+      * Parameters: All are known
+    # *Ile 43*, a good fit with unknown parameters
+      * Small dataset (4 curves)
+      * α = 1.4-1.9: fast exchange
+      * Grid search: two solution with different values
+      * MC Errors: very wide, reflecting many fitting soltuions
+      * Parameters: P,,A,, and Δω unknown
 
 ==== View fit and residuals ====
   * *Goal*: _View the RD fit and residuals to help assess fit quality_
@@ -607,7 +599,7 @@ OBJECT TYPE (Doesn't work)
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--12.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--12.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
-==== View results from grid search ====
+==== View Grid Search Chi2 Map for good fit ====
   * *Goal*: _Assess the extent to which fitting is sensitive to initial conditions_
   * *Key info on features of chi2 maps*    
     * A Chi2 map displays a set of parameter values (e.g., for k,,ex,,) on the X-axis and the goodness of fit (χ^2^) associated with that value on the Y-axis
@@ -623,24 +615,24 @@ OBJECT TYPE (Doesn't work)
     # *Output...Display chi2 map...*
     # *Analysis...Fit dispersion...*
   # <u>Chi2 Map</u>    
-    # Select *Parameters*: *dwH*, *dwX*, *Pa*, *kex*
-    # Select *Curveset (Curve)*: *800-MQ-25C*, *800-MQ-32C*, *800-MQ-37C*
-    # Set *Top%* slider all the way to the top (100%)
-    # Select *Fit*: {{{* FIT-G[--] Chi2=93.33}}}
+    # *Parameters*: dwH, dwX, Pa, kex
+    # *Curveset (Curve)*: 800-MQ-25C, 800-MQ-32C, 800-MQ-37C
+    # *Top%* slider all the way to the top (100%)
+    # *Fit*: {{{* FIT-G[--] Chi2=93.33}}}
     # *Task to Display*: Grid Search
     # *Results to Display*: Final
     # *Display Mode*: Scatter
 
-    * *Goal*: _Interpret the *Grid Search* results the <u>Chi2 Map</u> window_
-      # Each subplot shows a single parameter on the X-axis, and its different values in different fits
-      # Each *black point* corresponds to ONE optimized fit result
-	# There are 60 fits in this example (hence 60 points in each subplot), each of which started from a different location in parameter space
-	# Those initial locations can be displayed by setting *Results to display*: Initial
-      # The *red circle* designates the currently selected fit result
-      # The *blue square* designates the best fit from the grid search
-      # Clicking *Pick grid fit* will allow selection of any of the grid fits shown
-	# The *green diamond* designates the currently selected fit from the displayed grid list
-	# Any of these can be added to the list of fits, if desired
+  * *Goal*: _Interpret the *Grid Search* results the <u>Chi2 Map</u> window_
+    # Each subplot shows a single parameter on the X-axis, and its different values in different fits
+    # Each *black point* corresponds to ONE optimized fit result
+      # There are 60 fits in this example (hence 60 points in each subplot), each of which started from a different location in parameter space
+      # Those initial locations can be displayed by setting *Results to display*: Initial
+    # The *red circle* designates the currently selected fit result
+    # The *blue square* designates the best fit from the grid search
+    # Clicking *Pick grid fit* will allow selection of any of the grid fits shown
+      # The *green diamond* designates the currently selected fit from the displayed grid list
+      # Any of these can be added to the list of fits, if desired
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--20.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--20.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
@@ -661,14 +653,14 @@ OBJECT TYPE (Doesn't work)
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--21.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--21.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
-==== View results from Monte Carlo errors ====
+==== View Monte Carlo Errors Chi2 Map for good fit  ====
   * *Goal*: _Assess the extent to which fitting is sensitive to noise in the data_
   * *Key info on Monte Carlo analysis*
     * The goal of MC analysis is to generate and fit many *synthetic* datasets which differ from one another by an amount related to the goodness of fit to the original data
     * Each synthetic dataset will have a different set of optimal fit values (e.g., P,,A,,, k,,ex,,)
     * The distribution of fitted values reflects the degree to which the original data define its *own* optimal values
     * Example: A worse optimal fit to the original data yields *more different* MC datasets and therefore *more different* optimal parameter values
-    * *Details*: Read more about Monte Carlo error estimation in the [Manual#Monte_Carlo_error estimation_Manual]
+    * *Details*: Read more about Monte Carlo error estimation in the [Manual#Monte_Carlo_error_estimation Manual]
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
@@ -696,11 +688,80 @@ OBJECT TYPE (Doesn't work)
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--22.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--22.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * *Observe*: _The symmetry of the MC chi2 maps indicate reliable estimation of error, and is consistent with reasonable parameter values_
-    * The scatter plot illustrates a circular distribution about the optimal result
-      * This is good because the true data 
-    * The histogram illustrates a roughly-symmetric distribution, which is well-described by the standard deviation
+    * The scatter plot illustrates a circular distribution about the optimal result      
+    * The histogram is roughly symmetric, and is well-described by the standard deviation
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--23.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--23.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+
+
+==== View Grid Search Chi2 Map for fit with uknown parameters ====
+  * *Goal*: _Illustrate features of Grid Search and MC Errors which correspond to a partially-defined fit_
+  * *Ile 43*, a good fit with unknown parameters
+    * Small dataset (4 curves)
+    * α = 1.4-1.9: fast exchange
+    * Grid search: two solution with different values
+    * MC Errors: very wide, reflecting many fitting soltuions
+    * Parameters: P,,A,, and Δω unknown
+
+  # <u>Main</u>
+    # Select *Leu 22delta1*
+    # *Output...Display chi2 map...*
+    # *Analysis...Fit dispersion...*
+  # <u>Chi2 Map</u>    
+    # *Parameters*: dwH, dwX, Pa, kex
+    # *Curveset (Curve)*: 800-MQ-25C
+    # *Top%* slider all the way to the top (100%)
+    # *Fit*: {{{* FIT-G[--] Chi2=20.49}}}
+    # *Task to Display*: Grid Search
+    # *Results to Display*: Final
+    # *Display Mode*: Scatter
+  * *Observe*: _The grid search illutrates solutions at two distinct points_
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--26.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--26.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+
+  * *Goal*: _Add the higher-χ^2^ fit to the fit list for further inspection_
+  # <u>Chi2 Map</u>
+    # Check *Pick grid fit*
+    # Scroll to the right, and select fit number 60, chi2=20.9464
+      # The green diamond should highlight this fit
+    # Click *Add to list*
+      # The fit {{{FIT-G[--] Chi2=20.95}}} is now highlighted by the green diamond and red circle (since it is selected)
+  # <u>Fit RD</u>
+    # (3) SELECT the new fit {{{FIT-G[--] Chi2=20.95}}} from the list
+      # *Note*: if it is not shown, the list can be update by re-selecting any fit on the list (then check again)
+    * *Observe*: _These two fits both appear to go through the data! (which one is best?)_
+    * *Note*: Residuals can be compared using the <u>Display RD</u> window
+
+  * For now, we will continue to analyze the lower-χ^2^ fit
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--27.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--27.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+
+
+==== View Monte Carlo Errors Chi2 Map for fit with uknown parameters ====
+  * *Goal*: _Illustrate features of Grid Search and MC Errors which correspond to a partially-defined fit_
+  # <u>Chi2 Map</u>
+    # Make sure *Fit*: {{{* FIT-G[--] Chi2=20.49}}} is selected
+    # Set *Top%* slider all the way to the top (100%)
+    # *Task to Display*: MC Errors
+    # *Results to Display*: Final
+    # *Display Mode*: Scatter
+    * *Observe*: _A wide range of Δω and P,,A,, values can describe these data -> Δω and P,,A,, are not OK!_
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--28.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--28.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+
+  * *Goal*: _Mark these parameters as "Not OK" in the <u>Fit RD</u> window_
+  # <u>Fit RD</u>
+    # (3) SELECT the fit {{{* FIT-G[--] Chi2=20.49}}} from the list
+    # (6) Designate which elements of this fit are OK
+    # *Exchange*: check
+    # *Best fit is OK*: check
+    # Click *Set best fit*, if possible (should be "best" already)
+    # Cilck *All*
+    # *Group parameters*: uncheck PA
+    # *Curveset parameters*: uncheck both dwH and dwX
+    # Make note of this in the *(5) Log notes for group* panel (_or take note of the current note_)
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--29.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--29.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 ==== Document notes for organization ====
   * *Goal*: View and maintain organized notes for interpreting fit results
@@ -714,10 +775,10 @@ OBJECT TYPE (Doesn't work)
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--19.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--19.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 === Output results ===
-
+  * *Goal*: _Aggregate and output any/all results for dissemination_
 
 ==== View results in display cluster ====
-  * *Goal*: _Aggregate and output any/all results for dissemination_
+  * *Goal*: _Visual display of results from all groups_
 
   * *Goal*: _Load GUARDD session with data already fit (in case this has not been done already)_
   # <u>Main</u>
@@ -767,7 +828,6 @@ OBJECT TYPE (Doesn't work)
 
 ==== View results in table ====
   * *Goal*: _Aggregate and output any/all results for dissemination_
-
   # <u>Main</u>
     # *Output...Display results table...*
   # <u>Results Table</u>
@@ -779,7 +839,6 @@ OBJECT TYPE (Doesn't work)
 
 ==== Export data and groups ====
   * *Goal*: _Aggregate and output results for dissemination_
-
   # <u>Main</u>
     # *Input...Data manager...*
   # <u>Data Manager</u>
@@ -796,7 +855,6 @@ OBJECT TYPE (Doesn't work)
 
 ==== Simulate multi-field dataset ====
   * *Goal*: _Simulate a simple dataset at two magnetic fields_
-
   # <u>Main</u>
     # *Input...RD Simulator...*
   # <u>RD Simulator</u>
@@ -814,7 +872,6 @@ OBJECT TYPE (Doesn't work)
 
 ==== Simulate multi-field, multi-temperature dataset ====
   * *Goal*: _Simulate a dataset at two magnetic fields and three temperatures_
-
   # <u>RD Simulator</u>
     # _Create a new SimCurveset_
       # CURVESETS: Click *New*
@@ -840,7 +897,7 @@ OBJECT TYPE (Doesn't work)
 
 ==== Explore experimental condtions for observing RD ====
   * *Goal*: _Explore the nature of RD phenomena using surface plot_  
-  * *Note*: _Please complete prior tutorial section before proceeding_
+    * *Note*: _Please complete prior tutorial section before proceeding_
 
   * *Question*: _What temperature range is appropriate for acquisition?_ 
   # <u>RD Simulator</u>
@@ -851,13 +908,13 @@ OBJECT TYPE (Doesn't work)
       # _For these exchange kinetics, the largest dispersions are observed around 10-20C, and therefore experiments should be focused there_
       # _The RD curve is nearly undetectable above 50C because k,,ex,, is too large compared to Δω,,X,,(Hz)_
 
-  # _Change chemical shift to observe the effect on the RD signal_
+  * _Change chemical shift to observe the effect on the RD signal_
     # CURVESET: Set *dwX(ppm)* to _0.50_
     # *Observations*
       # _With smaller Δω,,X,,(ppm), the dispersions are smaller, because k,,ex,, is larger in comparison_
     # CURVESET: Set *dwX(ppm)* back to _1.00_
 
-  # _Change magnetic field strength to observe the effect on the RD signal_
+  * _Change magnetic field strength to observe the effect on the RD signal_
     # CURVE: Set *B0(MHz)* to _1000_
     # *Observations*
       # _At higher field strength, dispersions are larger, becuse Δω,,X,,(Hz) is increased_
@@ -867,12 +924,11 @@ OBJECT TYPE (Doesn't work)
 
 ==== Explore temperature-dependence of exchange kinetics ====
   * *Goal*: _Explore the nature of exchange kinetics using the <u>Kinetic Simulator</u>_
-  * *Note*: _Please complete prior tutorial section before proceeding_
+    * *Note*: _Please complete prior tutorial section before proceeding_
 
   # <u>RD Simulator</u>
     # _Start the Kinetic Simulator_
     # CURVESET: Click *Run Kinetics Sim*
-
   # <u>Kinetic Simulator</u>
     # _This window operates on the Sim Curvesets, and displays the effect of temperature on the RD parameters P,,A,, and k,,ex,,_
     # Select *SimSet 2* from the pull-down menus
@@ -897,25 +953,23 @@ OBJECT TYPE (Doesn't work)
 
 ==== Export simulated data ====
   * *Goal*: _Assess accuracy of fitting procedure by analyzing data with "known" solution_
-  * *Note*: _Please complete prior tutorial section before proceeding_
+    * *Note*: _Please complete prior tutorial section before proceeding_
 
   # <u>RD Simulator</u>
     # Click the *Export* icon in the title bar
-
   # <u>RD Simulator Export</u>
     # Set *Sim Points* to _15_
     # Click *Export to TXT*
       # Save the file [FileFormats#Output:_GUARDD_Simulator details] 
-
   # <u>RD Simulator</u>
     # Click the *Export* icon in the title bar
     # Set *Sim Points* to _15_
     # Click *Export to GUARDD*
       # _This automatically creates a Group for each simulated Curveset_
 
-  # _These can be viewed in the <u>Main</u> window and/or the <u>Data Manager</u>, just like any other group_
-  # Fitting can be accomplished as per the [Tutorial#Fit_simple_group_manually simple group] or for the [Tutorial#Fit_multi-temperature_group_manually multi-temperature group]
-  # Fits should achieve within 10% accuracy of the simulation conditions
+  * *Note*: _Simulated groups can be viewed in the <u>Main</u> window and/or the <u>Data Manager</u>, just like any other group_
+    # Fitting can be accomplished as per the [Tutorial#Fit_simple_group_manually simple group] or for the [Tutorial#Fit_multi-temperature_group_manually multi-temperature group]
+    # Fits of these data should achieve within 10% accuracy of the simulation conditions
 
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-05.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-05.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
@@ -928,8 +982,6 @@ OBJECT TYPE (Doesn't work)
   * The Ohio State University Biophysics Program [http://www.biosci.ohio-state.edu/~biophys/ link]
   * The Ohio State University [http://www.osu.edu/ link]
   * National Institutes of Health [http://www.nih.gov/ link]
-
-
 
 == Author ==
   * (C) Ian Kleckner
