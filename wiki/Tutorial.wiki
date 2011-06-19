@@ -79,7 +79,7 @@ OBJECT TYPE (Doesn't work)
   # Check <u>Matlab command window</u> for additional output
   # GUARDD is sometimes slow. Turn on CPU monitor to see when program is processing
     # *Win*: Ctrl+Alt+Del, click _Task Manager_, watch icon in task bar
-    # *Mac*: _Applications_ folder -> _Utilities_ folder -> launch _Activity Monitor_
+    # *Mac*: _Applications_ folder → _Utilities_ folder → launch _Activity Monitor_
   # "Tooltips" are revealed by hovering mouse cursor over buttons, tables, etc.
 
 == Notation ==  
@@ -93,8 +93,8 @@ OBJECT TYPE (Doesn't work)
     # k,,ex,, = k,,A,, + k,,B,, = Total exchange rate between states (/s)
     # R,,2,,^0^ = Transverse relaxation rate in the absence of exchange (Hz)
   * Exchange kinetics can be described as follows
-    * k,,A,, = Rate of exchange from A->B
-    * k,,B,, = Rate of exchange from B->A
+    * k,,A,, = Rate of exchange from A→B
+    * k,,B,, = Rate of exchange from B→A
     * Method A - No constraint on rate analysis
       * Define P,,A,, and k,,ex,, at each temperature
     * Method B - Constrain rate analysis via ΔH and E,,AB,,
@@ -212,8 +212,8 @@ OBJECT TYPE (Doesn't work)
 
 ==== Fit simple group manually ====
   * *Goal*: _Use <u>Fit RD</u> window to manually fit one group_
-    * _Determine optimal P,,A,,, and k,,ex,,, at each temperature (x1) -> propagate to all curves in group_
-    * _Determine optimal Δω,,H,,, Δω,,X,,, for each curveset (x1) -> propagated to all curves in curveset_
+    * _Determine optimal P,,A,,, and k,,ex,,, at each temperature (x1) → propagate to all curves in group_
+    * _Determine optimal Δω,,H,,, Δω,,X,,, for each curveset (x1) → propagated to all curves in curveset_
     * _Determine and R,,2,,^0^ for each curve (x4)_
   * *Goal*: _Demonstrate basic fitting options (Simulate vs. Optimize, Individual vs. Grid)_
   * *Details*: Read more about the <u>Fit RD</u> window in the [ManualFit_Dispersion Manual]
@@ -281,8 +281,8 @@ OBJECT TYPE (Doesn't work)
 
 ==== Fit multi-temperature group manually ====
   * *Goal*: _Use <u>Fit RD</u> window to manually fit one group acquired at multiple temperatures_
-    * _Determine optimal P,,A,,, and k,,ex,,, at each temperature (x3) via two methods (A and B) -> propagate to all curves in group_
-    * _Determine optimal Δω,,H,,, Δω,,X,,, for each curveset (x1) -> propagated to all curves in curveset_
+    * _Determine optimal P,,A,,, and k,,ex,,, at each temperature (x3) via two methods (A and B) → propagate to all curves in group_
+    * _Determine optimal Δω,,H,,, Δω,,X,,, for each curveset (x1) → propagated to all curves in curveset_
     * _Determine and R,,2,,^0^ for each curve (x10)_
 
   * *Goal*: _Demonstrate multi-temperature fitting options_
@@ -440,8 +440,8 @@ OBJECT TYPE (Doesn't work)
 
 ===== Fit a multi-curveset, multi-temperature group =====
   * *Goal*: _Use <u>Fit RD</u> window to manually fit one group containing multiple curvesets_
-    * _Determine optimal P,,A,,, and k,,ex,,, at each temperature (x3) -> propagate to all curves in group_
-    * _Determine optimal Δω,,H,,, Δω,,X,,, for each curveset (x2) -> propagated to all curves in curveset_
+    * _Determine optimal P,,A,,, and k,,ex,,, at each temperature (x3) → propagate to all curves in group_
+    * _Determine optimal Δω,,H,,, Δω,,X,,, for each curveset (x2) → propagated to all curves in curveset_
     * _Determine and R,,2,,^0^ for each curve (x20)_
   
   # <u>Main</u>
@@ -571,7 +571,7 @@ OBJECT TYPE (Doesn't work)
     # Check sensitivity of fit to errors in data (*Monte Carlo errors*)
       # A well-determined fit yields a narrow set of MC-fits from Monte Carlo analysis
     # Check *exchange-timescale* parameter α
-      # Fast exchange (k,,ex,,>>Δω; α->2.0) precludes knowledge of P,,A,, and Δω
+      # Fast exchange (k,,ex,,>>Δω; α→2.0) precludes knowledge of P,,A,, and Δω
       # This is often evident in prior steps
 
   * *Goal*: _Load GUARDD session with data already fit_
@@ -745,7 +745,7 @@ OBJECT TYPE (Doesn't work)
     # *Task to Display*: MC Errors
     # *Results to Display*: Final
     # *Display Mode*: Scatter
-    * *Observe*: _A wide range of Δω and P,,A,, values can describe these data -> Δω and P,,A,, are not OK!_
+    * *Observe*: _A wide range of Δω and P,,A,, values can describe these data → Δω and P,,A,, are not OK!_
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--28.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--28.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
