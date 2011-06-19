@@ -414,6 +414,27 @@ Working on CS=2, Leu 22\delta_1
 
 
 
+Introduction: Statistics
+To fit dispersion data, this program minimizes a target function quantifying the goodness of fit
+Here, the goodness of fit is quantified by either χ2 or SSE
+
+[formula] is the "chi squared" metric
+[formula] is the "sum of squred errors" metric
+
+[formula] is the total number of observations
+[formula] is the calculated value for the ith data point
+[formula] represents the values of each adjustable model parameter
+[formula] is the observed value for the ith data point
+[formula] is the experimental uncertainty in the ith data point
+
+
+Both χ2 and SSE become smaller as the curve fit more closely matches the observed data
+χ2 is normalized to errors in measurement (SSE is not) and each can be used for statistical tests
+
+Note: This program uses χ2 but SSE may appear in notes and source code as they are conceptually identical in some respects
+(E.g., both are minimized at "best fit") 
+
+
 === Arrhenius: Determining activation energy ===
   * Negative or positive?
 
@@ -548,7 +569,27 @@ Chi2 = ###
 ==== Display Chi2 Map ====
  * *Question*: _What is a good fit look like?_
 
+  * *Key info on features of chi2 maps*    
+    * _The Chi2 map displays a parameter value on the X-axis and the goodness of fit (χ^2^) on the Y-axis_
+    * _Lower value of χ^2^ indicates a more precise fit to the data_
+    * Single-valued maps reflect a very well-defined fitting solution (easy for the MATLAB solver to find the best result)
+    * U- or V-shaped maps reflect a defined fitting solution, but have rough local features which trap the MATLAB solver)
+    * Flat maps reflect a poorly-defined fitting solution (parameter is not OK), and have rough local features which trap the MATLAB solver
+    * Chi2 maps may exhibit several of these features at once
+      * Example: two focused points of solutions (_which one is best??_)
+      * Example: two U-shaped set of points which point to different solutions (_which one is best??_)
+      * Example: a flat portion within some range of parameter values, and a single point at an anomalous fitted value (e.g., P,,A,,=50%)
+      * Example: a flat portion within some range of parameter values, and a U-shaped well reflecting a local set of solutions
+    * *Details*: Read more about the grid search in the [Manual#Grid_Search Manual]
+
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chi2_maps/figure-chi2_maps.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chi2_maps/figure-chi2_maps.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+
 ===== Display Monte Carlo Errors =====
+
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 ===== Select fit from grid search =====
 
@@ -562,6 +603,41 @@ Chi2 = ###
 
 
 == Tips for optimal use ==
+
+=== Fitting RD data ===
+Introduction: Fitting dispersion data
+It is not sufficient so just visually inspect the curve fit
+Examining the shape of χ2 space is important to select the most accurate fit
+In many cases, a plot of χ2 vs. Fitted Parameter is U-shaped
+The optimal parameter value is at the horizontal center of the U and yields a value of χ2 at the bottom of the U
+
+In practice, χ2 space may deviate from the U-shape and thus complicate the optimization process
+This software is powerful because it allows the user to view the χ2 space and drive the fit towards the most accurate solution
+Below, there are several commonly encountered forms of χ2 space with solutions to obtain an accurate result
+
+General issues
+χ2 minimum is not well defined compared to other candidate minima
+Noisy dispersion data and/or small Rex
+
+General solutions
+(1) Extract maximum information from current fit of current data
+If some parameters are defined, mark only them as "OK" in fitting window
+Usually R20 and Rex can be obtained despite ill-defined PA and/or kex and/or Δω
+
+(2) Alter fit to extract maximum information from current data
+Eliminate noisy dispersion curves and re-fit the curve set
+Compare values of kex and PA at site α to those at another site β which is close in structure / sequence
+If sites α and β report the same process, they will both report the same kex and PA, but not necessarily the same Δω or R20
+Note: global fit of data from multiple sites is not available in this version of the program (August 2010)
+
+(3) Acquire more dispersion data and re-fit with new data
+Different experimental conditions (e.g., temperature)
+Different magnetic resonance conditions (quantum coherence, magnetic field)
+
+
+It is important that all the interpretations be deemed trustworthy
+If there is unceratinty, simply do not use any fit from this residue (or mark it as such)
+
 
 === General tips ===
     * If unsure about the fit, then don't use it
