@@ -550,10 +550,10 @@ OBJECT TYPE (Doesn't work)
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--18.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--18.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
-  * *Time for a break?*
-    * _This is a good stopping point in the tutorial, in case you want to resume later_
-    * _The batch task does not need to be completed_
-    * _The tutorial proceeds using a pre-saved GUARDD session_
+=== Time for a break? ===
+  * _This is a good stopping point in the tutorial, in case you want to resume later_
+  * _The batch task does not need to be completed_
+  * _The tutorial proceeds using a pre-saved GUARDD session_
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/take-a-break-from-work.jpg"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/take-a-break-from-work.jpg" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
@@ -795,7 +795,6 @@ OBJECT TYPE (Doesn't work)
     # Click *Save*
     # Panel _All Groups_, select all groups _except_ Leu 22
     # Click *Add*
-
     # Click *New*
     # Set *name*: Group fits
     # Set _RGB_ to 1 0 0 (for the color Red)
@@ -832,7 +831,8 @@ OBJECT TYPE (Doesn't work)
     # *Output...Display results table...*
   # <u>Results Table</u>
     # Select all display parameters in left-most list
-  # Click *Export to CSV*
+  # Click *Export to CSV* [FileFormats#Output:_Parameter_Table details]
+
   * *Bug*: Selecting all items in the table results in an error in some versions of MATLAB (at least R2009a on Windows)
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--25.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--25.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
