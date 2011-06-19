@@ -467,7 +467,7 @@ Obs	vcpmg(Hz)	R2Eff(Hz)	eR2Eff(Hz)	Intensity	eIntensity
 == Output: Parameter Table ==
   * Contains information on groups, fit results, and notes
   * Useful for loading into other programs and creating tables for sharing results
-  * Part of example file from tutorial: {{{tutorial/data/example_files/GUARDD-Paramter_Table-2011.06.18-23-23-formatted.csv}}}
+  * Part of example file from tutorial: {{{tutorial/data/example_files/GUARDD-Paramter_Table-2011.06.19-09-29-formatted.csv}}}
 
 {{{
 GUARDD v.2011.06.17												
