@@ -126,7 +126,7 @@ _From Kleckner and Foster, 2010_
       * the total exchange rate between the states k,,ex,, = k,,A,, + k,,B,,,
       * the intrinsic relaxation rate in the absence of exchange R,,2,,^0^, which 
       * *Note*: _R,,2,,^0^ can be used to determine the exchange broadening R,,ex,,_
-    * This dispersion curve is simulated using Δν = 400 Hz, P,,A,, = 90%, * k,,ex,, = 400 /s, R,,2,,^0^ = 10 Hz
+    * This dispersion curve is simulated using Δν = 400 Hz, P,,A,, = 90%, k,,ex,, = 400 /s, R,,2,,^0^ = 10 Hz
       * *Note*: _The R,,2,,^Obs^ curve begins to "break" at ν,,CPMG,, = k,,ex,, / 2 = 200 /s_
     * Three ν,,CPMG,, values from (a) and (b) marked with vertical arrows
 
