@@ -899,13 +899,13 @@ _Datasets contain Curves, which are linked to by Curvesets within Groups_
 
   * Input
     # P,,A,, at 2+ temperatures
-    # kex at the same temperatures
+    # k,,ex,, at the same temperatures
   * Process
-    # k = kA = (1-P,,A,,)kex (or kB = P,,A,,kex) = kinetic rate of exchange from A→B (or B→A)
+    # k = k,,A,, = (1-P,,A,,)k,,ex,, (or k,,B,, = P,,A,,k,,ex,,) = kinetic rate of exchange from A→B (or B→A)
     # Errors from MATLAB's fit routine (provided data at more than two temperatures), or from propagation of relative error from the fitting variables (when limited to data at only two temperatures).
   * Output    
-    # P = P,,A,,B (or P = PBA) Pre-exponential rate, the exchange rate from A→B (or B→A) at infinite temperature
-    # E = EAB (or E = EBA) = Activation energy (≈ enthalpy) required to exchange from A→B (or B→A)
+    # P = P,,AB,, (or P = P,,BA,,) Pre-exponential rate, the exchange rate from A→B (or B→A) at infinite temperature
+    # E = E,,AB,, (or E = E,,BA,,) = Activation energy (≈ enthalpy) required to exchange from A→B (or B→A)
     # R = gas constant
     # T = absolute temperature.
 
@@ -921,7 +921,7 @@ _Datasets contain Curves, which are linked to by Curvesets within Groups_
   * Input
     # P,,A,, at 2+ temperatures
   * Process
-    # K = (1-P,,A,,) / P,,A,, = kA / kB = equilibrium constant for exchange
+    # K = (1-P,,A,,) / P,,A,, = k,,A,, / k,,B,, = equilibrium constant for exchange
     # Errors from MATLAB's fit routine (provided data at more than two temperatures), or from propagation of relative error from the fitting variables (when limited to data at only two temperatures).
   * Output    
     # ΔS = system entropy change from A→B
@@ -938,7 +938,7 @@ _Datasets contain Curves, which are linked to by Curvesets within Groups_
 
 === Kinetic simulator ===
 
-The two-state kinetic simulator itemizes all kinetic parameters of interest: ΔH, ΔS, EAB, P,,A,,B, EBA, PBA, kex(T), P,,A,,(T), kA(T), and kB(T) where T is an arbitrary temperature, provided ΔH, EAB, , , and T0. This is accomplished as follows [Winzor2006]:
+The two-state kinetic simulator itemizes all kinetic parameters of interest: ΔH, ΔS, E,,AB,,, P,,AB,,, E,,BA,,, P,,BA,,, k,,ex,,(T), P,,A,,(T), k,,A,,(T), and k,,B,,(T) where T is an arbitrary temperature, provided ΔH, E,,AB,,, , , and T0. This is accomplished as follows [Winzor2006]:
 
 Using ΔH and P,,A,,(T0), the van't Hoff relation yields ΔS
 
@@ -946,7 +946,7 @@ Using ΔH and P,,A,,(T0), the van't Hoff relation yields ΔS
 which, with ΔH, determines P,,A,, at any temperature via van't Hoff
 .
 
-Next, using P,,A,, and kex at T0 determines kA and kB at T0
+Next, using P,,A,, and kex at T,,0,, determines k,,A,, and k,,B,, at T,,0,,
 
 
 
