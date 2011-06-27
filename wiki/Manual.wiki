@@ -132,7 +132,9 @@ _From Kleckner and Foster, 2010_
 
 == Two-state exchange model ==
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-two_state_exchange/figure-two_state_exchange-Kleckner.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-two_state_exchange/figure-two_state_exchange-Kleckner.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-RD_Parameters/figure-rd_parameters.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-RD_Parameters/figure-rd_parameters.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+
 
   * *Structural parameters (1 or 2 per NMR probe)*
     # |Δω,,H,,| (rad/s): Magnitude of ^1^H chemical shift difference between A and B states (for MQ curves only)
