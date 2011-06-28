@@ -16,7 +16,7 @@
     * *Answer*: via R,,ex,, from visual inspection of single RD NMR experiment
 
   * *Question*: If so, what is the nature of this exchange process?
-    * *Note*: Typically, exchange processes are considered as at least one site of a single molecule which occupies at least two distinct local structures (AKA states or configurations), denoted A and B [Tutorial#Two-state_exchange_model link]
+    * *Note*: Typically, exchange processes are considered as at least one site of a single molecule which occupies at least two distinct local structures (AKA states or configurations), denoted A and B [Manual#Two-state_exchange_model link]
 
   * *Question*: What is the chemical environment (e.g., structure) of this alternate configuration?
     * *Answer*: via chemical shift difference Δω obtained from at least one RD NMR experiment [Manual#Two-state_exchange_model link]
@@ -34,10 +34,10 @@
     * *Answer*: via energy ΔG (via P,,A,,), enthalpy ΔH, entropy ΔS from several RD experiments (van't Hoff analysis) [Manual#vant_Hoff:_Determining_enthalpy link]
 
   * *Question*: Is the alternate configuration a well-defined fold? Is it unfolded?
-    * *Answer*: via chemical shift difference Δω, enthalpy ΔH, entropy ΔS from several RD experiments
+    * *Answer*: via chemical shift difference Δω, enthalpy ΔH, entropy ΔS from several RD experiments (See Kleckner & Foster, 2011 [Manual#References here])
 
   * *Question*: Are motions in this molecule unified, coupled or independent?
-    * *Answer*: via exchange rates k,,A,, and k,,B,,, enthalpy ΔH, entropy ΔS and activation energies E(A→B) and E(B→A) for several sites from several RD experiments
+    * *Answer*: via exchange rates k,,A,, and k,,B,,, enthalpy ΔH, entropy ΔS and activation energies E(A→B) and E(B→A) for several sites from several RD experiments (See Kleckner & Foster, 2011 [Manual#References here])
 
 
 === Chemical exchange phenomenon ===
@@ -74,7 +74,7 @@ _From Kleckner and Foster, 2011_
    * *(a) *A single NMR probe (e.g., Ala 12N^H^) is considered to alternate between local structures designated A and B, which have distinct NMR chemical shifts in 1H and/or AX dimensions.
     * Although two signals are shown here, the “minor” B state is not detected directly because its NMR signal is too weak and/or too broad. However, the A↔B exchange yields a quantitative effect on the measured RD Curve of signal A.
 
-  * *The two-state exchange model requires 4-5 parameters to describe a single RD Curve*
+*The two-state exchange model requires 4-5 parameters to describe a single RD Curve*
   * *Structural parameters (1 or 2 per NMR probe)*
     # |Δω,,H,,| (rad/s): Magnitude of ^1^H chemical shift difference between A and B states (for MQ Curves only)
     # |Δω,,X,,| (rad/s): Magnitude of ^A^X chemical shift difference between A and B states (AX = ^13^C or ^15^N)
@@ -96,7 +96,7 @@ _From Kleckner and Foster, 2011_
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-example/figure-data_management-example.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-example/figure-data_management-example.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a>
 
-_(a) Hierarchical data structures used in GUARDD, (b) example data structure [Manual#Example_parameter_assignment shown here]_
+_(Figure above) (a) Hierarchical data structures used in GUARDD, (b) example data structure [Manual#Example_parameter_assignment shown here]_
 
   * Each *Curve* is designated a unique *R,,2,,^0^*
     * R,,2,,^0^ = Transverse relaxation rate in the absence of exchange (Hz)
@@ -133,7 +133,7 @@ _(a) Hierarchical data structures used in GUARDD, (b) example data structure [Ma
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-example/figure-data_management-example.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-example/figure-data_management-example.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a> 
 
-_(a) Hierarchical data structures used in GUARDD, (b) example data structure discussed below_
+_(Figure above) (a) Hierarchical data structures used in GUARDD, (b) example data structure discussed below_
 
   * *Goal*: Show two ways (A or B) to itemize temperature-depenence of P,,A,, and k,,ex,,
   * *Example: Method A - No constraint on rate analysis*
@@ -242,7 +242,7 @@ Working on CS=2, Leu 22\delta_1
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-large/figure-data_management-large.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-large/figure-data_management-large.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a> 
 
-_Datasets contain Curves, which are linked to by Curvesets within Groups_
+_(Figure above) Datasets contain Curves, which are linked to by Curvesets within Groups_
 
 === Dataset ===
   * *Goal*: _Store a CPMG NMR dataset and the experimental conditions during acquisition_
@@ -406,8 +406,6 @@ _Datasets contain Curves, which are linked to by Curvesets within Groups_
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-flowchart-fitting/figure-flowchart-fitting.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-flowchart-fitting/figure-flowchart-fitting.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a>
 
   # Load the data and execute the grid search on exchanging Groups
-    * Tutorial: load data [Tutorial#Load_data here]
-    * Tutorial: batch task [Tutorial#Perform_batch_task here]
   # For each Group, the grid search fit is selected, otherwise an individual fit is performed
   # In YES to exchange, the current best fit is evaluated via χ^2^ maps and rate analyses
     * If NO exchange, the {{{NoEx}}} fit is marked for subsequent analysis
@@ -782,7 +780,7 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
     * Otherwise there would be too many points on the plot
   
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--24.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--24.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/GUARDD-Groups-2011.06.23--05.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/GUARDD-Groups-2011.06.23--05.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * Tutorial: display Group results [Tutorial#View_results_in_display_cluster here]
   * Key sections of code
@@ -847,7 +845,25 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
     * P,,A,, may increase (ΔH < 0), decrease (ΔH > 0) or remain constant (ΔH=0) with temperature
 
 == Limitations ==
-  * Matlab is relatively slow
+  * Liabilities of linkage to MATLAB
+    # GUARDD is slower than if it were coded using C or Python, for example
+      # MATLAB is an interpreted language
+      # Graphical interface uses Java
+      # Drawing the display, while reading or writing large session files, or while fitting data
+    # Malfunctions in MATLAB may hinder functionality of GUARDD
+      # However, enhancements to MATLAB may imbue enhancements to GUARDD
+    # User must have access to MATLAB (i.e., GUARDD is not a standalone program)
+      # However, MATLAB is a convenient cross-platform solution for dissemination of software
+  # Limitations of GUARDD functionality
+    # exchange model is restricted to two-state using the all-timescales MQ Carver-Richards-Jones formulation
+      # No simplifications assuming skewed populations (PB < PA) [Ishima1999]
+      # No simplifications assuming fast-exchange (kex > Δν)
+    # No three-site exchange
+    # No ZQ or DQ coherences
+    # No pressure-dependence of RD
+    # No Anti-TROSY/TROSY analysis
+    # No temperature-dependence via transition state theory
+    # No error analysis options: jacknife, covariance matrix method
 
 
 == Feedback, Suggestions, Bugs ==
@@ -1260,7 +1276,15 @@ _Monte Carlo procedure generates and fits synthetic data consistent with observe
   * The Ohio State University [http://www.osu.edu/ link]
   * National Institutes of Health [http://www.nih.gov/ link]
 
+== Citing GUARDD ==
+  * *Please cite your usage of GUARDD in BOTH ways*
+    # Kleckner, I. R., & Foster, M. P. (n.d.). GUARDD: User-friendly MATLAB software for rigorous analysis of CPMG RD NMR data. (in preparation).
+    # http://code.google.com/p/guardd/
+
 == References ==
+  * *Please cite your usage of GUARDD in BOTH ways*
+    # Kleckner, I. R., & Foster, M. P. (n.d.). GUARDD: User-friendly MATLAB software for rigorous analysis of CPMG RD NMR data. (in preparation).
+    # http://code.google.com/p/guardd/
   * *Review on protein dynamics via NMR*
     * Kleckner, I. R., & Foster, M. P. (2011). An introduction to NMR-based approaches for measuring protein dynamics. Biochimica et biophysica acta, 1814(8), 942-968. Elsevier B.V. doi: 10.1016/j.bbapap.2010.10.012.
   * *Fitting RD data is poorly determined*
