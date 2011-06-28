@@ -489,6 +489,7 @@ AA|Num	Residue	Atom	Group|Name	B0|(MHz)	Temp|(C)	Exchange?	Best fit|OK?	Constrai
   # Tutorial on preparing NMRPipe nlin.tab files [http://guardd.googlecode.com/files/Processing-RD--2008.07.07.zip here]
 
 == Acknowledgements ==
+  * Foster Lab members for debugging during development
   * Advisor Prof. Mark Foster [http://chemistry.osu.edu/~foster.281/ link]
   * The Ohio State University Biochemistry Dept. [http://www.biosci.ohio-state.edu/~biochem/ link]
   * The Ohio State University Biophysics Program [http://www.biosci.ohio-state.edu/~biophys/ link]
