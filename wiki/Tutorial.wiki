@@ -1,682 +1,589 @@
-#summary GUARDD Manual itemizes essential program functions
+#summary Introduce basic GUARDD functions
+#sidebar TableOfContents
+
+<wiki:comment>
+  This text will be removed from the rendered page.
+
+  <wiki:gadget url="http://mathml-gadget.googlecode.com/svn/trunk/mathml-gadget.xml" border="0" up_content="root3x + x^phi + x_1" height="15"/>
+
+  http://code.google.com/images/code_sm.png
+
+  # 1
+    # 2
+      # 3
+	# 4
+
+
+  * 1
+    * 2
+      * 3
+	* 4
+
+
+<ol>
+  <li>1</li>
+  <ol>
+    <li>2</li>
+    <ol>
+      <li>3</li>
+      <ol>
+	<li>4</li>
+      </ol>
+    </ol>
+  </ol>
+</ol>
+
+
+Wiki
+http://guardd.googlecode.com/files/figure-data_management.png
+
+Link
+[http://guardd.googlecode.com/files/figure-data_management.png image]
+
+HTML+Link (Works)
+<a href="http://guardd.googlecode.com/files/figure-data_management.png"> <img src="http://guardd.googlecode.com/files/figure-data_management.png.png" alt="image" width="100"> </a>
+
+OBJECT TYPE (Doesn't work)
+<object type="image/png" data="http://guardd.googlecode.com/files/figure-data_management.png" width="300" >
+
+</wiki:comment>
+
 
 == Contents == 
 <wiki:toc max_depth="5" />
 
 == Goals == 
-  * Background on CPMG RD method
-  * Details on GUARDD data organization, features, and reference materials
+  * Become familiar with basic features of GUARDD
+
+== Requirements ==
+  # 60-90 min
+  # Matlab software [http://www.mathworks.com/ Mathworks]
+  # GUARDD program [http://code.google.com/p/guardd/downloads/list download]
+    # Matlab .m and .fig files
+  # Tutorial files for this example [http://code.google.com/p/guardd/downloads/list download]
+
+== General notes ==  
+  # See Manual for Glossary [Manual#Glossary here]
+  # <u>Underlined</u> items are GUARDD window titles
+  # *Boldface* items are commands (buttons, menus) and important points
+  # GUARDD utilizes multiple GUI windows (may need to be resized)
+    # Higher monitor resolution helps (1024x768 minimum)
+  # Matlab *must remain open* (it controls GUARDD)
+  # GUARDD <u>Main</u> window *must remain open* (it controls other GUI windows)
+  # Check <u>Matlab command window</u> for additional output
+  # GUARDD is sometimes slow. Turn on CPU monitor to see when program is processing
+    # *Win*: Ctrl+Alt+Del, click _Task Manager_, watch icon in task bar
+    # *Mac*: _Applications_ folder → _Utilities_ folder → launch _Activity Monitor_
+  # "Tooltips" are revealed by hovering mouse cursor over buttons, tables, etc. 
+
+== Tutorial ==
+
+=== Download and unpack files ===
+  # Download files [http://code.google.com/p/guardd/downloads/list download]
+  # Unpack files
+    # E.g., {{{/home/user/Desktop/}}} or {{{C:\My_Favorite_Folder\}}}
+  # Ensure proper directory structure
+    # GUARDD--YYYY.MM.DD/	(*Note*: {{{YYYY.MM.DD}}} codes for the date (e.g., {{{2011.06.17}}}))
+      # {{{tutorial/}}}
+      # (Many .m files)
+      # (Many .fig files)
+
+=== Start GUARDD ===
+  # Start *Matlab*  
+  # Open Matlab command window: *Desktop...Command Window*
+  # Navigate to GUARDD/ directory and start program
+    # <u>Matlab command window</u>: *{{{cd 'c:\My_Favorite_Folder\GUARDD--YYYY-MM-DD\'}}}*
+    # *Note*: _{{{YYYY-MM-DD}}} is replaced by the date corresponding to the GUARDD version (e.g., {{{2011-06-08}}})_
+    # <u>Matlab command window</u>: *{{{clear; GUARDD}}}*
+  # *Important*: _Main window must remain open (it controls all other GUI windows)_
+  # Check Matlab command window for additional output
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--01.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--01.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+
+=== Load data ===
+  * *Goal*: _Get RD data into the program for analysis_
+  * *Tip*: _A variety of input types are available (see [Manual#Input:_Script_file_to_load_data Manual])_
+
+  # <u>Main</u>
+    # *Input...Data manager...*
+  # <u>Data Manager</u>
+    # *Input...Script...*
+      # {{{tutorial/data/GUARDD-Data-ApoTRAP-Kleckner.txt}}}
+  # 14 datasets loaded    
+    # 600 and 800 MHz
+    # 25, 32, and 37^o^C
+    # SQ and MQ coherence
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--02.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--02.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+
+=== Create groups for fitting ===
+  * *Goal*: _Aggregate RD curves from the same NMR signal (assignment) for group fitting_  
+
+  * *Essential notes on data organization*
+    * *Datasets* designate experimental conditions
+    * *Datasets* contain *Curves*, which contain RD data
+    * *Curves* are aggregated across common NMR probes (assignment) into *Curvesets* (to share Δω values)
+    * *Curvests* are aggregated across different NMR probes into *Groups* (to share k,,ex,, and P,,A,,)
+  * *Details* regarding data organization are discussed in the [Manual#Organizing_data Manual]
+
+  # <u>Data Manager</u>    
+    # *Group...Generate from subset of data...*
+  # <u>Create Groups</u>
+    # Make groups only for Ile residues at 25^o^C
+      # Check _Residue_
+      # Type _Ile_
+      # Check _TempC_
+      # Type _25_
+    # Click *Generate groups*
 
-
-== Theroetical and technical details == 
-
-=== Scientific questions addressed by RD NMR ===
-
-  * *Question*: Is this molecule flexible in the μs-ms time window?
-    * *Answer*: via R,,ex,, from visual inspection of single RD NMR experiment
-
-  * *Question*: If so, what is the nature of this exchange process?
-    * *Note*: Typically, exchange processes are considered as at least one site of a single molecule which occupies at least two distinct local structures (AKA states or configurations), denoted A and B [Manual#Two-state_exchange_model link]
-
-  * *Question*: What is the chemical environment (e.g., structure) of this alternate configuration?
-    * *Answer*: via chemical shift difference Δω obtained from at least one RD NMR experiment [Manual#Two-state_exchange_model link]
-
-  * *Question*: On average, how often is this alternate configuration sampled?
-    * *Answer*:  via total exchange rate k,,ex,, from at least one RD NMR experiment [Manual#Two-state_exchange_model link]
-
-  * *Question*: What is the relative population of this alternate configuration?
-    * *Answer*: via population P,,A,, from at least one RD NMR experiment [Manual#Two-state_exchange_model link]
-
-  * *Question*: How much activation energy is required to access this alternate configuration?
-    * *Answer*: via activation energies E(A→B) and E(B→A) from several RD experiments (Arrhenius analysis) [Manual#Arrhenius:_Determining_activation_energy link]
-
-  * *Question*: What is the relative energy, enthalpy and entropy of this alternate configuration?
-    * *Answer*: via energy ΔG (via P,,A,,), enthalpy ΔH, entropy ΔS from several RD experiments (van't Hoff analysis) [Manual#vant_Hoff:_Determining_enthalpy link]
-
-  * *Question*: Is the alternate configuration a well-defined fold? Is it unfolded?
-    * *Answer*: via chemical shift difference Δω, enthalpy ΔH, entropy ΔS from several RD experiments (See Kleckner & Foster, 2011 [Manual#References here])
-
-  * *Question*: Are motions in this molecule unified, coupled or independent?
-    * *Answer*: via exchange rates k,,A,, and k,,B,,, enthalpy ΔH, entropy ΔS and activation energies E(A→B) and E(B→A) for several sites from several RD experiments (See Kleckner & Foster, 2011 [Manual#References here])
-
-
-=== Chemical exchange phenomenon ===
-  * *Goal*: _Present the NMR phenomenon that enables characterization of μs-ms dynamics_
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chemical_exchange/figure-chem_exchange_NMR-GUARDD.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chemical_exchange/figure-chem_exchange_NMR-GUARDD.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
-
-_Adapted from Kleckner and Foster, 2011_
-
-  * Certain dynamic processes in the μs-ms time window lead to characteristic broadening of the NMR signal
-  * This "exchange broadening" can obscure the observables and in some cases render the NMR signal undetectable
-  * However, this contains valuable information on the underlying dynamic process
-  * The relaxation dispersion (RD) NMR experiment can access this information by use of a spin-echo pulse train
-
-=== The RD experiment refocuses chemical exchange broadening R,,ex,, ===
-  * *Goal*: _Present the NMR experiment that quantitatively characterizes μs-ms dynamics_
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-CPMG_RD/figure-CPMG_RD--experiment.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-CPMG_RD/figure-CPMG_RD--experiment.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
-
-_From Kleckner and Foster, 2011_
-
-  * Carr-Purcell Meiboom-Gill Relaxation Dispersion (CPMG RD) uses spin-echo pulse trains to suppress relaxation due to exchange processes on the µs-ms timescale.
-  * *(a)* The number of spin-echo pulses applied during the fixed relaxation time directly determines the CPMG frequency via ν,,CPMG,, = 1 / (4τ).
-    * The applied CPMG pulse train is shown above each relaxation delay (ν,,CPMG,, = 100, 500 and 1100 Hz).
-    * These pulses reduce the signal relaxation rate during the relaxation delay by refocusing exchange broadening (i.e., reducing R,,ex,,).
-  * *(b)* The observed signal intensity remaining at the end of the TCPMG relaxation delay is used to obtain an effective relaxation rate , where I,,0,, is the signal intensity in the absence of the relaxation delay (i.e., when TCPMG = 0).
-  * *(c)* The dispersion Curve reports on dynamics by plotting relaxation rate as a function of refocusing frequency.
-
-== Two-state exchange model ==
-  * *Goal*: _Present the simplest and most commonly used model to describe μs-ms dynamics_
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-RD_Parameters/figure-rd_parameters.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-RD_Parameters/figure-rd_parameters.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a> 
-  
-   * *(a) *A single NMR probe (e.g., Ala 12N^H^) is considered to alternate between local structures designated A and B, which have distinct NMR chemical shifts in 1H and/or AX dimensions.
-    * Although two signals are shown here, the “minor” B state is not detected directly because its NMR signal is too weak and/or too broad. However, the A↔B exchange yields a quantitative effect on the measured RD Curve of signal A.
-
-*The two-state exchange model requires 4-5 parameters to describe a single RD Curve*
-  * *Structural parameters (1 or 2 per NMR probe)*
-    # |Δω,,H,,| (rad/s): Magnitude of ^1^H chemical shift difference between A and B states (for MQ Curves only)
-    # |Δω,,X,,| (rad/s): Magnitude of ^A^X chemical shift difference between A and B states (AX = ^13^C or ^15^N)
-  * *Kinetic parameters (2 per temperature per NMR probe)*
-    * Parameters used in fitting equations
-      # k,,ex,, (/s): Total exchange rate between state A and B; k,,ex,, = k,,A,, + k,,B,, 
-      # P,,A,, (-): Population fraction of state A; P,,A,, = k,,B,, / (k,,A,,+k,,B,,) with P,,A,, + P,,B,, = 1
-    * Alternate physical parameterization, which requires knowledge of both k,,ex,, and P,,A,,
-      # k,,A,, (/s): Average frequency (not velocity!) of transition from state A to state B
-      # k,,B,, (/s): Average frequency (not velocity!) of transition from state B to state A
-  * *Relaxation parameter (1 per Curve per NMR probe)*
-    # R,,2,,^0^ (Hz): Relaxation rate of the A state in the absence of exchange
-  * *(b)* The MQ Curve shown here is simulated using |ΔωH| = 8 Hz, |ΔωX| = 201 Hz, kex = 1000 /s, P,,A,, = 90%, and  = 10 Hz.
-
-
-== Assigning parameters for fitting ==
-  * *Goal*: _Fitting requries five parameters per Curve, but often parameters can be shared when Curves are aggregated into Curvesets, which are aggregated into Groups_
-    * Details on Curves, Curvesets, and Groups are [Manual#Organizing_Data here]
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-example/figure-data_management-example.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-example/figure-data_management-example.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a>
-
-_(Figure above) (a) Hierarchical data structures used in GUARDD, (b) example data structure [Manual#Example_parameter_assignment shown here]_
-
-  * Each *Curve* is designated a unique *R,,2,,^0^*
-    * R,,2,,^0^ = Transverse relaxation rate in the absence of exchange (Hz)
-    * *Assume*: Relaxation rates of states A and B are equal (R,,2A,,^0^ = R,,2B,,^0^)
-
-  * One or more Curves are aggregated into a *Curveset*, which designate the same chemical shift differences *|Δω,,H,,| and |Δω,,X,,|*
-    * *Assume*: |Δω,,H,,| (ppm) and |Δω,,X,,| (ppm) are independent of temperature
-      * Therefore, each unique temperature yields an independent measure of |Δω,,H,,| and/or |Δω,,X,,|
-    * *NMR*: Resonance frequency scales with magnetic field strength
-      * Therefore, each unique B,,0,, field yields an independent measure of |Δω,,X,,|
-      * See calculations [Manual#Converting_ppm_to_rad/s here]
-    * *NMR*: An experiment may be designed to detect a particular quantum coherence
-      * Therefore, each unique quantum coherence yields an independent measure of |Δω,,H,,| and/or |Δω,,X,,|
-      * Single Quantum (SQ) experiments are sensitive to only |Δω,,H,,| or |Δω,,X,,|
-      * Multiple Quantum (MQ) experiments are sensitive to the sum |Δω,,H,, + Δω,,X,,|      
-      * See Korzhnev, et al. (2005) for more information: [Manual#References Quantum Coherences in dispersion]
-
-  * One or more Curvesets are aggregated into a *Group*, which designates the kinetic parameters *(P,,A,, and k,,ex,, at each temperature)*
-    * *Physics*: Kinetic parameters are determined by experimental conditions
-      * E.g., temperature, buffer, sometimes concentration but NOT magnetic field strength
-      * Therefore, each repeat condition (same or different B,,0,,) yields an independent measure of P,,A,, and k,,ex,,
-    * There are at least *two methods* to specify P,,A,, and k,,ex,, at each temperature
-    * Method A - No constraint on rate analysis
-      * Define P,,A,, and k,,ex,, at each temperature explicitly
-    * Method B - Constrain rate analysis via ΔH and E,,AB,,
-      * Define P,,A,, and k,,ex,, at a single temperature, T,,0,,
-      * Define ΔH for temperature-dependence of P,,A,, (vant Hoff)
-      * Define E,,AB,, for temperature-dependence of k,,A,, and, using ΔH, k,,B,, and therefore k,,ex,, = k,,A,,+k,,B,, (Arrhenius)
-    * See calculations [Manual#Arrhenius:_Determining_activation_energy here]
-
-=== Example parameter assignment ===
-  * *Goal*: _Check the command window output for itemization of each parameter in a given Group_
-    * Use the debugging output option {{{OUTPUT_DEBUG_UPDATE_FIT_PARAMS}}} (in [Manual#Settings Settings window], on by default)
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-example/figure-data_management-example.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-example/figure-data_management-example.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a> 
-
-_(Figure above) (a) Hierarchical data structures used in GUARDD, (b) example data structure discussed below_
-
-  * *Goal*: Show two ways (A or B) to itemize temperature-depenence of P,,A,, and k,,ex,,
-  * *Example: Method A - No constraint on rate analysis*
-      * Define P,,A,, and k,,ex,, at each temperature
-
-  * *Notation*
-    * CS = Curveset number (1 or 2)
-    * C = Curve number within the Curveset (1, 2, or 3)
-    * CTOT = Total Curve number within the Group (1, 2, 3, 4, 5, or 6)
-{{{
-FUNCTION: Group.updateFitParams
-Working on CS=1, Ile 10\delta_1
-	Working on C=1 (CTOT=1), 800-MQ-25C
-		Itemizing parameter 1 (dwH @ CS1, C1)
-		Itemizing parameter 2 (dwX @ CS1, C1)
-		Itemizing parameter 3 (PA @ 298K) *PA0*
-		Itemizing parameter 4 (kex @ 298K) *kex0*
-		Itemizing parameter 5 (R20 @ CS1, C1)
-	Working on C=2 (CTOT=2), 600-MQ-25C
-		Linking dwH to parameter 1, scaled by 0.750091x
-		Linking dwX to parameter 2, scaled by 0.750091x
-		Linking PA to parameter 3, scaled by 1.000000x
-		Linking kex to parameter 4, scaled by 1.000000x
-		Itemizing parameter 6 (R20 @ CS1, C2)
-	Working on C=3 (CTOT=3), 800-MQ-37C
-		Linking dwH to parameter 1, scaled by 1.000000x
-		Linking dwX to parameter 2, scaled by 1.000000x
-		Itemizing parameter 7 (PA @ 310K) *PA0*
-		Itemizing parameter 8 (kex @ 310K) *kex0*
-		Itemizing parameter 9 (R20 @ CS1, C3)
-Working on CS=2, Leu 22\delta_1
-	Working on C=1 (CTOT=4), 800-MQ-25C
-		Itemizing parameter 10 (dwH @ CS2, C1)
-		Itemizing parameter 11 (dwX @ CS2, C1)
-		Linking PA to parameter 3, scaled by 1.000000x
-		Linking kex to parameter 4, scaled by 1.000000x
-		Itemizing parameter 12 (R20 @ CS2, C1)
-	Working on C=2 (CTOT=5), 600-MQ-25C
-		Linking dwH to parameter 10, scaled by 0.750091x
-		Linking dwX to parameter 11, scaled by 0.750091x
-		Linking PA to parameter 3, scaled by 1.000000x
-		Linking kex to parameter 4, scaled by 1.000000x
-		Itemizing parameter 13 (R20 @ CS2, C2)
-	Working on C=3 (CTOT=6), 800-MQ-37C
-		Linking dwH to parameter 10, scaled by 1.000000x
-		Linking dwX to parameter 11, scaled by 1.000000x
-		Linking PA to parameter 7, scaled by 1.000000x
-		Linking kex to parameter 8, scaled by 1.000000x
-		Itemizing parameter 14 (R20 @ CS2, C3)
-}}}
-
-  
-  * *Example: Method B - Constrain rate analysis via ΔH and E,,AB,,*
-    * Define P,,A,, and k,,ex,, at a single temperature, T,,0,,
-    * Define ΔH for temperature-dependence of P,,A,, (vant Hoff)
-    * Define E,,AB,, for temperature-dependence of k,,A,, and, using ΔH, k,,B,, and therefore k,,ex,, = k,,A,,+k,,B,, (Arrhenius)
-    * *Note*: this uses ΔH and E,,AB,, instead of P,,A,,(37C) and k,,ex,,(37C)
-
-{{{
-FUNCTION: Group.updateFitParams
-		Number of temperatures 2 > 1
-		Itemizing parameter 1 (dH)
-		Itemizing parameter 2 (Eab)
-Working on CS=1, Ile 10\delta_1
-	Working on C=1 (CTOT=1), 800-MQ-25C
-		Itemizing parameter 3 (dwH @ CS1, C1)
-		Itemizing parameter 4 (dwX @ CS1, C1)
-		Itemizing parameter 5 (PA @ 298K) *PA0*
-		Itemizing parameter 6 (kex @ 298K) *kex0*
-		Itemizing parameter 7 (R20 @ CS1, C1)
-	Working on C=2 (CTOT=2), 600-MQ-25C
-		Linking dwH to parameter 3, scaled by 0.750091x
-		Linking dwX to parameter 4, scaled by 0.750091x
-		Linking PA to parameter 5, scaled by 1.000000x
-		Linking kex to parameter 6, scaled by 1.000000x
-		Itemizing parameter 8 (R20 @ CS1, C2)
-	Working on C=3 (CTOT=3), 800-MQ-37C
-		Linking dwH to parameter 3, scaled by 1.000000x
-		Linking dwX to parameter 4, scaled by 1.000000x
-		Linking PA @ 310K to PA0 @ T0=298K (param 5) via Temp (310K), dH (param 1), and Eab (param 2)
-		Linking kex @ 310K to kex0 @ T0=298K (param 6) via Temp (310K), dH (param 1), and Eab (param 2)
-		Itemizing parameter 9 (R20 @ CS1, C3)
-Working on CS=2, Leu 22\delta_1
-	Working on C=1 (CTOT=4), 800-MQ-25C
-		Itemizing parameter 10 (dwH @ CS2, C1)
-		Itemizing parameter 11 (dwX @ CS2, C1)
-		Linking PA to parameter 5, scaled by 1.000000x
-		Linking kex to parameter 6, scaled by 1.000000x
-		Itemizing parameter 12 (R20 @ CS2, C1)
-	Working on C=2 (CTOT=5), 600-MQ-25C
-		Linking dwH to parameter 10, scaled by 0.750091x
-		Linking dwX to parameter 11, scaled by 0.750091x
-		Linking PA to parameter 5, scaled by 1.000000x
-		Linking kex to parameter 6, scaled by 1.000000x
-		Itemizing parameter 13 (R20 @ CS2, C2)
-	Working on C=3 (CTOT=6), 800-MQ-37C
-		Linking dwH to parameter 10, scaled by 1.000000x
-		Linking dwX to parameter 11, scaled by 1.000000x
-		Linking PA to parameter 5, scaled by 1.000000x
-		Linking kex to parameter 6, scaled by 1.000000x
-		Itemizing parameter 14 (R20 @ CS2, C3)
-}}}
-
-== Organizing data ==
- * *Goal*: _Organize data in hierarchical manner to provide framework for fitting procedures_
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-large/figure-data_management-large.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-large/figure-data_management-large.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a> 
-
-_(Figure above) Datasets contain Curves, which are linked to by Curvesets within Groups_
-
-=== Dataset ===
-  * *Goal*: _Store a CPMG NMR dataset and the experimental conditions during acquisition_
-
-  * Properties
-    * *name*: _Name of dataset (e.g., 'MQ 800MHz 25C')_
-    * *AX_String*: _^13^C or ^15^N_
-    * *B,,0,,*: _Magnetic field strength (^1^H MHz)_
-    * *Temp*: _Temperature (K)_
-    * *TCPMG*: _Total CPMG time in pulse sequence_
-    * *SQX*: _True=Single Quantum dataset (Δω,,H,, fixed to zero), False=Multiple Quantum dataset (Δω,,H,, may be non-zero)_
-
-  * Data for each dispersion Curve
-    * Intensity values and errors
-    * R2eff values and errors
-    * ν,,CPMG,, values
-    * Pointers to [Manual#Curve Curves] which also hold this information
-
-  * Key functions in code: *{{{Dataset.m}}}*
-    * *{{{addData}}}*, Add a single RD Curve to the dataset
-    * *{{{calculateR2eff}}}*
-    * *{{{calculateErrorsUsingDuplicates}}}*
-    * *{{{enforceMinimumError}}}*
-    * *{{{readNlin}}}*
-    
-
-=== Curve ===
-  * *Goal*: _Store an NMR dispersion Curve (R,,2,,^Eff^(ν,,CPMG,,)) and the experimental conditions during acquisition, which correspond to its parent [Manual#Dataset Dataset]_
-
-  * Properties
-    * *name*: _Name of the Curve (e.g., 'Leu 12\delta_2')_
-    * *index*: _Residue number_
-    * *atom*: _Name of atom (N, H\alpha, C\delta_1, etc.)_
-    * *residue*: _Name of residue (Ile, Leu, Arg, etc.)_
-
-  * Properties from its parent [Manual#Dataset Dataset] (copied to each Curve for convenience)
-    * *AX_String*: _^13^C or ^15^N_
-    * *B,,0,,*: _Magnetic field strength (^1^H MHz)_
-    * *Temp*: _Temperature (K)_
-    * *TCPMG*: _Total CPMG time in pulse sequence_
-    * *SQX*: _True=Single Quantum dataset (Δω,,H,, fixed to zero), False=Multiple Quantum dataset (Δω,,H,, may be non-zero)_    
-
-  * Data from its parent [Manual#Dataset Dataset]  (copied to each Curve for convenieice)
-    * *Nobs*: _Number of observations_    
-    * *vcpmg*: _Array of vcpmg values (Hz)_
-    * *R2eff*: _Array of R2eff values (Hz)_
-    * *eR2eff*: _Array of errors in R2eff (Hz)_
-
-  * Each Curve is unique, but can have multiple _appearances_, each of which points to the same source data
-    * Multiple _appearances_ can occur in different [Manual#Curveset Curvesets]    
-    * Any changes to a Curve will alter every apperance of that Curve (e.g., in all Curvesets that point to it)
-
-  * Key functions in code: *{{{Curve.m}}}*
-    * Basic input/output
-  
-=== Curveset ===
-  * *Goal*: _Store a *set* of [Manual#Curve Curves] (each from the same NMR probe/assignment) which all share a single pair of chemical shift differences (Δω,,H,, and Δω,,X,,)_
-
-  * Properties
-    * *name*: _Name of Curveset_
-    * *index*: _Residue number_        
-    * *atom*: _Name of atom (N, H\alpha, C\delta_1, etc.)_
-    * *residue*: _Name of residue (Ile, Leu, Arg, etc.)_
-
-  * Curvesets contain _pointers_ to Curves (selected from Datasets)
-    * *Nc*: _Number of Curves in the Curveset_
-    * Pointers to [Manual#Curve Curves] which hold the actual data and experimental conditions
-
-  * Each Curveset only appears *once* (unlike Curves)
-
-  * Key functions in code: *{{{Curveset.m}}}*
-    * Basic input/output
-
-=== Group ===
-  * *Goal*: _Store a *Group* of [Manual#Curveset Curvesets] (each from different NMR probes/assignments) which all share a single set of exchange kinetics (P,,A,, and k,,ex,, at each temperature), and store any [Manual#Fit_Result Fit Results] for this Group_
-
-  * Properties
-    * *name*: _Name of Group_
-    * *index*: _Index of the Group (for sorting; this may correspond to residue number)_
-
-  * Storage of fitting results
-    * *exhibitsExchange*: _This Group exhibits exchange (true/false)_
-    * *bestFitIsOK*: _The best fit to this Group is OK (true/false)_
-    * *Nf*: _Number of fit results_
-    * *fitResults_Grid*: _Array of FitResults for the grid search_
-    * *fitResults*: _Array of FitResults for arbitrary fits (ex and no-ex)_
-    * *fitResult_NoEx*: _Fit result to no exchange model_
-    * *fitResult_Best*: _Best fit result out of all fits (ex and no-ex)_
-
-  * Groups contain _pointers_ to [Manual#Curveset Curvesets], each of which only appears once
-  * Each Group points to a parent [Manual#Session Session] which contains settings, etc.
-
-  * Key functions in code: *{{{Group.m}}}*
-    * *{{{delinearizePFmincon}}}*, De-linearize parameter array to matrix form for fitting
-    * *{{{getData}}}*, Return data point (NATURAL UNITS) for the desired parameter, temperature, B,,0,,, and Quantum Coherence
-    * *{{{gridSearch}}}*, Perform grid search to fit RD data with variety of initial conditions, and return updated fit_results
-    * *{{{updateFitParams}}}*, Identify the independent parameters and dependent scaling factors for the Group fit
-
-
-=== Fit Result ===
-  * *Goal*: _Pefrorm a single fit to a Group of RD data, and store the results_
-
-  * Storage of a single fit result
-    * Name of fit result
-    * Use of Arrhenius relation to constrain rate analysis
-    * Initial conditions for fit parameters
-    * Final values for fit parameters
-    * Errors in fit parameters (from Monte Carlo)
-    * Designation if each parameter is OK or not
-    * [Manual#Rate_Analysis RateAnalysis] structure for temperature-dependence
-
-  * Key functions in code: *{{{FitResult.m}}}*
-    * *{{{analyzeMe}}}*, Analyze the fitResult (usually called after fitMe()
-    * *{{{calculateErrors}}}*, Estimate error in dispersion fit using Monte Carlo bootstrapping
-    * *{{{fitMe}}}*, Fit the Group either to NOEXCHANGE or EXCHANGE model
-    * *{{{setParamIsOK}}}*, Set the param_isOK for the parameter name
-    * *{{{simMe}}}*, Simulate the fit (no optimization)
-    * *{{{setInitial_Kinetics_UnconstrainedRates}}}*, Set initial fitting conditions  
-    * *{{{setInitial_Kinetics_ConstrainedRates}}}*, Set initial fitting conditions  
-    * *{{{setInitial_Shifts}}}*, Set initial fitting conditions for Δω,,H,,, Δω,,X,,, and R20
-
-=== Rate Analysis ===
-  * *Goal*: _Store the results of a temperature-dependent analysis of the P,,A,, and k,,ex,,_
-
-  * Storage of temperature-dependent parameters
-    * All Arrhenius parameters
-    * arrhenius_isOK
-    * All vant Hoff parameters
-    * vantHoff_isOK
-
-  * Key functions in code: *{{{RateAnalyis.m}}}*
-    * *{{{analyzeMe}}}*, Update kinetic quantities using P,,A,,(T) and kex(T)
-    * *{{{getArrheniusPlotA}}}*, Return X and Y vectors for the Arrhenius plots A (ln(kA) vs. 1/T (or ln(kB) vs 1/T))
-    * *{{{getVantHoffPlot}}}*, Return X and Y vectors for van't Hoff plot (ln(K) vs 1/T)
-
-=== Session ===
-  * *Goal*: _Store the program data and settings_
-
-  * Store all [Manual#Dataset Datasets]
-  * Store all [Manual#Group Groups]
-
-  * Key functions in code: *{{{FitResult.m}}}*
-    * *{{{generateGroups}}}*, Generate minimal set of NEW Groups to partition Curves via NMR probe (index/atom)   
-    * *{{{generateCurvesetsForGroup}}}*, Generate minimal set of NEW Curvesets to partition Curves via NMR probe (index/atom)
-    * *{{{getPlotLabels}}}*, Return plot title and axis label for a given parameter name
-    * *{{{getPlotSymbolAndColor}}}*,  Return plot symbol character ('o', 's', etc.) and colorRGB vector
-    * *{{{loadDatasets}}}*, Load 1+ datasets using script file
-    * *{{{sortGroups}}}*, Sort the Groups by index and name
-    * *{{{convertUnits}}}*, Convert the parameter units for arbitrary parameter for natural or display units
-    * *{{{getParamRequirements}}}*, Does the parameter need a particular Temp and/or B,,0,,?
-
-== General use ==
-
-=== Acqquire and prepare data ===
-  * Acquire CPMG RD NMR spectra
-    * Multiple temperatures, B,,0,, fields, SQ and/or MQ dispersion for either ^13^C or ^15^N sites
-  * Extract peak intensities wtih NMRPipe [http://guardd.googlecode.com/files/Processing-RD--2008.07.07.zip download]
-
-=== Analyze data using GUARDD ===
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-flowchart-fitting/figure-flowchart-fitting.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-flowchart-fitting/figure-flowchart-fitting.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a>
-
-  # Load the data and execute the grid search on exchanging Groups
-  # For each Group, the grid search fit is selected, otherwise an individual fit is performed
-  # In YES to exchange, the current best fit is evaluated via χ^2^ maps and rate analyses
-    * If NO exchange, the {{{NoEx}}} fit is marked for subsequent analysis
-  # If fitted values can be optimized, the user supplies new initial conditions and re-evaluates the fit at (3)
-  # If fitted values cannot be optimized, the user designates which ones are valid/invalid, if any
-  # It is important that invalid parameters be designated as such, lest they be analyzed/displayed in subsequent output
-  # The user should enter text to describe the fitting result
-    * Especially if there is work to do (e.g., new Grid Search, multi-Curveset fitting, remove noisy data)
-  # Once fits are optimized, errors are calculated using Monte Carlo bootstrapping and results are viewed
-  # New Groups can be generated to test global motions and/or to refine fit results
-
-
-== GUARDD Graphical Interface ==
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--05.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--05.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
-
-=== GUARDD Input menu ===
-
-==== Clear session ====
-  * Clears the session, as if the program was just opened
-
-==== Load session ====
-  * Clears the current session
-  * Loads a previously saved GUARDD session (a ".mat" MATLAB variables file)
-  * This may take a relatively long time to load
-    * 1 Mb file takes ~0.5 min
-    * 10 Mb file takes ~5 min
-  * Read about the Session file [FileFormats#Input/Output:_GUARDD_Session_file here]
-
-==== Settings ====
-  * *Goal*: Change program settings here
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/manual-GUARDD-2011.06.16--settings.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/manual-GUARDD-2011.06.16--settings.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
-
-  * Take special note of OUTPUT_DEBUG flags, which are helpful to see program logic during execution
-  * The items on this list are set in the code via {{{Session.param_info}}}
-
-==== Data Manger ====
-  * *Goal*: _Manage datasets, Curves, Curvesets, and Groups for analysis (input and basic output)_
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--04.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--04.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
-
-*<u>Menu items</u>*
-  * *Input...*
-    * *Script...*
-      * Loads a script file [FileFormats#Input:_Script_file_to_load_data here]
-    * *Sequence file...*
-      * Load a sequence file [FileFormats#Input:_Sequence_file here]
-  * *Dataset...*
-    * *Sort Curves (this dataset)* → Curves sorted by {{{index}}} and {{{atom}}} are easier to browse
-    * *Sort Curves (all datasets)*
-  * *Group...*
-    * *Sort Groups* → Groups sorted by {{{index}}} and {{{name}}} are easier to browse
-      * Code: {{{Session.sortGroups()}}}
-    * *Generate from all data* → Generate minimal set of NEW Groups to partition Curves via NMR probe ({{{index}}} and {{{atom}}})
-      * Each new Group contains one new Curveset containing all the Curves for that NMR probe
-      * Code: {{{Session.generateGroups()}}}
-    * *Generate from subsets of data* → Same as above, except using Curves from only part of the dataset
-      * This launches the <u>Create Groups</u> dialog [Manual#Create_Groups here]
-      * Code: {{{Session.generateGroups()}}}    
-  * *Curveset...*
-    * *Sort Curvesets (this Group)...* -> Curvesets sorted by {{{index}}} and {{{name}}} are easier to browse
-    * *Generate from all data...* -> For the selected Group, generate minimal set of NEW Curvesets to partition Curves via NMR probe ({{{index}}} and {{{atom}}})
-      * This is the easiset way to generate a large Group (e.g., all Curves reporting same dynamic process)
-      * From here, certain Curvesets and Curves can be removed, if desired
-    * *Copy to Group...* -> Copy the selected Curveset to another Group
-      * This launches the <u>Select Group</u> dialog [Manual#Select_Group here]
-  * *Curve...*
-    * (Nothing yet)
-  * *Output...*
-    * *Datasets...*
-      * Writes a Dataset file [FileFormats#Output:_Datasets here]
-    * *Groups...*
-      * Writes a Groups file [FileFormats#Output:_Groups here]
-
-*<u>Panels and buttons</u>*
-  * Each table contains editable information on the object
-  * *Button: Save* -> Save changes made to the table
-  * *Button: Revert* -> Discard changes made to the table
-  * *Panel: Datasets*
-    * Displays all the loaded datasets    
-    * *Button: Add dataset* -> Adds an empty Dataset to the list
-      * This can be edited and Curves can be loaded manually using nlin.tab file [FileFormats#Input:_NMRPipe_nlin.tab_and_taufile.txt here]
-      * This is NOT the preferred method to load data (use script file instead, [FileFormats#Input:_Script_file_to_load_data here])
-    * *Button: Remove dataset* -> Removes the selected dataset from the list    
-  * *Panel: Curves in selected dataset*
-    * Lists all the Curves and displays their properties
-    * *Note*: Changing Curve properties here will propagate to all apperances of that Curve
-    * *Button: Load Curve(s)* -> This is NOT the preferred method to load data (use script file instead, [FileFormats#Input:_Script_file_to_load_data here])
-    * *Button: Remove Curve* -> Removes the selected Curve from the Dataset (and ALL appearances of that Curve)
-  * *Panel: Groups for fitting*
-    * Lists all the Groups in the Session
-    * *Button: New* -> Add an empty Group
-      * Useful for creating custom Groups with desired Curvesets and Curves
-    * *Button: Remove* -> Remove the selected Group
-    * *Duplicate Group* -> Copy the Group and all Curvesets within
-      * Useful for creating custom Groups (e.g., copy then add/remove Curvesets)
-  * *Panel: Curvesets in selected Group*
-    * Displays all the Curvesets in the selected Group
-    * *Button: New* -> Add an empty Curveset to the selected Group
-    * *Button: Remove* -> Remove the selected Curveset from the selected Group
-    * *Button: Copy to Group* -> Copy the selected Curveset to another Group
-      * This launches the <u>Select Group</u> dialog [Manual#Select_Group here]
-  * *Panel: Curves in selected Curveset*
-    * Displays all the Curves which are pointed to by the selected Curveset
-    * *Note*: Changing Curve properties here will propagate to all apperances of that Curve
-    * *Button: Add Curve* -> Add the Curve that is selected from the Dataset (on the left)
-    * *Button: Remove Curve* -> Remove the appearance of this Curve from the Curveset (does NOT delete Curve from the dataset)
-
-===== Create Groups =====
-  * *Goal*: _Create a set of Groups using a subset of the data_
-    * Helpful when only part of a large dataset is desired
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--03.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--03.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
-  * Tutorial: Advanced Group creation [Tutorial#Create_a_multi-curveset,_multi-temperature_group here]
 
-===== Select Group =====
-  * *Goal*: _Select a Group so that the selected Curveset can be copied to it_
+  # <u>Data Manager</u>
+    # *Group...Generate from subset of data...*
+  # <u>Create Groups</u>
+    # Make groups only for index 22
+      # Check _Index_
+      # Type _22_
+    # Click *Generate groups*
+  # <u>Data Manager</u>
+    # *Group...Sort groups*
+  # Close the <u>Data Manager</u> window
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--13.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--13.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--04.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--04.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
-  * Tutorial: Advanced Group creation  [Tutorial#Create_a_multi-curveset,_multi-temperature_group here]
+=== Select groups that exhibit exchange ===
+  * *Goal*: _Determine which groups exhibit flexibility, and therefore warrant further analysis_  
+    * *Details*: Read more about describing dispersions in the [Manual#Describing_dispersions Manual]
+  # <u>Main</u>
+    # Click *Refresh* to show loaded groups
+    # Use *<* and *>* to cycle through groups
+    # Check *Exch?* if the data are not horizontal (i.e., if R,,ex,, > 0)
+      # *Note*: all residues exhibit exchange except Ile 61δ,,1,, and Ile 68δ,,1,,
 
-===== Tutorial Tasks =====
-  * Tutorial: Load data [Tutorial#Load_data here]
-  * Tutorial: Basic Group creation [Tutorial#Create_groups_for_fitting here]
-  * Tutorial: Advanced Group creation (copy) [Tutorial#Create_a_multi-curveset,_multi-temperature_group here]
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--05.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--05.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
+=== Fit RD data ===
+  * *Goal*: _Obtain best-fit values for the 4-5 parameters required to describe each curve_
+    # Δω,,H,, = ^1^H chemical shift difference between states A and B (ppm, rad/s, Hz) - *MQ only*
+    # Δω,,X,,= ^A^X chemical shift difference between states A and B (ppm, rad/s, Hz)
+    # P,,A,, = Population fraction of A state (fraction, %)
+    # k,,ex,, = k,,A,, + k,,B,, = Total exchange rate between states (/s)
+    # R,,2,,^0^ = Transverse relaxation rate in the absence of exchange (Hz)
 
-==== RD Simulator ====
-  * *Goal*: _Explore the nature of RD pheneomnea and create simulated Group data for planning experiments and edification_
+==== Fit simple group manually ====
+  * *Goal*: _Use <u>Fit RD</u> window to manually fit one group_
+    * _Determine optimal P,,A,,, and k,,ex,,, at each temperature (x1) → propagate to all curves in group_
+    * _Determine optimal Δω,,H,,, Δω,,X,,, for each curveset (x1) → propagated to all curves in curveset_
+    * _Determine and R,,2,,^0^ for each curve (x4)_
+  * *Goal*: _Demonstrate basic fitting options (Simulate vs. Optimize, Individual vs. Grid)_
+  * *Details*: Read more about the <u>Fit RD</u> window in the [ManualFit_Dispersion Manual]
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-03.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-03.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+  # <u>Main</u>
+    # Check *Fit dispersion*
+    # Select _Ile 26_
+    
+  # <u>Fit RD</u>
+    # _Contains 6 panels for sequential fitting tasks_
+    # (1a) Procedure: *Individual*
+    # (1b) Task: *Simulate*
+    # (2) INITIAL CONDITIONS: _(Leave default)_
+      # *Note*: Often, one may change starting P,,A,,, k,,ex,,, Δω,,H,,, and Δω,,X,,
+    # Click *Go!* (1-5 sec)
+      # Note that these initial conditions are reasonable (fit is somewhat close to data)
+    # (1b) Task: *Optimize fit*
+    # Click *Go!* (5-30 sec)
+    # (3) SELECT fit and view results
+      # There are three "fits" to the data: {{NoEx, Sim-1, and Fit-1}}
+      # Select each at a time, and note that {{{Fit-1}}} is the best (lines go through data in panel (4))
+      # Select {{{Fit-1}}}
+      # Click *Set best fit*
+    # (6) Designate which parameters are OK
+      # Check *Best fit is OK*
+      # Click *All*
+      # *Note*: In general, one should more carefully check if the best fit is OK (see [Manual#Determining_which_parameters_are_OK Manual])
 
-  * Tutorial: Data simulation [Tutorial#Simulate_and_export_RD_data here]
-  * Key sections of code
-    * *{{{SimulationCurve.m}}}* holds a single curve for GUARDD simulation
-    * *{{{SimulationCurveset.m}}}* holds a single curvese for a GUARDD simulation
-    * *{{{SimulationSession.m}}}* holds information for all simulations in GUARDD
-
-===== Kinetic Simulator =====
-  * *Goal*: _Explore the nature of two-state exchange pheneomnea for planning experiments and edification_
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-04.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-04.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
-
-  * Tutorial: Kinetic simulation [Tutorial#Explore_temperature-dependence_of_exchange_kinetics here]
-  * See related: Kinetic simulation equations [Manual#Kinetic_simulator here]
-
-
-=== GUARDD Analysis menu ===
-
-==== Fit Dispersion ====
-  * *Goal*: _Implement fits to Group, view results, log notes, and designate paramter validity_
-  * *Goal*: _The "product" is a *best* fitResult, and its parameters which are OK (those are used/displayed in subsequent analyses)_
-  * *Note*: Tasks completed in this  window are autoamatically committed (no need for an "OK" or "Save" command)
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--16.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--16.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
-
-  * This window contains six panels for fitting tasks
-  * *Panel: (1a) Procedure*
-    * Invividual -> Specify one set of initial conditions for one simulation or optimization
-    * Grid search -> Specify a range of initial conditiosn for many simulations or optimizations, read [Manual#Grid_search here]
-  * *Panel: (1b) Task*
-    * Optimize fit -> Starting at the initial conditions, iteratively alter parameter to minimize the χ^2^ for the Group, read [Manual#Fitting_data here]
-    * Simulate -> Simulate the iniital conditoins for the fit
-      * Useful for seeing what the initial conditions look like
-  * *Checkbox*: Use Arrhenius -> Use Arrhenius relation with ΔH and E,,AB,, for temperature-dependence of k,,ex,, and P,,A,, [Manual#Example_parameter_assignment link]
-  * *Button*: Go! -> Initiate task
-
-  * *Panel: (2) Set INITIAL CONDITIONS*
-    * Note: The initial value of R,,2,,^0^ for each Curve is set to Min(R,,2,,^Eff^) for that Curve
-    * This panel operates in (Individual) or (Grid Search) mode, determined by Panel (1a)
-    * *(Individual)*
-      * *Table: Group parameters* -> The kinetic parameters apply to the entire Group
-      * *Table: Curveset parameter* -> The structural parameter apply to each Curveset
-      * *Table: Data and initial conditions for each Curve (read-only)* -> Summary of dataset and its initial fit conditions    
-    * *(Grid Search)*
-      * *Table: Grid search* -> Limits of each dimension in grid earch, read [Manual#Grid_search here]    
-
-  * *Panel: (3) SELECT fit and view results*
-    * *List* -> Select one of the available fits
-      * The fit name is automatically generated from 5 features
-      # {{{FIT}}} vs {{{SIM}}}: Designates whether the fitResult is for an optimization (FIT) or simulation (SIM)
-      # {{{-1}}} vs {{{-G}}}: Designates whether the fitResult is from an individual fit (-1) or from a grid search (-G)
-      # {{{[--]}}} vs {{{[CR]}}}: Designates whether the Arrhenius "constrain rates" option is off (--) or on (CR)
-      # {{{Chi2=###}}}: Designates the value of χ^2^ for the Group (lower value is better fit)
-      # {{{[Date-Time]}}}: Designates the date and time at which the fitResult was created
-    * *Button: Set best fit* -> Designate the current fit as the best one, which is displayed in all appearances of Group parameters
-    * *Button: Delete fit* -> Remove the selected fit from the list
-    * *Button: Rename fit* -> Rename the currently selected fit
-      * Useful for when certain constraints are used, or if it is selected from a grid [Manual#Select_fit_from_grid_search here]
-    * *Button: Calc Errors* -> Initiate Monte Carlo error analysis on the Group [Manual#Monte_Carlo_error_estimation here]
-    * *Button: Set as ICs* -> Set the current fitResult as the initial conditions for the next fit
-      * Useful for altering fit conditions during user-directed optimization
-
-  * *Panel: (4) View data and SELECTED fit*
-    * (Self explanatory)
-
-  * *Panel: (5) Log notes for Group*
-    * These can be displayed in the <u>Notes</u> window [Manual#Notes here]
-    * These can be exported in the <u>Results Table</u> window [Manual#Display_results_table here]
-
-  * *Panel: (6) Designate if SELECTED fit is OK*
-    * To display/analyze a given best fit parameter, the best fit must be OK AND the particular parameter must be OK
-    * *Checkbox: Exchange*: The Group exhibits exchange (true/false)
-    * *Checkbox: Best fit is OK*: The Group fit is OK, which is required for subsequent display of fit results (true/false)
-    * *Button: Set best fit* -> Designate the current fit as the best one, which is displayed in all appearances of Group parameters
-    * *Button: All* -> Mark all the parameters as OK
-    * *Button: R* -> Make only R20 and Rex as OK
-    * *Button: None* -> Mark all of the parameters as NOT OK
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--06.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--06.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
-  * Tutorial: Basic fitting [Tutorial#Fit_simple_group_manually here]
-  * Tutorial: Multi-temperature fitting [Tutorial#Fit_multi-temperature_group_manually here]
-  * Tutorial: Multi-temperature + multi-Curveset fitting [Tutorial#Fit_a_multi-curveset,_multi-temperature_group here]
-  * See related: fitting equations [Manual#Carver-Richards_Jones_for_MQ_disperstions here]
-  * See related: minimizing χ^2^ [Manual#Fitting_data here]
+  * *Goal*: _If unsure about which initial conditions to use, the grid search fits multiple times with different initial conditions_
+      # (1a) Procedure: *Grid search*
+      # In the interest of time, use this relatively small grid
+
+|| 		|| *dwH(ppm)*	|| *dwX(ppm)*	|| *PA0(%)*	|| *kex0(/s)*	||
+|| *Min* 	|| 0.01  	|| 0.1  	|| 80  		|| 500  	||
+|| *Max* 	|| 0.1  	|| 3.00  	|| 99.9  	|| 3000  	||
+|| *Steps*	|| 1  		|| 2  		|| 2  		|| 3  		||
+
+      # Click *Save*
+      # (1b): Task: *Optimize fit*
+      # Click *Go!* (5-10 sec/fit x 12 fits = 60-120 sec)
+	# *Note*: _Progress can also be viewed in the MATLAB <u>Command Window</u>_
+      # (3) SELECT fit and view results
+	# The {{{Fit-G}}} result listed is the best fit (lowest χ^2^) out of all the 12 fits in the grid search
+	# The remaining 11 fits can be viewed in the <u>Chi2 Map</u> window (see [Manual#Display_Chi2_Map Manual]
+      # (6) Designate which parameters are OK
+      # Click *All*
+
+      # *Observe*: _Becuase the initial conditions used for {{{Fit-1}}} above were appropriate, both {{{Fit-1}}} and {{{Fig-G}}} yield the same result_
+      # *Note*: _The grid search can demonstrate success if the optimal fit is *insensitive* to inital conditions_
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--07.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--07.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+ * *Note*: Saving data and output plots are discussed [Tutorial#View_results_in_display_cluster below]
+
+==== Save GUARDD session to file ====
+  * *Goal*: _Save progress (loaded data and fits) to resume a GUARDD session later_
+  # <u>Main</u>
+    # *Output...Save session as...*
+    # _GUARDD will create an output folder named with the date, and suggest a filename for you_
+    # *Note*: _To change the default output folder, use the <u>Settings</u> window (see [Manual#Settings Manual])_
+  * *Tip*: _Save your work often (in case GUARDD and/or MATLAB crashes)_
+
+==== Fit multi-temperature group manually ====
+  * *Goal*: _Use <u>Fit RD</u> window to manually fit one group acquired at multiple temperatures_
+    * _Determine optimal P,,A,,, and k,,ex,,, at each temperature (x3) via two methods (A and B) → propagate to all curves in group_
+    * _Determine optimal Δω,,H,,, Δω,,X,,, for each curveset (x1) → propagated to all curves in curveset_
+    * _Determine and R,,2,,^0^ for each curve (x10)_
+
+  * *Goal*: _Demonstrate multi-temperature fitting options_
+    * Method A (No rate constraint): _Determine optimal P,,A,, and k,,ex,, at each temperature_
+    * Method B (Impose rate constraint): _Determine optimal P,,A,, and k,,ex,, at some temperature T,,0,,, with ΔH and E,,AB,, to determine P,,A,, and k,,ex,, at an arbitrary temperature_  
+    * *Details*: Read more about assigning fitting parameters in the [Manual#Assigning_parameters_for_fitting Manual]
+
+  * *Goal*: _Fit without rate constraints (Method A)_
+  # <u>Main</u>
+    # Select _Leu 22delta1_
+    # _The <u>Fit RD</u> window should automatically open (no double-click required)_
+      # _If it does not open, check *Fit dispersion* then select *Leu 22delta1*_
+  # <u>Fit RD</u>    
+    # (1a) Procedure: *Individual*
+    # (1b) Task: *Simulate*
+    # Uncheck *Use Arrhenius*
+    # (2) Individual initial conditions
+
+|| *Temp(C)* 	|| *PA(%)*	|| *kex(/s)*	||
+|| 25		|| 95		|| 1000		||
+|| 32		|| 96		|| 1200		||
+|| 37		|| 97		|| 1500		||
+
+|| *Curveset*	|| *dwH(ppm)*	|| *dwX(ppm)*	||
+|| Leu 22\delta1|| 0.1		|| 1		||
+
+    # Click *Go!* (1-5 sec)
+      # Note that these initial conditions are reasonable (fit is somewhat close to data)
+    # (1b) Task: *Optimize fit*
+    # Click *Go!* (5-30 sec)
+
+    # (3) Select {{{Fit-1[--]}}} fit result
+      # Click *Set best fit*
+    # (6) Designate that all parameters are OK
+      # Check *Best fit is OK*
+      # Click *All*
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--08.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--08.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
-==== Batch Task ====
-  * *Goal*: _Queue up lengthy computations for sequential processing_
+  * *Goal*: _Fit with rate constraints (Method B)_
+  # <u>Fit RD</u>    
+    # (1a) Procedure: *Individual*
+    # (1b) Task: *Simulate*
+    # Check *Use Arrhenius*
+    # (2) Individual initial conditions
+      
+|| *T0(C)*	|| *PA0(%)*	|| *kex0(/s)*	|| *dH(kcal/mol)*	|| *Eab(kcal/mol)*	||
+|| 25		|| 95		|| 1000		|| -5			|| 1			||
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--18.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--18.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+|| *Curveset*	|| *dwH(ppm)*	|| *dwX(ppm)*	||
+|| Leu 22\delta1|| 0.1		|| 1		||
 
-  * Tutorial: set up a batch task [Tutorial#Perform_batch_task here]  
+    # Click *Go!* (1-5 sec)
+      # Note that these initial conditions are reasonable (fit is somewhat close to data)
+    # (1b) Task: *Optimize fit*
+    # Click *Go!* (5-30 sec)
 
-==== Notes ====
-  * *Goal*: _Document notes on Session, and read notes on all Groups_
+    # (3) Select {{{Fit-1[CR]}}} fit result
+      # Click *Set best fit*
+    # (6) Designate that all parameters are OK
+      # Check *Best fit is OK*
+      # Click *All*
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--19.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--19.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--09.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--09.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
-  * Group notes can be modified in the <u>Fit RD</u> window [Manual#Fit_Dispersion here]
-  * Group notes can be read and exported to plain-text in the <u>Results Table</u> [Manual#Display_results_table here]
-  * Tutorial: View notes [Tutorial#Document_notes_for_organization here]
+==== Examine rate analysis (vant Hoff and Arrhenius) ====
+  * *Goal*: _Use <u>Rates</u> window to examine temperature-dependence of rates (vant Hoff and Arrenius)_
+  # <u>Main</u>    
+    # _Make sure *Leu 22delta1* is selected_
+    # *Output...Display rates...*
+  # <u>Rates</u>
+    # Select fit: *`Fit-1[--]`*
+      # The rates in this fit are independently determined for each temperature
+      # ΔH, E,,AB,,, and E,,BA,, are *extracted* from the slopes
+    # Select fit: *`Fit-1[CR]`*
+      # The rates are *constrained* to lie along the line with slope ΔH, E,,AB,,, or E,,BA,, 
+    # _Save the figure to a file_
+    # Close <u>Rates</u>
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--10.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--10.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+==== View fits to RD data ====
+  * *Goal*: _Use <u>Display RD</u> window to assess the fit to the RD data, and prepare an output figure_
+
+  * *Goal*: _Create a 3D plot that highlights the amount of data in the set_
+  # <u>Main</u>    
+    # _Make sure *Leu 22delta1* is selected_
+    # *Output...Display RD...*
+  # <u>Display RD</u>
+    # Select all the curves in the Curveset(Curve) list
+    # Select fit {{{Fit-1[CR]}}} from fit list
+    # Check *Y scale* to auto-scale the Y-axis for this group only
+    # Check *3D Angle*
+    # Uncheck *Show Residuals*
+    # Click *Save Figure to Disk* icon in taskbar
+    # _GUARDD will prepare a filename for saving, and you must type the file extension_
+    # Type *ps* to save as a postscript file and click *Save* (or hit *Enter*)
+    
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--11.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--11.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+  * *Goal*: _Create a 2D plot with residuals that highlights the fit to some of the data_
+  # <u>Display RD</u>
+    # Select only the following curves from the list
+      # Curve 1: 800-MQ-25C
+      # Curve 5: 800-MQ-32C
+      # Curve 8: 800-MQ-37C
+    # Select fit {{{Fit-1[--]}}} from fit list
+    # Uncheck *3D Angle*
+    # Check *Show Residuals*
+    # Click *Save Figure to Disk* icon in taskbar
+    # _GUARDD will prepare a *new* filename becuase it is a different fit number_
+    # Type *ps* to save as a postscript file and click *Save* (or hit *Enter*)
+    # Close the <u>Display RD</u> window
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--12.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--12.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+  * *Save the session often*
+    # <u>Main</u>
+      # *Output...Save session as...*
+
+==== Create and fit a multi-curveset, multi-temperature group manually ====
+  * *Goal*: _Prepare and fit a relatively large group of data_
 
 
-==== Debug ====
-  * Runs the code in the function {{{GUARDD.m/menu_run_code_Callback()}}}, used for debugging
-  * Helpful for debugging features of GUARDD
+===== Create a multi-curveset, multi-temperature group =====
+  * *Goal*: _Use <u>Data Manager</u> to create a group with multiple curvesets_
+  # <u>Main</u>
+    # *Input...Data manager...*
+  # <u>Data Manager</u>
+    # Create a new group for Leu 22
+      # Click *New* in the panel _Groups for fitting_
+      # Table on right, enter group *name*: _Leu 22_
+      # Table on right, enter group *index*: _22_
+      # Click *Save* in the panel _Groups for fitting_
+    # Add two curvesets to this new group
+      # Select group *Leu 22\delta1*
+      # Select curveset *Leu 22\delta1*
+      # Click *Copy to group*
+    # <u>Select Group</u>
+      # Select group *Leu 22* (at the bottom)
+      # Click *Select*
+      # (Repeat this process with the second curveset, *Leu 22\delta2*)
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--13.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--13.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+    # *Group...Sort groups...*
+    # Make sure that group _Leu 22_ contains two curvesets: _Cp(Leu 22\delta1)_ and _Cp(Leu 22\delta2)_
+      # *Note*: A *copy* ("Cp") is made because this is a *different* curvest than the original, and therefore may contain a *different* set of curves (e.g., only one temperature, only MQ)
+      # It can be *renamed* if desired, with no adverse effects
+      # See [Manual#Organizing_data Manual] for more on organizing data
+    # Close <u>Data Manager</u>
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--14.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--14.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+===== Fit a multi-curveset, multi-temperature group =====
+  * *Goal*: _Use <u>Fit RD</u> window to manually fit one group containing multiple curvesets_
+    * _Determine optimal P,,A,,, and k,,ex,,, at each temperature (x3) → propagate to all curves in group_
+    * _Determine optimal Δω,,H,,, Δω,,X,,, for each curveset (x2) → propagated to all curves in curveset_
+    * _Determine and R,,2,,^0^ for each curve (x20)_
+  
+  # <u>Main</u>
+    # Uncheck *Fit dispersion* so the window does not open automatically     
+    # Click *Refresh* so the new group appears    
+    # Select *Leu 22*
+    # Check *Exch?*
+    # *Analysis...Fit dispersion...*
+  # <u>Fit RD</u>    
+    # (1a) Procedure: *Individual*
+    # (1b) Task: *Optimize fit*
+    # Uncheck *Use Arrhenius*
+    # (2) Individual initial conditions
+
+|| *Temp(C)* 	|| *PA(%)*	|| *kex(/s)*	||
+|| 25		|| 95		|| 1000		||
+|| 32		|| 96		|| 1200		||
+|| 37		|| 97		|| 1500		||
+
+|| *Curveset*	|| *dwH(ppm)*	|| *dwX(ppm)*	||
+|| Cp(Leu 22\delta1)|| 0.1	|| 1		||
+|| Cp(Leu 22\delta1)|| 0.1	|| 1		||
+
+    # Click *Go!* (50-100 sec)
+    # (3) Select `Fit-1[--]` fit result
+      # Click *Set best fit*
+    # (6) Designate that all parameters are OK
+      # Check *Best fit is OK*
+      # Click *All*
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--16.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--16.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+  
+  * *Goal*: _Demonstrate issue that some optimized fits are sensitive to initial conditions (especially noisy and/or many data)_  
+  # <u>Fit RD</u>
+    # Fit without rate constraints
+    # (1a) Procedure: *Individual*
+    # (1b) Task: *Optimize fit*
+    # Uncheck *Use Arrhenius*
+    # (2) Individual initial conditions
+
+|| *Temp(C)* 	|| *PA(%)*	|| *kex(/s)*	||
+|| 25		|| 90		|| 2000		||
+|| 32		|| 90		|| 2000		||
+|| 37		|| 90		|| 2000		||
+
+|| *Curveset*	|| *dwH(ppm)*	|| *dwX(ppm)*	||
+|| Cp(Leu 22\delta1)|| 0.1	|| 1		||
+|| Cp(Leu 22\delta1)|| 0.1	|| 1		||
+
+    # Click *Go!* (50-100 sec)
+    # (3) Select `Fit-1[--]` fit result      
+    # (6) Designate that all parameters are OK
+      # Check *Best fit is OK*
+      # Click *All*
+
+  * *Observe*: _This optimized fit is significantly different than pevious {{{Fit-1[--]}}}
+
+|| *Fit*	|| *PA(%)* 	|| *kex(/s)*	|| *Chi2*	||
+|| First	|| 87.4		|| 1094.0	|| 394.78	||
+|| Second	|| 79.3		|| 1179.9	|| 457.38	||
+
+    * There are systematic ways to assess quality of fit [Tutorial#Assess_quality_of_fit below]
+    * Close <u>Fit RD</u> window
+    
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--17.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--17.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+  * *Save the session often*
+    # <u>Main</u>
+      # *Output...Save session as...*
+
+==== Perform batch task ====
+  * *Goal*: _Fit several groups sequentially to obviate need for user input_
+  # <u>Main</u>
+    # *Analysis...Batch task...*
+  # <u>Batch</u>
+    # Select groups for analysis
+      # Highlight rows corresponding to each group
+      # Click *Include* button
+      # *Note*: _The checkboxes are read-only (not clickable, sorry!)_
+    # Specify the task
+      # Grid search: *Optimize fit*
+      # Use Arrhenius: *Unchecked*
+	# *Note*: _Fixing Arrhenius analysis adds two more dimensions to the grid search (dH and Eab)_
+      # Errors: *Unchecked*
+    # Click on any one row to specify grid search limits
+
+|| 		|| *dwH(ppm)*	|| *dwX(ppm)*	|| *PA0(%)*	|| *kex0(/s)*	||
+|| *Min* 	|| 0.01  	|| 0.1  	|| 80  		|| 500  	||
+|| *Max* 	|| 0.1  	|| 3.00  	|| 99.9  	|| 3000  	||
+|| *Steps*	|| 1  		|| 2  		|| 2  		|| 3  		||
+
+    # Click *Save to Selected* to save thid grid to all of the groups in the batch
+    # Estimate time required
+      # _This calculator will help plan the time required for an estimated steptime_
+      # _As seen in the tutorial, each fit step may take 5-100 sec, depending on the size of data and accuracy of initial conditions_
+      # Estimate *10 sec/step*, for a total of *~20 min*
+    # Click *Go!*
+
+  * *Note*: _After each group step is done, a session file {{{GUARDD-Session--Batch_Progress.mat}}} is written to the default output directory_
+    * This was designed for two purposes
+      # In case the program crashes, progress is saved
+      # Allows the user to start a batch task on one computer (e.g., at work), then download/view the results remotely on another computer (e.g., at home)
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--18.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--18.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
-=== GUARDD Output menu ===
+=== Time for a break? ===
+  * _This is a good stopping point in the tutorial, in case you want to resume later_
+  * _The batch task does not need to be completed_
+  * _The tutorial proceeds using a pre-saved GUARDD session_
 
-==== Save session ====
-  * *Goal*: _Write [Manual#Session Session] to MATLAB file to save data and program state_
-  * Read about Session file [FileFormats#Input/Output:_GUARDD_Session_file here]
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/take-a-break-from-work.jpg"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/take-a-break-from-work.jpg" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
-==== Display Dispersion ====
-  * *Goal*: _Display RD Curves in a Group to assess fit quality (via residuals) and prepare figures for dissemination_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--11.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--11.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--12.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--12.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+=== Assess quality of fit ===
+  * *Goal*: _Determine how well RD parameters are determined and which parameters are OK_
+    * Increasingly challenging for larger and/or noisier datasets
 
-  * Tutorial: display the dispersion [Tutorial#View_fits_to_RD_data here]
+  * *Methods of assessment*
+    # Check fit to data and the resulting *residuals*
+      # A well-determined fit yields residuals randomly distributed about zero (i.e., not systematically shaped)
+    # Check sensitivity of fit to initial conditions (*grid search*)
+      # A well-determined fit is insensitive to initial conditions
+    # Check sensitivity of fit to errors in data (*Monte Carlo errors*)
+      # A well-determined fit yields a narrow set of MC-fits from Monte Carlo analysis
+    # Check *exchange-timescale* parameter α
+      # Fast exchange (k,,ex,,>>Δω; α→2.0) precludes knowledge of P,,A,, and Δω
+      # This is often evident in prior steps
 
-==== Display Chi2 Map ====
- * *Goal*: _Browse the results of a grid search or MC error analysis to assess and refine fit_
+  * *Goal*: _Load GUARDD session with data already fit_
+  # <u>Main</u>
+    # *Input...Load session...*
+      # Select tutorial file: {{{tutorial/data/GUARDD-Session--Tutorial.mat}}}
+    * This session contains data from above, with completed 60-point grid search and MC errors
+    * Focus on two examples
+    # *Leu 22delta1 *, a good fit with known parameters
+      * Medium dataset (10 curves)
+      * α = 1.0: intermediate exchange
+      * Grid search: fit *is* sensitive to ICs, but well-defined solution at min(χ^2^)
+      * MC Errors: model example, symmetric about optimum solution
+      * Parameters: All are known
+    # *Ile 43*, a good fit with unknown parameters
+      * Small dataset (4 curves)
+      * α = 1.4-1.9: fast exchange
+      * Grid search: two solution with different values
+      * MC Errors: very wide, reflecting many fitting soltuions
+      * Parameters: P,,A,, and Δω unknown
 
-  * *Key info on features of chi2 maps*
-    * The χ^2^ map is a hypersurface with amplitude χ^2^ and one dimension for each independent fitting parameter
-      * E.g., 14 parameters yields a 14D hypersurface        
-    * Lower value of χ^2^ indicates a more precise fit to the data
-    * The goal is to obtain paramters at the *global* minimum of χ^2^
-    * Issue: the nonlinear nature of RD yields a "rough" χ^2^ map that can trap the fitting routine in local minima
+==== View fit and residuals ====
+  * *Goal*: _View the RD fit and residuals to help assess fit quality_
+  * Confer prior tutorial steps on using the <u>Display RD</u> window [Tutorial#View_fits_to_RD_data here]
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--12.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--12.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+==== View Grid Search Chi2 Map for good fit ====
+  * *Goal*: _Assess the extent to which fitting is sensitive to initial conditions_
+  * *Key info on features of chi2 maps*    
+    * A Chi2 map displays a set of parameter values (e.g., for k,,ex,,) on the X-axis and the goodness of fit (χ^2^) associated with that value on the Y-axis
+    * The most precies fit is at the min(χ^2^)
+    * Chi2 maps take a variety of shapes, such as ".", "U", "W", and "-"
+    * *Details*: Read more in the [Manual#Grid_Search Manual]
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chi2_maps/figure-chi2_maps.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chi2_maps/figure-chi2_maps.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
-_(Figure above) The response of χ^2^ to just one parameter, k,,ex,,, produces a 2D slice through the hypersurface to illustrate four commonly encountered shapes that pose distinct challenges in obtaining an accurate fit._
-
+  * *Goal*: _Use both <u>Chi2 Map</u> window and <u>Fit RD</u> window to view data_
+  # <u>Main</u>
+    # Select *Leu 22delta1*
+    # *Output...Display chi2 map...*
+    # *Analysis...Fit dispersion...*
+  # <u>Chi2 Map</u>    
+    # *Parameters*: dwH, dwX, Pa, kex
+    # *Curveset (Curve)*: 800-MQ-25C, 800-MQ-32C, 800-MQ-37C
+    # *Top%* slider all the way to the top (100%)
+    # *Fit*: {{{* FIT-G[--] Chi2=93.33}}}
+    # *Task to Display*: Grid Search
+    # *Results to Display*: Final
+    # *Display Mode*: Scatter
 
   * *Goal*: _Interpret the *Grid Search* results the <u>Chi2 Map</u> window_
     # Each subplot shows a single parameter on the X-axis, and its different values in different fits
@@ -691,37 +598,40 @@ _(Figure above) The response of χ^2^ to just one parameter, k,,ex,,, produces a
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--20.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--20.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
+  * *Observe*: _The fit to the no exchange model is inappropriate_
+    # <u>Chi2 Map</u>
+      # Select *Fit*: {{{NoEx[--]}}}
+      # The χ^2^ = 2163.58, which is very large
+      # The 60 optimized fits are well below this value
+    # <u>Fit RD</u>
+      # Select *Fit*: {{{NoEx[--]}}}
+      # The fit is a poor representation of the data
+      
+  * *Observe*: _The best fit is appropriate since the chi2 map remains U-shaped near the best result_    
+    # <u>Chi2 Map</u>
+      # Select *Fit*: {{{* FIT-G[--] Chi2=93.33}}}
+      # Move the *Top%* slider down to 50% in 4-6 small steps
+      # *Observe*: _The chi2 map remains U-shaped even as the poorest fits are eliminated from display_
 
-  * Initial conditions sampled from the grid search are uniformly distributed across paramter values
-    * This is shown by selecting *Initial* conditions and *Histogram* mode
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--21.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--21.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--30.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--30.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
-
-  * Tutorial: View grid search results for a good fit [Tutorial#View_Grid_Search_Chi2_Map_for_good_fit here]
-  * Tutorial: View grid search results for a bad fit [Tutorial#View_Grid_Search_Chi2_Map_for_fit_with_uknown_parameters here]
-  * See related: grid search [Manual#Grid_search here]
-
-
-===== Select fit from grid search =====
-  * *Goal*: _To examine a particular fit from the grid search that is not the min(χ^2^), it must be selected from the list_
-  * This is helpful for checking another well in χ^2^ space (e.g., [http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chi2_maps/figure-chi2_maps.png Figure_C])
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--31.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--31.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
-
-  * Tutorial: select fit from grid search [Tutorial#View_Grid_Search_Chi2_Map_for_fit_with_uknown_parameters here]
-
-
-===== Display Monte Carlo Errors =====
- * *Key info on Monte Carlo analysis*
+==== View Monte Carlo Errors Chi2 Map for good fit  ====
+  * *Goal*: _Assess the extent to which fitting is sensitive to noise in the data_
+  * *Key info on Monte Carlo analysis*
     * The goal of MC analysis is to generate and fit many *synthetic* datasets which differ from one another by an amount related to the goodness of fit to the original data
     * Each synthetic dataset will have a different set of optimal fit values (e.g., P,,A,,, k,,ex,,)
     * The distribution of fitted values reflects the degree to which the original data define its *own* optimal values
     * Example: A worse optimal fit to the original data yields *more different* MC datasets and therefore *more different* optimal parameter values
+    * *Details*: Read more about Monte Carlo error estimation in the [Manual#Monte_Carlo_error_estimation Manual]
 
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a>
-
-_(Figure above) The example data contains 5 observations (black), 5 residuals (red), and 10 synthetic datasets (green squares), each with their own fit (green dotted lines) and set of optimized parameter values_
+  # <u>Chi2 Map</u>
+    # Make sure *Fit*: {{{* FIT-G[--] Chi2=93.33}}} is selected
+    # Set *Top%* slider all the way to the top (100%)
+    # *Task to Display*: MC Errors
+    # *Results to Display*: Final
+    # *Display Mode*: Scatter
 
   * *Goal*: _Interpret the *MC Errors* results the <u>Chi2 Map</u> window_
     # Each subplot shows a single parameter on the X-axis, and its different values in different fits
@@ -739,533 +649,292 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--22.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--22.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
+  * *Observe*: _The symmetry of the MC chi2 maps indicate reliable estimation of error, and is consistent with reasonable parameter values_
+    * The scatter plot illustrates a circular distribution about the optimal result      
+    * The histogram is roughly symmetric, and is well-described by the standard deviation
+
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--23.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--23.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 
-  * Tutorial: View Monte Carlo results for a good fit [Tutorial#View_Monte_Carlo_Errors_Chi2_Map_for_good_fit here]
-  * Tutorial: View Monte Carlo results for a bad fit [Tutorial#View_Monte_Carlo_Errors_Chi2_Map_for_fit_with_uknown_parameters here]
-  * See related: Monte Carlo error estimation [Manual#Monte_Carlo_error_estimation here]
-
-
-==== Display rates ====
-  * *Goal*: _Display results of rate analysis using Arrhenius and vant Hoff relations_
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--10.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--10.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
-
-  * Tutorial: view the rates [Tutorial#Examine_rate_analysis_(vant_Hoff_and_Arrhenius) here]
-  * See related: Arrhenius equations [Manual#Arrhenius:_Determining_activation_energy here]
-  * See related: vant Hoff equations [Manual#vant_Hoff:_Determining_enthalpy here]
-
-==== Display group results ====
-  * *Goal*: _Visually organize fitting results to seek the nature of molecular motions_
-
-  * *Button: New* -> Add new empty DisplayCluster to hold Groups for displaying results
-  * *Panel: All Groups* -> Lists all Groups available to add/remove to/from the selected DisplayCluster
-  * *Button: Make selection* -> Deprecated function to intelligently select Groups from GUARDD
-  * *Panel: Groups in DisplayCluster* -> Lists all Groups in the selected DisplayCluster (can be removed)
-
-  * *Panel: Display Settings*
-    * *Table: Subplots* -> Used to create a set of subplots for the display
-    * *Plot number* -> Select the subplot number (From 1 to Nrow*Ncol)
-    * *Type* -> Select plot type (Custom will allow for any parameters to be displayed, others are pre-arranged)
-    * *Y-Axis* -> Select what to be displayed on Y-axis (non-histogram only)}
-    * *X-Axis* -> Select what to be displayed on the X-axis
-    * *Table: Plot limits* -> Set NaN for auto-limits, or type in your own and use linear or log scale (applies to all subplots, sorry!)
-    * *Checkbox: Show Histogram* -> Shows the histogram (requires only X-axis values)
-
-  * Notes
-    * Some paramters plot one point per Group (e.g., P,,A,, or k,,ex,,(37C))
-    * Some parameter plot one point per Curveset (e.g., |Δω,,X,,|) and hence multiple points per Group
-    * Some paramters *could* plot one point per Curve (e.g., R,,ex,,) but the FIRST Curve is selected by default
-    * Otherwise there would be too many points on the plot
-  
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/GUARDD-Groups-2011.06.23--05.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/GUARDD-Groups-2011.06.23--05.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
-
-  * Tutorial: display Group results [Tutorial#View_results_in_display_cluster here]
-  * Key sections of code
-    * *{{{DisplayCluster.m}}}* Holds information on the name, color, and Groups for display
-    * *{{{ParamDisplay.m}}}* Holds information for display of the parameters (subplots, X and Y content)
-
-==== Display results table ====
-
-  * *Goal*: _Produce table of results for easy browsing_
-
-  * Notes
-    * Table is dynamically generated based on the user's selection criteria from an arbitrary set of RD parameters and Curves
-      * E.g., only P,,A,, and k,,ex,, at one temperature, instead of all RD parameters for all Curves for all Groups
-    * This customized table can be exported to plain-text for publication or external analysis
-
-  * *Button: Export to CSV* -> creates two plain-text files (two-column format and one-column format)
-    * One is easier for plotting in external programs
-    * Another is easier for preparing a publication quality table
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--25.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--25.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
-
-  * Tutorial: display results table [Tutorial#View_results_in_table here]
-
-== Tips for optimal use ==
-
-=== Program tips ===
-  * Save frequently
-  * Drawing windows is relatively slow
-    * Use the main display window to only update displays of interest
-  * Use a CPU monitor application to see when GUARDD is processing results (e.g., fitting, drawing windows, exporting files)
-  * Do not make other changes when performing grid search or error estimates
-    * Data can be viewed but not altered
-    * This is because data structures are stored before the batch run (or a single grid search or single error estimation) then re-saved upon completion of a batch step or single grid search or single error estimation  
-
-=== Fitting tips ===
-  * Usually dispersions with larger R,,ex,, have a more well-defined solution
-    * Small R,,ex,, and/or noisy data are usually accompanied by challenges in 
-
-  * If unsure about the fit, then don't use it
-    * Additional inaccurate information can obscure proper interpretation of dynamics
-
-  * Three solutions for ill-defined fits
-    # Select one of the fits, but mark the ill-defined parameters as “Not OK,”  thus preventing their mis-interpretation in subsequent analyses.
-    # Alter the Group and re-fit. One may remove noisy Curves and/or add additional Curvesets to help constrain the values of kex and PA.
-    # Acquire more data and re-fit the new Group. The RD Simulator can help determine optimal conditions of temperature, magnetic field strength, and/or quantum coherence for efficient use of spectrometer time, [Manual#RD_Simulator here]
-
-  * Check for outliers in fitted data
-    * Check sequence mapping for outliers
-    * Check χ2 and fits for those outliers
-    * What type of exchange do proximal residues exhibit?
-
-  * Make sure fits which show no exchange have “NoEx” model selected as best
-
-  * Check neighboring residues
-    * Check dispersions for neighboring residues to get an idea of the type of motions one may expect in that region of the structure
-    * If there is concerted motion, then k,,ex,, and Pa (and their temperature-dependence Ea(A → B), Ea (B → A), dH, dS) will be the same (or close) for residues close in structure
-    * Note: There is no requirement that neighboring residues be similar though
-
-  * k,,ex,, is most sensitive fitting parameter
-    * Use the largest number of grid search steps
-    * k,,ex,, should increase with temperature (e.g., Arrhenius)
-    * P,,A,, may increase (ΔH < 0), decrease (ΔH > 0) or remain constant (ΔH=0) with temperature
-
-== Limitations ==
-  * Liabilities of linkage to MATLAB
-    # GUARDD is slower than if it were coded using C or Python, for example
-      # MATLAB is an interpreted language
-      # Graphical interface uses Java
-      # Drawing the display, while reading or writing large session files, or while fitting data
-    # Malfunctions in MATLAB may hinder functionality of GUARDD
-      # However, enhancements to MATLAB may imbue enhancements to GUARDD
-    # User must have access to MATLAB (i.e., GUARDD is not a standalone program)
-      # However, MATLAB is a convenient cross-platform solution for dissemination of software
-  # Limitations of GUARDD functionality
-    # exchange model is restricted to two-state using the all-timescales MQ Carver-Richards-Jones formulation
-      # No simplifications assuming skewed populations (PB < PA) [Ishima1999]
-      # No simplifications assuming fast-exchange (kex > Δν)
-    # No three-site exchange
-    # No ZQ or DQ coherences
-    # No pressure-dependence of RD
-    # No Anti-TROSY/TROSY analysis
-    # No temperature-dependence via transition state theory
-    # No error analysis options: jacknife, covariance matrix method
-
-
-== Feedback, Suggestions, Bugs ==
-  * Please report bugs, suggestions, etc. in the Issues page [http://code.google.com/p/guardd/issues/list here]
-
-
-== Computational procedures ==
-
-=== Convert NMR signal intensity to relaxation rate ===
-  * *Goal*: Given NMR signal intensites, generate a relatxation Curve
-
-  * *Input*
-    # I(ν,,CPMG,,) = signal intensity in the 2D spectrum acquired with refocusing frequency ν,,CPMG,,
-    # I,,0,, = reference signal intensity obtained in the spectrum with no refocusing block
-    # T,,CPMG,, = duration of the refocusing block    
-  * *Output*
-    # R,,2,,^Eff^
-    # Errors in intensities σ(R,,2,,^Eff^) are estimated via standard deviation from repeat measures of I(ν,,CPMG,,)
-  
-  R,,2,,^Eff^ = -ln( I(ν,,CPMG,,)/I,,0,,) / T,,CPMG,,  
-
-=== Converting ppm to rad/s ===
-   * *Goal*: Obtain rad/s quantity for chemical shift difference using ppm value
-    * *Note* rad/s is requried for trigonometric functions, like tangent    
-    * *Note*: Hz = /s is useful for direct comparison to k,,ex,, (also in /s) in determining exchange timescale
-
-  * *Input*
-    * ω,,X,, (rad/s)
-    * γ,,X,, (from nucleus identity)
-    * B,,0,,
-  * *Output*
-    * ω,,X,,^(rad/s)^ = 2πB,,0,,γ,,X,,ω,,X,,^(ppm)^
-    * ν,,X,,^(Hz)^ = B,,0,,γ,,X,,ω,,X,,^(ppm)^
-
-=== Carver-Richards Jones for MQ disperstions ===
-  * *Goal*: Obtain dispersion Curve R,,2,,^Eff^ as a function of ν,,CPMG,, given a set of 5 parameters
-
-  * *Input*
-    # Δω,,H,,
-    # Δω,,X,,
-    # P,,A,,
-    # k,,ex,,
-    # R,,2,,^0^
-    # ν,,CPMG,,
-  * *Process*
-    # δ = 1 / (4ν,,CPMG,,)
-    # n = T,,CPMG,,ν,,CPMG,,
-    # Note: MQ simplifies to SQ if Δω,,H,, = 0
-    # (See equations below)
-  * *Output*   
-    # R,,2,,^Eff^
-  * *Location in code*
-    * {{{chi2_MQRD_CRJ_group.m}}}
-    * {{{chi2_MQRD_CRJ.m}}}
-  * *Reference*
-    * Korzhnev (2004)
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-01.png" alt="[UNLOADED IMAGE]"> </img>
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-02.png" alt="[UNLOADED IMAGE]"> </img>
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-03.png" alt="[UNLOADED IMAGE]"> </img>
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-04.png" alt="[UNLOADED IMAGE]"> </img>
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-05.png" alt="[UNLOADED IMAGE]"> </img>
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-06.png" alt="[UNLOADED IMAGE]"> </img>
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-07.png" alt="[UNLOADED IMAGE]"> </img>
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-08.png" alt="[UNLOADED IMAGE]"> </img>
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-09.png" alt="[UNLOADED IMAGE]"> </img>
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-10.png" alt="[UNLOADED IMAGE]"> </img>
-
-
-=== Fitting data ===
- * *Goal*: _Obtain a set of parameters that accurately describe RD Curves in the Group_
- * *Goal*: _Minimize the sum of squares target function_
-
-  * *Input*
-    # R,,2Eff,,^Obs^ = RD Curve data points
-    # σ(R,,2Eff,,^Obs^) = Errors in RD Curve data points
-    # Curve condition: B,,0,,
-    # Curve condition: Temperature
-    # Curve condition: QC
-    # Curve condition: ^A^X
-    # Curve condition: T,,CPMG,,
-    # Fitting parameters: *p* 
-      # P,,A,, and k,,ex,, for each temperature
-      # |Δω,,H,,| and |Δω,,X,,| for each Curveset
-      # R,,2,,^0^ for each Curve
-  * *Process*
-    # MATLAB fmincon iteratively alters the fitting parameters *p* to minimize the target function χ^2^
-    # R,,2,,^Calc^ = calculated point using the Curve conditions and the independent fitting parameters *p* for the Group
-    # χ^2^ becomes smaller as the Curve fit more closely matches the observed data
-  * *Output*
-    # χ^2^
-  * *Location in code*
-    * {{{FitResult.fitMe}}}
-  * *References*
-    * MATLAB {{{fmincon}}} [http://www.mathworks.com/help/toolbox/optim/ug/fmincon.html link]
-    * MATLAB interior point algorithm [http://www.mathworks.com/help/toolbox/optim/ug/brnoxzl.html#brnpd5f link]
-    * Bevington (2003)
-    * Motulsky (2003)
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-chi2_target.png" alt="[UNLOADED IMAGE]"> </img>
-
-
-=== Exchange broadening ===
-  * *Goal*: _Estimate exchange broadening R,,ex,, (height of the dispersion Curve) using the fitted RD Curve_
-
-  * *Input*
-    # R,,2Eff,,^Calc^ = RD Curve data points
-    # σ(R,,2Eff,,^Obs^) = Errors in RD Curve data points
-    # Curve condition: B,,0,,
-    # Curve condition: Temperature
-    # Curve condition: QC
-    # Curve condition: ^A^X
-    # Curve condition: T,,CPMG,,
-    # Fitting parameters: *p* 
-      # P,,A,, and k,,ex,, for each temperature
-      # |Δω,,H,,| and |Δω,,X,,| for each Curveset
-      # R,,2,,^0^ for each Curve
-  * *Process*   
-    # Sometimes evaluation at 0 Hz is not valid, therefore try 1 Hz, then 2 Hz, ...
-      # Try to use ν,,CPMG,, values as close to 0 and infinity as possible
-  * *Output*
-    # R,,ex,,
-  * *Location in code*
-    * {{{FitResult.analyzeMe()}}}
-    * {{{calculate_Rex.m}}}
-
-  R,,ex,, ~ R,,2Eff,,^Fit^(ν,,CPMG,,~0 Hz) - R,,2Eff,,^Fit^(ν,,CPMG,,~10^4^ Hz)
-
-=== Exchange timescale alpha ===
-  * *Goal*: _Estimate scaling factor α for time regime of chemical exchange_
-
-  * *Input*
-    # R,,ex,, at at least two field strengths
-    # Δω at the same field strengths
-  * *Output*
-    # α
-      * 0 <= α < 1	_Slow exchange_
-      * α = 1 		_Intermediate exchange_
-      * 1 < α <= 2	_Fast exchange_
-  * *Location in code*
-    * {{{FitResult.analyzeMe()}}}
-    * {{{calculate_alpha.m}}}
-  * *Reference*
-    * Millet, et al. (2000)
-
-  α = d( ln(R,,ex,,) ) / d( ln(Δω) )
-
-=== Arrhenius: Determining activation energy ===
-  * *Goal*: Obtain activation energy and pre-exponential rate to characterize temperature-dependence of rate
-
-  * *Input*
-    # P,,A,, at 2+ temperatures
-    # k,,ex,, at the same temperatures
-  * *Process*
-    # R = gas constant
-    # T = absolute temperature
-    # k = k,,A,, = (1-P,,A,,)k,,ex,, (or k,,B,, = P,,A,,k,,ex,,) = kinetic rate of exchange from A→B (or B→A)
-    # Errors from MATLAB's fit routine (provided data at more than two temperatures), or from propagation of relative error from the fitting variables (when limited to data at only two temperatures).
-  * *Output*    
-    # P = P,,AB,, (or P = P,,BA,,) Pre-exponential rate, the exchange rate from A→B (or B→A) at infinite temperature
-    # E = E,,AB,, (or E = E,,BA,,) = Activation energy (≈ enthalpy) required to exchange from A→B (or B→A)    
-  * *Location in code*
-    * {{{RateAnalysis.analyzeMe}}}
-  * *Reference*
-    * Winzor & Jackson (2006)
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-arrhenius.png" alt="[UNLOADED IMAGE]"> </img>
-
-
-=== vant Hoff: Determining enthalpy ===
-  * *Goal*: Obtain exchange enthalpy and entropy to characterize temperature-dependence of population
-
-  * *Input*
-    # P,,A,, at 2+ temperatures
-  * *Process*
-    # R = gas constant
-    # T = absolute temperature
-    # K = (1-P,,A,,) / P,,A,, = k,,A,, / k,,B,, = equilibrium constant for exchange
-    # Errors from MATLAB's fit routine (provided data at more than two temperatures), or from propagation of relative error from the fitting variables (when limited to data at only two temperatures).
-  * *Output*    
-    # ΔS = system entropy change from A→B
-    # ΔH = system enthalpy change from A→B    
-  * *Note*: Entropy is unreliable since it is highly sensitive to relatively noisy input data
-  * *Location in code*
-    * {{{RateAnalysis.analyzeMe}}}
-  * *Reference*
-    * Winzor & Jackson (2006)
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-vanthoff.png" alt="[UNLOADED IMAGE]"> </img>
-
-=== Kinetic simulator ===
-  * *Goal*: Itemizes all kinetic parameters of interest for two-state exchange, given minimal input required
-
-  * *Input*
-    # ΔH
-    # E,,AB,,
-    # k,,ex,,^0^ = k,,ex,,(T,,0,,)
-    # P,,A,,^0^ = P,,A,,(T,,0,,)
-    # T,,0,, is an arbitrary temperature
-  * *Process*   
-    # R = gas constant
-    # T = absolute temperature
-    # (See below)
-  * *Output*    
-    # ΔH
-    # ΔS
-    # E,,AB,,
-    # P,,AB,,
-    # E,,BA,,
-    # P,,BA,,
-    # k,,ex,,(T)
-    # P,,A,,(T)
-    # k,,A,,(T)
-    # k,,B,,(T)
-    # T is an arbitrary temperature
-  * *Location in code*
-    * {{{SimulationCurveset.setKineticSpecs}}}
-    * {{{SimulationCurveset.calc_PA}}}
-    * {{{SimulationCurveset.calc_kA}}}
-    * {{{SimulationCurveset.calc_kex}}}
-    * {{{SimulationCurveset.calc_kB}}}
-  * *Reference*
-    * Winzor & Jackson (2006)
-
-Using ΔH and P,,A,,(T0), the van't Hoff relation yields ΔS
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-03.png" alt="[UNLOADED IMAGE]"> </img>
-
-which, with ΔH, determines P,,A,, at any temperature via van't Hoff
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-04.png" alt="[UNLOADED IMAGE]"> </img>
-
-Next, using P,,A,, and kex at T,,0,, determines k,,A,, and k,,B,, at T,,0,,
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-05.png" alt="[UNLOADED IMAGE]"> </img>
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-06.png" alt="[UNLOADED IMAGE]"> </img>
-
-and using E,,AB,, and k,,A,, at T,,0,,, the Arrhenius relation yields P,,AB,,
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-07.png" alt="[UNLOADED IMAGE]"> </img>
-
-which, with E,,AB,,, yields k,,A,, at any temperature via Arrhenius
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-08.png" alt="[UNLOADED IMAGE]"> </img>
-
-Next, knowledge of P,,A,, and k,,A,, at any temperature yields kex at any temperature
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-09.png" alt="[UNLOADED IMAGE]"> </img>
-
-and therefore k,,B,, at any temperature
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-10.png" alt="[UNLOADED IMAGE]"> </img>
-
-Knowledge of k,,B,, at any temperature yields E,,BA,, via the Arrhenius relation and selection of any two temperatures T,,1,, and T,,2,, (e.g., 280 K and 320 K)
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-11.png" alt="[UNLOADED IMAGE]"> </img>
-
-Finally, using k,,B,,(T,,0,,) and E,,BA,,, the Arrhenius relation yields P,,BA,,
-
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-12.png" alt="[UNLOADED IMAGE]"> </img>
-
-
-
-
-=== Grid search ===
-  * *Motivation*
-    * Nonlinear nature of RD phenomena makes the relationship between χ^2^ and fitting parameters (*p*) difficult to predict
-    * Optimization algorithms often “fail” by finding a local minimum of χ^2^, which is sensitive to initial fitting conditions, instead of the intended global minimum of χ^2^  
-  * *Goal*: _Fit data multiple times to assess sensitivity of final fit to initial conditions_
-  
-  * *Six-dimensional (6D) grid search*
-    # |Δω,,H,,|
-    # |Δω,,X,,|
-    # P,,A,,^0^ = P,,A,,(T,,0,,), where T,,0,, is a specified temperature (e.g., 25C)
-    # k,,ex,,^0^ = k,,ex,,(T,,0,,), where T,,0,, is a specfied temperature (e.g., 25C)
-    # E,,AB,, (only for consraining rates via Arrhenius)
-    # ΔΗ (only for consraining rates via Arrhenius)
-
-  * *Each point specifies initial conditions for the fit, as follows*
-    * Δω values are used for every Curveset in the Group
-      * Note: this may be sub-optimal since each Curveset can have a different Δω value
-    * If constrain rates is NOT used
-      * P,,A,,^0^ is used for all temperatures in the Group
-      * k,,ex,,^0^ value is used at temperature T,,0,, and increased by 2x for each increase in 10C from T,,0,, (i.e., k,,ex,,(T) = k,,ex,,^0^^(T-T,,0,,)/10^)
-    * If constrain rates IS used
-      * P,,A,,(T) determined using P,,A,,^0 and ΔH
-      * k,,ex,,(T) determined using k,,ex,,^0^ and E,,AB,,
-    * R,,2,,^0^ is always the minimum value of the observed R,,2,, in the Curve
-
-
-*Recommendations on bounds at T,,0,, = 25C*
-
-|| 		||*Δω,,H,,(ppm)*||*Δω,,Χ,,(ppm)*||*P,,A,,^0^(%)*||*k,,ex,,^0^(/s)*	|| E,,AB,, (kcal/mol)	|| ΔH (kcal/mol)	||
-|| *Min* 	|| 0.01  	|| 0.1  	|| 70  		|| 500  		|| -20			|| -20			||
-|| *Max* 	|| 0.2  	|| 3  		|| 99.9  	|| 3500  		|| 20			|| 20			||
-|| *Steps*	|| 1-3 		|| 2-5 		|| 2-10		|| 3-10			|| 2-5			|| 2-5			||
-
-*Recommendations on number of steps*
-
-|| *Group Size*	|| *Num(Curves)*|| *Num(Steps)*	|| *Notes*			||
-|| _Small_	|| 1-5		|| 5-50		|| _Easy to fit, usually only one solution_ 	||
-|| _Medium_	|| 5-10		|| 20-100	|| _Usually easy to fit, sometimes a few solutions_ 	||
-|| _Large_	|| 10-20	|| 100-200	|| _Sometimes challenging to fit, several solutions ||
-|| _Very Large_	|| 20-50	|| 500?		|| _Very challenging to fit_ 	||
-
-  * *Unsorted notes*
-    * k,,ex,, seems to be a very sensitive parameter, use the most points here
-    * Sometimes MATLAB does not alter Δω values for multiple Curvesets
-    * E,,AB,, and ΔH can be very difficult to optimize via grid search
-  * *Location in code*
-    * {{{Group.gridSearch}}}
-
-=== Monte Carlo error estimation ===
-  * *Motivation*: _The final fit to RD data are sometimes very sensitive to noise in the data_
-  * *Goal*: _Generate and fit multiple synthetic data to assess sensitivity of final fit to noise in data_
-
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a>
-
-_Monte Carlo procedure generates and fits synthetic data consistent with observed residuals (related to noise)_
-
-*Procedure*
-
-  (1) Calculate residuals for each ν,,CPMG,, value in a given Curve
-
-    ε(ν,,CPMG,,) = R,,2Eff,,^Obs^(ν,,CPMG,,) - R,,2Eff,,^Calc^(ν,,CPMG,,)
-
-  (2) The residuals are used to create a normal distribution for the Curve with mean and variance
-
-  Norm(mean(ε), var(ε))
-
-  (3) Generate a synthetic dispersion Curve using the fit at each ν,,CPMG,, plus a random sample from the distribution
-
-    R,,2Eff,,^Synth^ = R,,2Eff,,^Calc^(ν,,CPMG,,) + Sample( Norm(mean(ε), var(ε)) )
-
-  (4) Repeat for each Curve in the Group such that a synthetic Group is produced
-
-  (5) Fit the synthetic Group using initial conditions from the best fit of the actual data.
-
-  (6) Repeat (3)-(5) multiple times (default 100x, can be changed in settings "Nmc")
-
-  This yields 100 synthetic Groups and 100 sets of optimized fit parameters
-
-  (7) Calculate the error in a given parameter as the standard deviation of the optimized fit parameter from its 100 element distribution
-
-  (8) Errors in subsequent quantities (e.g., k,,A,,, k,,B,,, ln(k,,A,,), etc.) are estimated using propagation of error assuming all parameters are uncorrelated (zero covariance)
-
-  * *Notes*
-    * Number of MC error iterations can be set via Input...Settings...{{{Nmc}}}
-    * Debugging output can display the fits to each data vi Input...Settings...{{{OUTPUT_DEBUG_ERRORS}}}
-  * *Location in code*
-    * {{{FitResult.calculateErrors}}}
-  * *Reference*
-    * Motulsky (2003), p. 108
-
-== Glossary ==  
- * <u>*^A^X*</u>: Any nucleus with mass number A and chemical symbol X (e.g,.^1^H, ^13^C, ^15^N)
- * <u>*B,,0,,*</u>: Magnetic field strength (Tesla)
- * <u>*C*</u>: Curve number within the curveset
- * <u>*Chi2*</u>: χ^2^; Goodness of fit metric (smaller value indicates better fit)
- * <u>*CPMG*</u>: Carr-Purcell Meiboom-Gill (four scientists who poineered relaxation dispersion methods)
- * <u>*CS*</u>: Curveset number
- * <u>*CTOT*</u>: Total curve number within the group
- * <u>*Curve*</u>: A single set of R2Eff(νCPMG) data points
- * <u>*Curveset*</u>: Designates a ΔωH and ΔωX to a set of one or more Curves
- * <u>*DQ*</u>: Double Quantum (not implemented in GUARDD)
- * <u>*E,,AB,,*</u>: E,,B,, - E,,A,,; Activation energy to exchange from A→B (cal/mol)
- * <u>*G*</u>: Group number
- * <u>*Group*</u>: Designates a P,,A,, and k,,ex,, at each temperatuer for a set of one or more Curvesets
- * <u>*GUARDD*</u>: Graphical User-friendly Analysis of Relaxation Dispersion Data
- * <u>*GUI*</u>: Graphical User Interface
- * <u>*k,,A,,*</u>: (1-P,,A,,)k,,ex,,; Rate of exchange from A→B
- * <u>*k,,B,,*</u>: P,,A,,k,,ex,,; Rate of exchange from B→A
- * <u>*k,,ex,,*</u>: k,,A,, + k,,B,,; Total exchange rate between states (/s)
- * <u>*MC*</u>: Monte Carlo (randomization method used here for error analysis)
- * <u>*MQ*</u>: Multiple Quantum (signal detected in NMR); Note: MQ RD curves are sensitive to _both_ Δω,,H,, and Δω,,X,,
- * <u>*NMR*</u>: Nuclear Magnetic Resonance
- * <u>*NMR probe*</u>: One nucleus in the target molecule that can be observed via NMR; designated a unique unique residue number (e.g., 1,2,3,...) and atom (e.g,. H^N^, C^O^, Cδ,,2,,)
- * <u>*P,,A,,*</u>: Population fraction of A state (fraction, %)
- * <u>*ppm*</u>: Parts Per Million (a dimensionless unit of measure for relative comparison)
- * <u>*R*</u>: Gas constant
- * <u>*R,,2,,^0^*</u>: Transverse relaxation rate in the absence of exchange (Hz)
- * <u>*RD*</u>: Relaxation Disperion
- * <u>*SQ*</u>: Single Quantum (signal detected in NMR); Note: SQ curves that pulse on ^A^X nucleus are sensitive _only_ to Δω,,X,, (Δω,,H,, is fixed to zero)
- * <u>*T,,CPMG,,*</u>: Total duration of the CPMG block in the NMR RD experiment
- * <u>*ZQ*</u>: Zero Quantum (not implemented in GUARDD)
- * <u>*γ,,X,,*</u>: Gyromagnetic ratio for nucleus X (MHz/Tesla)
- * <u>*ΔH*</u>: H,,B,, - H,,A,,; Enthalpy difference to exchange from A→B (cal/mol)
- * <u>*Δν*</u>: Chemical shift difference in Hz
- * <u>*Δω,,H,,*</u>: ^1^H chemical shift difference between states A and B (ppm, rad/s) - *MQ only*
- * <u>*Δω,,X,,*</u>: ^A^X chemical shift difference between states A and B (ppm, rad/s)
- * <u>*ν,,CPMG,,*</u>: Precession frequency of refocused magnetization during CPMG period of NMR RD experiment
-
+==== View Grid Search Chi2 Map for fit with uknown parameters ====
+  * *Goal*: _Illustrate features of Grid Search and MC Errors which correspond to a partially-defined fit_
+  * *Ile 43*, a good fit with unknown parameters
+    * Small dataset (4 curves)
+    * α = 1.4-1.9: fast exchange
+    * Grid search: two solution with different values
+    * MC Errors: very wide, reflecting many fitting soltuions
+    * Parameters: P,,A,, and Δω unknown
+
+  # <u>Main</u>
+    # Select *Leu 22delta1*
+    # *Output...Display chi2 map...*
+    # *Analysis...Fit dispersion...*
+  # <u>Chi2 Map</u>    
+    # *Parameters*: dwH, dwX, Pa, kex
+    # *Curveset (Curve)*: 800-MQ-25C
+    # *Top%* slider all the way to the top (100%)
+    # *Fit*: {{{* FIT-G[--] Chi2=20.49}}}
+    # *Task to Display*: Grid Search
+    # *Results to Display*: Final
+    # *Display Mode*: Scatter
+  * *Observe*: _The grid search illutrates solutions at two distinct points_
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--26.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--26.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+
+  * *Goal*: _Add the higher-χ^2^ fit to the fit list for further inspection_
+  # <u>Chi2 Map</u>
+    # Check *Pick grid fit*
+    # Scroll to the right, and select fit number 60, chi2=20.9464
+      # The green diamond should highlight this fit
+    # Click *Add to list*
+      # The fit {{{FIT-G[--] Chi2=20.95}}} is now highlighted by the green diamond and red circle (since it is selected)
+  # <u>Fit RD</u>
+    # (3) SELECT the new fit {{{FIT-G[--] Chi2=20.95}}} from the list
+      # *Note*: if it is not shown, the list can be update by re-selecting any fit on the list (then check again)
+    * *Observe*: _These two fits both appear to go through the data! (which one is best?)_
+    * *Note*: Residuals can be compared using the <u>Display RD</u> window
+
+  * For now, we will continue to analyze the lower-χ^2^ fit
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--27.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--27.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+
+
+==== View Monte Carlo Errors Chi2 Map for fit with uknown parameters ====
+  * *Goal*: _Illustrate features of Grid Search and MC Errors which correspond to a partially-defined fit_
+  # <u>Chi2 Map</u>
+    # Make sure *Fit*: {{{* FIT-G[--] Chi2=20.49}}} is selected
+    # Set *Top%* slider all the way to the top (100%)
+    # *Task to Display*: MC Errors
+    # *Results to Display*: Final
+    # *Display Mode*: Scatter
+    * *Observe*: _A wide range of Δω and P,,A,, values can describe these data → Δω and P,,A,, are not OK!_
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--28.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--28.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+
+  * *Goal*: _Mark these parameters as "Not OK" in the <u>Fit RD</u> window_
+  # <u>Fit RD</u>
+    # (3) SELECT the fit {{{* FIT-G[--] Chi2=20.49}}} from the list
+    # (6) Designate which elements of this fit are OK
+    # *Exchange*: check
+    # *Best fit is OK*: check
+    # Click *Set best fit*, if possible (should be "best" already)
+    # Cilck *All*
+    # *Group parameters*: uncheck PA
+    # *Curveset parameters*: uncheck both dwH and dwX
+    # Make note of this in the *(5) Log notes for group* panel (_or take note of the current note_)
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--29.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--29.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+
+==== Document notes for organization ====
+  * *Goal*: View and maintain organized notes for interpreting fit results
+    # <u>Main</u>
+      # *Analysis...Notes...*
+    # <u>Notes</u>
+      # Notes on groups are edited in the <u>Fit RD</u> window
+      # Notes on the session can be created and edited in the <u>Notes</u> window
+      # Close the <u>Notes</u> window
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--19.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--19.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+
+=== Output results ===
+  * *Goal*: _Aggregate and output any/all results for dissemination_
+
+==== View results in display cluster ====
+  * *Goal*: _Visual display of results from all groups_
+
+  * *Goal*: _Load GUARDD session with data already fit (in case this has not been done already)_
+  # <u>Main</u>
+    # *Input...Load session...*
+      # Select tutorial file: {{{tutorial/data/GUARDD-Session--Tutorial.mat}}}
+      * This session contains data from above, with completed 60-point grid search and MC errors
+
+  * *Goal*: _Create two display groups to compare different fiting constraints_  
+  # <u>Main</u>
+    # *Output...Display group results...*
+  # <u>Groups</u>
+    # Click *New*
+    # Set *name*: Isolated fits
+    # Click *Save*
+    # Panel _All Groups_, select all groups _except_ Leu 22
+    # Click *Add*
+    # Click *New*
+    # Set *name*: Group fits
+    # Set _RGB_ to 1 0 0 (for the color Red)
+    # Click *Save*
+    # Panel _All Groups_, select _only_ Leu 22
+    # Click *Add*
+
+  * *Goal*: _Compare individual fits from each NMR probe to form candidate groups, identify outliers, etc._
+  # <u>Groups</u>
+    # Panel _Display settings_
+    # Select *plot type*: _Kinetic rate (25C)_
+      # *Note*: Differences in k,,A,,, k,,B,, values indicates the extent of site-specific motion in the protein_
+      # *Note*: Global fit for Leu 22 (red) is close to both individual fits for Leu 22δ_1 and Leu 22δ_2 (blue)
+    # Set *Subplots*: Rows=2, Cols=1
+    # *Plot number*: _Subplot 01_
+      # *Type*: _Custom_
+      # *Y-Axis*: _kex_, _25C_
+      # *X-Axis*: _Residue_
+    # *Plot number*: _Subplot 02_
+      # *Type*: _Custom_
+      # Check *Show Histogram*      
+      # *X-Axis*: _kex_, _25C_
+    # Click the *Save Figure* icon in the title bar
+      # _GUARDD will prepare a filename for saving, and you must type the file extension_
+      # Type *ps* to save as a postscript file and click *Save* (or hit *Enter*)
+    # Close <u>Groups</u> window
+  * *Bug*: Selecting *dwX_ppm* results in an error involving {{{iscolumn()}}} in some versions of MATLAB (at least R2009a on Windows)
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--24.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--24.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+==== View results in table ====
+  * *Goal*: _Aggregate and output any/all results for dissemination_
+  # <u>Main</u>
+    # *Output...Display results table...*
+  # <u>Results Table</u>
+    # Select all display parameters in left-most list
+  # Click *Export to CSV* [FileFormats#Output:_Parameter_Table details]
+
+  * *Bug*: Selecting all items in the table results in an error in some versions of MATLAB (at least R2009a on Windows)
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--25.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--25.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+==== Export data and groups ====
+  * *Goal*: _Aggregate and output results for dissemination_
+  # <u>Main</u>
+    # *Input...Data manager...*
+  # <u>Data Manager</u>
+    # *Output...Datasets...*
+      # Save the file [FileFormats#Output:_Datasets details] 
+      * This copies all imported datasets
+    # *Output...Groups...*
+      # Save the file [FileFormats#Output:_Groups details] 
+      # Contains all groups, curvesets, and curves created for analysis
+
+=== Simulate and export RD data ===
+  * *Goal*: _Explore the nature of RD phenomena_
+  * *Question*: _What are limits of detection (i.e., when is R,,ex,,>0)?_
+
+==== Simulate multi-field dataset ====
+  * *Goal*: _Simulate a simple dataset at two magnetic fields_
+  # <u>Main</u>
+    # *Input...RD Simulator...*
+  # <u>RD Simulator</u>
+    # _Create a new SimCurveset, which specifies kinetics and chemical shifts for all curves within_
+      # CURVESETS: Click *New*
+      # Set *Name* to _Simple_
+      # Click *Save*
+    # _Create a new SimCurve, which specifies NMR conditions for simulation_
+      # CURVES: Click *New*
+      # Set *B0(MHz)* to _500_
+      # CURVES: Click *New*
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-01.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-01.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+
+==== Simulate multi-field, multi-temperature dataset ====
+  * *Goal*: _Simulate a dataset at two magnetic fields and three temperatures_
+  # <u>RD Simulator</u>
+    # _Create a new SimCurveset_
+      # CURVESETS: Click *New*
+    # _Create two new SimCurves at 15C (500 MHz and 800 MHz)_
+      # CURVES: Click *New*
+      # Set *Temp(C)* to _15_
+      # Set *B0(MHz)* to _500_
+      # CURVES: Click *New*
+      # Set *Temp(C)* to _15_
+    # _Create two new SimCurves at 25C (500 MHz and 800 MHz)_
+      # CURVES: Click *New*
+      # Set *B0(MHz)* to _500_
+      # CURVES: Click *New*
+    # _Create two new SimCurves at 35C (500 MHz and 800 MHz)_
+      # CURVES: Click *New*
+      # Set *Temp(C)* to _35_
+      # Set *B0(MHz)* to _500_
+      # CURVES: Click *New*
+      # Set *Temp(C)* to _35_
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-02.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-02.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+
+==== Explore experimental condtions for observing RD ====
+  * *Goal*: _Explore the nature of RD phenomena using surface plot_  
+    * *Note*: _Please complete prior tutorial section before proceeding_
+
+  * *Question*: _What temperature range is appropriate for acquisition?_ 
+  # <u>RD Simulator</u>
+    # Display settings: click *3D* angle
+    # Set *Y-Axis Parameter* to _Temp_
+    # Check *Show surface*
+    # *Observations*
+      # _For these exchange kinetics, the largest dispersions are observed around 10-20C, and therefore experiments should be focused there_
+      # _The RD curve is nearly undetectable above 50C because k,,ex,, is too large compared to Δω,,X,,(Hz)_
+
+  * _Change chemical shift to observe the effect on the RD signal_
+    # CURVESET: Set *dwX(ppm)* to _0.50_
+    # *Observations*
+      # _With smaller Δω,,X,,(ppm), the dispersions are smaller, because k,,ex,, is larger in comparison_
+    # CURVESET: Set *dwX(ppm)* back to _1.00_
+
+  * _Change magnetic field strength to observe the effect on the RD signal_
+    # CURVE: Set *B0(MHz)* to _1000_
+    # *Observations*
+      # _At higher field strength, dispersions are larger, becuse Δω,,X,,(Hz) is increased_
+
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-03.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-03.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+==== Explore temperature-dependence of exchange kinetics ====
+  * *Goal*: _Explore the nature of exchange kinetics using the <u>Kinetic Simulator</u>_
+    * *Note*: _Please complete prior tutorial section before proceeding_
+
+  # <u>RD Simulator</u>
+    # _Start the Kinetic Simulator_
+    # CURVESET: Click *Run Kinetics Sim*
+  # <u>Kinetic Simulator</u>
+    # _This window operates on the Sim Curvesets, and displays the effect of temperature on the RD parameters P,,A,, and k,,ex,,_
+    # Select *SimSet 2* from the pull-down menus
+    # _Alter the kinetic parameters in the *Input Kinetic Specifications* table_
+      # Set *dH* to _5_
+      # _Now, P,,A,, will decrease with increasing temperature_
+      # Set *Eab* to _15_
+      # _This ensures that k,,ex,, still increases with temperature_
+    # _Check the *Kinetic Report* for the quantitative values of exchange parameters_
+      # Set *Input temperature* to _50_
+      # *Observe*: _P,,A,, is 82.4% and k,,ex,, is 4039.7 /s_
+
+  * _Check this effect on the simulated RD surface plot_
+  # <u>RD Simulator</u>
+    # Click the *Refresh display* icon in the title bar
+    # *Observe*: _The RD signal now *increases* with temperature, becuase the population of the minor state, P,,B,, = (1-P,,A,,), becomes larger at higher tempertures_
+
+  # <u>Kinetic Simulator</u>
+    # Close the window (X)
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-04.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-04.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+
+==== Export simulated data ====
+  * *Goal*: _Assess accuracy of fitting procedure by analyzing data with "known" solution_
+    * *Note*: _Please complete prior tutorial section before proceeding_
+
+  # <u>RD Simulator</u>
+    # Click the *Export* icon in the title bar
+  # <u>RD Simulator Export</u>
+    # Set *Sim Points* to _15_
+    # Click *Export to TXT*
+      # Save the file [FileFormats#Output:_GUARDD_Simulator details] 
+  # <u>RD Simulator</u>
+    # Click the *Export* icon in the title bar
+    # Set *Sim Points* to _15_
+    # Click *Export to GUARDD*
+      # _This automatically creates a Group for each simulated Curveset_
+
+  * *Note*: _Simulated groups can be viewed in the <u>Main</u> window and/or the <u>Data Manager</u>, just like any other group_
+    # Fitting can be accomplished as per the [Tutorial#Fit_simple_group_manually simple group] or for the [Tutorial#Fit_multi-temperature_group_manually multi-temperature group]
+    # Fits of these data should achieve within 10% accuracy of the simulation conditions
+
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-05.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-05.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
 == Acknowledgements ==
@@ -1275,32 +944,6 @@ _Monte Carlo procedure generates and fits synthetic data consistent with observe
   * The Ohio State University Biophysics Program [http://www.biosci.ohio-state.edu/~biophys/ link]
   * The Ohio State University [http://www.osu.edu/ link]
   * National Institutes of Health [http://www.nih.gov/ link]
-
-== Citing GUARDD ==
-  * *Please cite your usage of GUARDD in BOTH ways*
-    # Kleckner, I. R., & Foster, M. P. (n.d.). GUARDD: User-friendly MATLAB software for rigorous analysis of CPMG RD NMR data. (in preparation).
-    # http://code.google.com/p/guardd/
-
-== References ==
-  * *Please cite your usage of GUARDD in BOTH ways*
-    # Kleckner, I. R., & Foster, M. P. (n.d.). GUARDD: User-friendly MATLAB software for rigorous analysis of CPMG RD NMR data. (in preparation).
-    # http://code.google.com/p/guardd/
-  * *Review on protein dynamics via NMR*
-    * Kleckner, I. R., & Foster, M. P. (2011). An introduction to NMR-based approaches for measuring protein dynamics. Biochimica et biophysica acta, 1814(8), 942-968. Elsevier B.V. doi: 10.1016/j.bbapap.2010.10.012.
-  * *Fitting RD data is poorly determined*
-    * Kovrigin, E. L., Kempf, J. G., Grey, M. J., & Loria, J. P. (2006). Faithful estimation of dynamics parameters from CPMG relaxation dispersion measurements. Journal of magnetic resonance (San Diego, Calif. : 1997), 180(1), 93-104. doi: 10.1016/j.jmr.2006.01.010.
-    * Ishima, R., & Torchia, D. a. (2005). Error estimation and global fitting in transverse-relaxation dispersion experiments to determine chemical-exchange parameters. Journal of biomolecular NMR, 32(1), 41-54. doi: 10.1007/s10858-005-3593-z.
-  * *MQ dispersion*
-    * Korzhnev, D. M., Kloiber, K., & Kay, L. E. (2004). Multiple-quantum relaxation dispersion NMR spectroscopy probing millisecond time-scale dynamics in proteins: theory and application. Journal of the American Chemical Society, 126(23), 7320-9. doi: 10.1021/ja049968b.
-  * *Quantum Coherences in dispersion*
-    * Korzhnev, D. M., Neudecker, P., Mittermaier, A., Orekhov, V. Y., & Kay, L. E. (2005). Multiple-site exchange in proteins studied with a suite of six NMR relaxation dispersion experiments: an application to the folding of a Fyn SH3 domain mutant. Journal of the American Chemical Society, 127(44), 15602-11. doi: 10.1021/ja054550e.
-  * *Exchange timescale α*
-    * Millet, O., Loria, J. P., Kroenke, C. D., Pons, M., & Palmer, A. G. (2000). The Static Magnetic Field Dependence of Chemical Exchange Linebroadening Defines the NMR Chemical Shift Time Scale. Journal of the American Chemical Society, 122(12), 2867-2877. doi: 10.1021/ja993511y.
-  * *Nonlinear fitting*
-    * P, B., & D, R. (2003). Data reduction and error analysis for the physical sciences. (D. Bruflodt, Ed.) (3rd ed.). New York, NY: McGraw-Hill.
-    * Motulsky, H. J., & Christopoulos, A. (2003). Fitting models to biological data using linear and nonlinear regression. A practical guide to curve fitting. (GraphPad Software Inc., Eds.) (2nd ed.). San Diego CA: GraphPad Software Inc.
-  * *Temperature-dependence of rate and equilibrium constants (Arrhenius and vant Hoff analyses)*
-    *  Winzor, D. J., & Jackson, C. M. (2006). Interpretation of the temperature dependence of equilibrium and rate constants. Journal of Molecular Recognition, c(August), 389-407. doi: 10.1002/jmr.
 
 == Author ==
   * (C) Ian Kleckner
