@@ -467,11 +467,11 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
       * This launches the <u>Create Groups</u> dialog [Manual#Create_Groups here]
       * Code: {{{Session.generateGroups()}}}    
   * *Curveset...*
-    * *Sort Curvesets (this Group)...* -> Curvesets sorted by {{{index}}} and {{{name}}} are easier to browse
-    * *Generate from all data...* -> For the selected Group, generate minimal set of NEW Curvesets to partition Curves via NMR probe ({{{index}}} and {{{atom}}})
+    * *Sort Curvesets (this Group)...* → Curvesets sorted by {{{index}}} and {{{name}}} are easier to browse
+    * *Generate from all data...* → For the selected Group, generate minimal set of NEW Curvesets to partition Curves via NMR probe ({{{index}}} and {{{atom}}})
       * This is the easiset way to generate a large Group (e.g., all Curves reporting same dynamic process)
       * From here, certain Curvesets and Curves can be removed, if desired
-    * *Copy to Group...* -> Copy the selected Curveset to another Group
+    * *Copy to Group...* → Copy the selected Curveset to another Group
       * This launches the <u>Select Group</u> dialog [Manual#Select_Group here]
   * *Curve...*
     * (Nothing yet)
@@ -483,37 +483,37 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
 
 *<u>Panels and buttons</u>*
   * Each table contains editable information on the object
-  * *Button: Save* -> Save changes made to the table
-  * *Button: Revert* -> Discard changes made to the table
+  * *Button: Save* → Save changes made to the table
+  * *Button: Revert* → Discard changes made to the table
   * *Panel: Datasets*
     * Displays all the loaded datasets    
-    * *Button: Add dataset* -> Adds an empty Dataset to the list
+    * *Button: Add dataset* → Adds an empty Dataset to the list
       * This can be edited and Curves can be loaded manually using nlin.tab file [FileFormats#Input:_NMRPipe_nlin.tab_and_taufile.txt here]
       * This is NOT the preferred method to load data (use script file instead, [FileFormats#Input:_Script_file_to_load_data here])
-    * *Button: Remove dataset* -> Removes the selected dataset from the list    
+    * *Button: Remove dataset* → Removes the selected dataset from the list    
   * *Panel: Curves in selected dataset*
     * Lists all the Curves and displays their properties
     * *Note*: Changing Curve properties here will propagate to all apperances of that Curve
-    * *Button: Load Curve(s)* -> This is NOT the preferred method to load data (use script file instead, [FileFormats#Input:_Script_file_to_load_data here])
-    * *Button: Remove Curve* -> Removes the selected Curve from the Dataset (and ALL appearances of that Curve)
+    * *Button: Load Curve(s)* → This is NOT the preferred method to load data (use script file instead, [FileFormats#Input:_Script_file_to_load_data here])
+    * *Button: Remove Curve* → Removes the selected Curve from the Dataset (and ALL appearances of that Curve)
   * *Panel: Groups for fitting*
     * Lists all the Groups in the Session
-    * *Button: New* -> Add an empty Group
+    * *Button: New* → Add an empty Group
       * Useful for creating custom Groups with desired Curvesets and Curves
-    * *Button: Remove* -> Remove the selected Group
-    * *Duplicate Group* -> Copy the Group and all Curvesets within
+    * *Button: Remove* → Remove the selected Group
+    * *Duplicate Group* → Copy the Group and all Curvesets within
       * Useful for creating custom Groups (e.g., copy then add/remove Curvesets)
   * *Panel: Curvesets in selected Group*
     * Displays all the Curvesets in the selected Group
-    * *Button: New* -> Add an empty Curveset to the selected Group
-    * *Button: Remove* -> Remove the selected Curveset from the selected Group
-    * *Button: Copy to Group* -> Copy the selected Curveset to another Group
+    * *Button: New* → Add an empty Curveset to the selected Group
+    * *Button: Remove* → Remove the selected Curveset from the selected Group
+    * *Button: Copy to Group* → Copy the selected Curveset to another Group
       * This launches the <u>Select Group</u> dialog [Manual#Select_Group here]
   * *Panel: Curves in selected Curveset*
     * Displays all the Curves which are pointed to by the selected Curveset
     * *Note*: Changing Curve properties here will propagate to all apperances of that Curve
-    * *Button: Add Curve* -> Add the Curve that is selected from the Dataset (on the left)
-    * *Button: Remove Curve* -> Remove the appearance of this Curve from the Curveset (does NOT delete Curve from the dataset)
+    * *Button: Add Curve* → Add the Curve that is selected from the Dataset (on the left)
+    * *Button: Remove Curve* → Remove the appearance of this Curve from the Curveset (does NOT delete Curve from the dataset)
 
 ===== Create Groups =====
   * *Goal*: _Create a set of Groups using a subset of the data_
@@ -567,39 +567,39 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
 
   * This window contains six panels for fitting tasks
   * *Panel: (1a) Procedure*
-    * Invividual -> Specify one set of initial conditions for one simulation or optimization
-    * Grid search -> Specify a range of initial conditiosn for many simulations or optimizations, read [Manual#Grid_search here]
+    * Invividual → Specify one set of initial conditions for one simulation or optimization
+    * Grid search → Specify a range of initial conditiosn for many simulations or optimizations, read [Manual#Grid_search here]
   * *Panel: (1b) Task*
-    * Optimize fit -> Starting at the initial conditions, iteratively alter parameter to minimize the χ^2^ for the Group, read [Manual#Fitting_data here]
-    * Simulate -> Simulate the iniital conditoins for the fit
+    * Optimize fit → Starting at the initial conditions, iteratively alter parameter to minimize the χ^2^ for the Group, read [Manual#Fitting_data here]
+    * Simulate → Simulate the iniital conditoins for the fit
       * Useful for seeing what the initial conditions look like
-  * *Checkbox*: Use Arrhenius -> Use Arrhenius relation with ΔH and E,,AB,, for temperature-dependence of k,,ex,, and P,,A,, [Manual#Example_parameter_assignment link]
-  * *Button*: Go! -> Initiate task
+  * *Checkbox*: Use Arrhenius → Use Arrhenius relation with ΔH and E,,AB,, for temperature-dependence of k,,ex,, and P,,A,, [Manual#Example_parameter_assignment link]
+  * *Button*: Go! → Initiate task
 
   * *Panel: (2) Set INITIAL CONDITIONS*
     * Note: The initial value of R,,2,,^0^ for each Curve is set to Min(R,,2,,^Eff^) for that Curve
     * This panel operates in (Individual) or (Grid Search) mode, determined by Panel (1a)
     * *(Individual)*
-      * *Table: Group parameters* -> The kinetic parameters apply to the entire Group
-      * *Table: Curveset parameter* -> The structural parameter apply to each Curveset
-      * *Table: Data and initial conditions for each Curve (read-only)* -> Summary of dataset and its initial fit conditions    
+      * *Table: Group parameters* → The kinetic parameters apply to the entire Group
+      * *Table: Curveset parameter* → The structural parameter apply to each Curveset
+      * *Table: Data and initial conditions for each Curve (read-only)* → Summary of dataset and its initial fit conditions    
     * *(Grid Search)*
-      * *Table: Grid search* -> Limits of each dimension in grid earch, read [Manual#Grid_search here]    
+      * *Table: Grid search* → Limits of each dimension in grid earch, read [Manual#Grid_search here]    
 
   * *Panel: (3) SELECT fit and view results*
-    * *List* -> Select one of the available fits
+    * *List* → Select one of the available fits
       * The fit name is automatically generated from 5 features
       # {{{FIT}}} vs {{{SIM}}}: Designates whether the fitResult is for an optimization (FIT) or simulation (SIM)
       # {{{-1}}} vs {{{-G}}}: Designates whether the fitResult is from an individual fit (-1) or from a grid search (-G)
       # {{{[--]}}} vs {{{[CR]}}}: Designates whether the Arrhenius "constrain rates" option is off (--) or on (CR)
       # {{{Chi2=###}}}: Designates the value of χ^2^ for the Group (lower value is better fit)
       # {{{[Date-Time]}}}: Designates the date and time at which the fitResult was created
-    * *Button: Set best fit* -> Designate the current fit as the best one, which is displayed in all appearances of Group parameters
-    * *Button: Delete fit* -> Remove the selected fit from the list
-    * *Button: Rename fit* -> Rename the currently selected fit
+    * *Button: Set best fit* → Designate the current fit as the best one, which is displayed in all appearances of Group parameters
+    * *Button: Delete fit* → Remove the selected fit from the list
+    * *Button: Rename fit* → Rename the currently selected fit
       * Useful for when certain constraints are used, or if it is selected from a grid [Manual#Select_fit_from_grid_search here]
-    * *Button: Calc Errors* -> Initiate Monte Carlo error analysis on the Group [Manual#Monte_Carlo_error_estimation here]
-    * *Button: Set as ICs* -> Set the current fitResult as the initial conditions for the next fit
+    * *Button: Calc Errors* → Initiate Monte Carlo error analysis on the Group [Manual#Monte_Carlo_error_estimation here]
+    * *Button: Set as ICs* → Set the current fitResult as the initial conditions for the next fit
       * Useful for altering fit conditions during user-directed optimization
 
   * *Panel: (4) View data and SELECTED fit*
@@ -613,10 +613,10 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
     * To display/analyze a given best fit parameter, the best fit must be OK AND the particular parameter must be OK
     * *Checkbox: Exchange*: The Group exhibits exchange (true/false)
     * *Checkbox: Best fit is OK*: The Group fit is OK, which is required for subsequent display of fit results (true/false)
-    * *Button: Set best fit* -> Designate the current fit as the best one, which is displayed in all appearances of Group parameters
-    * *Button: All* -> Mark all the parameters as OK
-    * *Button: R* -> Make only R20 and Rex as OK
-    * *Button: None* -> Mark all of the parameters as NOT OK
+    * *Button: Set best fit* → Designate the current fit as the best one, which is displayed in all appearances of Group parameters
+    * *Button: All* → Mark all the parameters as OK
+    * *Button: R* → Make only R20 and Rex as OK
+    * *Button: None* → Mark all of the parameters as NOT OK
 
 
   * Tutorial: Basic fitting [Tutorial#Fit_simple_group_manually here]
@@ -759,19 +759,19 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
 ==== Display group results ====
   * *Goal*: _Visually organize fitting results to seek the nature of molecular motions_
 
-  * *Button: New* -> Add new empty DisplayCluster to hold Groups for displaying results
-  * *Panel: All Groups* -> Lists all Groups available to add/remove to/from the selected DisplayCluster
-  * *Button: Make selection* -> Deprecated function to intelligently select Groups from GUARDD
-  * *Panel: Groups in DisplayCluster* -> Lists all Groups in the selected DisplayCluster (can be removed)
+  * *Button: New* → Add new empty DisplayCluster to hold Groups for displaying results
+  * *Panel: All Groups* → Lists all Groups available to add/remove to/from the selected DisplayCluster
+  * *Button: Make selection* → Deprecated function to intelligently select Groups from GUARDD
+  * *Panel: Groups in DisplayCluster* → Lists all Groups in the selected DisplayCluster (can be removed)
 
   * *Panel: Display Settings*
-    * *Table: Subplots* -> Used to create a set of subplots for the display
-    * *Plot number* -> Select the subplot number (From 1 to Nrow*Ncol)
-    * *Type* -> Select plot type (Custom will allow for any parameters to be displayed, others are pre-arranged)
-    * *Y-Axis* -> Select what to be displayed on Y-axis (non-histogram only)}
-    * *X-Axis* -> Select what to be displayed on the X-axis
-    * *Table: Plot limits* -> Set NaN for auto-limits, or type in your own and use linear or log scale (applies to all subplots, sorry!)
-    * *Checkbox: Show Histogram* -> Shows the histogram (requires only X-axis values)
+    * *Table: Subplots* → Used to create a set of subplots for the display
+    * *Plot number* → Select the subplot number (From 1 to Nrow*Ncol)
+    * *Type* → Select plot type (Custom will allow for any parameters to be displayed, others are pre-arranged)
+    * *Y-Axis* → Select what to be displayed on Y-axis (non-histogram only)}
+    * *X-Axis* → Select what to be displayed on the X-axis
+    * *Table: Plot limits* → Set NaN for auto-limits, or type in your own and use linear or log scale (applies to all subplots, sorry!)
+    * *Checkbox: Show Histogram* → Shows the histogram (requires only X-axis values)
 
   * Notes
     * Some paramters plot one point per Group (e.g., P,,A,, or k,,ex,,(37C))
@@ -796,7 +796,7 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
       * E.g., only P,,A,, and k,,ex,, at one temperature, instead of all RD parameters for all Curves for all Groups
     * This customized table can be exported to plain-text for publication or external analysis
 
-  * *Button: Export to CSV* -> creates two plain-text files (two-column format and one-column format)
+  * *Button: Export to CSV* → creates two plain-text files (two-column format and one-column format)
     * One is easier for plotting in external programs
     * Another is easier for preparing a publication quality table
 
