@@ -809,23 +809,48 @@ _Datasets contain Curves, which are linked to by Curvesets within Groups_
 == Computational procedures ==
 
 === Convert NMR signal intensity to relaxation rate ===
+  * *Goal*: Given NMR signal intensites, generate a relatxation curve
 
-  An RD Curve can be calculated from NMR signal intensity as , where I(νCPMG) is the signal intensity in the 2D spectrum acquired with refocusing frequency νCPMG, I0 is the reference signal intensity obtained in the spectrum with no refocusing block, and TCPMG is the duration of the refocusing block. Errors in intensities are estimated via standard deviation from repeat measures of I(νCPMG). 
+  * Input
+    # I(ν,,CPMG,,) = signal intensity in the 2D spectrum acquired with refocusing frequency ν,,CPMG,,
+    # I,,0,, = reference signal intensity obtained in the spectrum with no refocusing block
+    # T,,CPMG,, = duration of the refocusing block    
+  * Output
+    # R,,2,,^Eff^ = -ln( I(ν,,CPMG,,)/I,,0,,) / T,,CPMG,,  
+  
+  * Errors in intensities σ(R,,2,,^Eff^) are estimated via standard deviation from repeat measures of I(ν,,CPMG,,)
 
 === Converting ppm to rad/s ===
+   * *Goal*: Obtain rad/s quantity for chemical shift difference using ppm value
+    * *Note* rad/s is requried for trigonometric functions, like tangent    
+    * *Note*: Hz = /s is useful for direct comparison to k,,ex,, (also in /s) in determining exchange timescale
 
-
-ω,,X,,^(rad/s)^ = 2πB,,0,,γ,,X,,ω,,X,,^(ppm)^
-
-ν,,X,,^(Hz)^ = B,,0,,γ,,X,,ω,,X,,^(ppm)^
-
-  * *Note* rad/s is requried for trigonometric functions, like tangent    
-  * *Note*: Hz = /s is useful for direct comparison to k,,ex,, (also in /s) in determining exchange timescale
-
+  * Input
+    * ω,,X,, (rad/s)
+    * γ,,X,, (from nucleus identity)
+    * B,,0,,
+  * Output
+    * ω,,X,,^(rad/s)^ = 2πB,,0,,γ,,X,,ω,,X,,^(ppm)^
+    * ν,,X,,^(Hz)^ = B,,0,,γ,,X,,ω,,X,,^(ppm)^
 
 === Carver-Richards Jones for MQ disperstionss ===
+  * *Goal*: Obtain dispersion curve R,,2,,^Eff^ as a function of ν,,CPMG,, given a set of 5 parameters
 
-  The fitting equations for multiple quantum (MQ) dispersions, which simplify to single quantum (SQ) dispersions provided ΔωH = 0, are as follows using δ = 1 / (4νCPMG) and n = TCPMGνCPMG [Korzhnev2004]:
+  * Input
+    # Δω,,H,,
+    # Δω,,X,,
+    # P,,A,,
+    # k,,ex,,
+    # R,,2,,^0^
+    # ν,,CPMG,,
+  * Process
+    # δ = 1 / (4ν,,CPMG,,)
+    # n = T,,CPMG,,ν,,CPMG,,
+    # Note: MQ simplifies to SQ if Δω,,H,, = 0
+    # (See equations below)
+  * Output   
+    # R,,2,,^Eff^
+
 
 <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-01.png" alt="[UNLOADED IMAGE]"> </img>
 
@@ -848,51 +873,82 @@ _Datasets contain Curves, which are linked to by Curvesets within Groups_
 <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-10.png" alt="[UNLOADED IMAGE]"> </img>
 
 
+  * *Location in code*: {{{chi2_MQRD_CRJ_group.m}}} and {{{chi2_MQRD_CRJ.m}}}
+  * Reference: Korzhnev (2004)
+
+
 === Fitting data ===
+ * *Goal*: _Obtain a set of parameters that accurately describe RD Curves in the Group_
  * *Goal*: _Minimize the sum of squares target function_
 
+  * Input
+    # R,,2Eff,,^Obs^ = RD Curve data points
+    # σ(R,,2Eff,,^Obs^) = Errors in RD Curve data points
+    # Curve condition: B,,0,,
+    # Curve condition: Temperature
+    # Curve condition: QC
+    # Curve condition: ^A^X
+    # Curve condition: T,,CPMG,,
+    # Fitting parameters: *p* 
+      # P,,A,, and k,,ex,, for each temperature
+      # |Δω,,H,,| and |Δω,,X,,| for each Curveset
+      # R,,2,,^0^ for each Curve
+  * Process
+    # MATLAB fmincon iteratively alters the fitting parameters *p* to minimize the target function χ^2^
+    # R,,2,,^Calc^ = calculated point using the Curve conditions and the independent fitting parameters *p* for the Group
+    # χ^2^ becomes smaller as the curve fit more closely matches the observed data
+  * Output
+    # χ^2^
 
-  The goal of the fitting procedure is to obtain a set of parameters that accurately describe the trends in the data, and is typically pursued by minimizing the difference between the observed data and the fit [bevington2003data][HJ2003]. To accomplish this task, GUARDD invokes the MATLAB fmincon function with the interior-point algorithm [Byrd2000] (though other options are available) to iteratively alter the fitting parameters  to minimize the target function , where  designates an observed data point with error  on a single Curve acquired with conditions B0, T, QC, AX, and TCPMG;  designates the calculated point using the Curve conditions and the independent fitting parameters  for the Group: P,,A,, and kex for each temperature, |ΔωH| and |ΔωX| for each Curveset, and  for each Curve. Unfortunately, the nonlinear nature of RD phenomena makes the relationship between χ2 and  difficult to predict, and therefore optimization algorithms often “fail” by finding a local minimum of χ2, which is sensitive to initial fitting conditions, instead of the intended global minimum of χ2 (Fig 4a).
+<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-chi2_target.png" alt="[UNLOADED IMAGE]"> </img>
 
-  * *Location in code*: {{{FitResult.fitMe()}}}
 
-  * Reference: MATLAB {{{fmincon}}}
+  * *Location in code*: {{{FitResult.fitMe}}}
+  * References
+    * MATLAB {{{fmincon}}}
+    * MATLAB interior point algorithm [Byrd2000]
+    * [bevington2003data]
+    * [HJ2003]
 
 
 === Exchange broadening ===
+  * *Goal*: _Estimate exchange broadening R,,ex,, (height of the dispersion curve) using the fitted RD curve_
 
-  The exchange broadening Rex quantifies the height of the dispersion curve and is estimated from the fit as .
+  * Input
+    # R,,2Eff,,^Calc^ = RD Curve data points
+    # σ(R,,2Eff,,^Obs^) = Errors in RD Curve data points
+    # Curve condition: B,,0,,
+    # Curve condition: Temperature
+    # Curve condition: QC
+    # Curve condition: ^A^X
+    # Curve condition: T,,CPMG,,
+    # Fitting parameters: *p* 
+      # P,,A,, and k,,ex,, for each temperature
+      # |Δω,,H,,| and |Δω,,X,,| for each Curveset
+      # R,,2,,^0^ for each Curve
+  * Process    
+    # Sometimes evaluation at 0 Hz is not valid, therefore try 1 Hz, then 2 Hz, ...
+      # Try to use ν,,CPMG,, values as close to 0 and infinity as possible
+  * Output
+    # R,,ex,, ~ R,,2Eff,,^Fit^(ν,,CPMG,,~0 Hz) - R,,2Eff,,^Fit^(ν,,CPMG,,~10^4^ Hz)
 
+  * *Location in code*: {{{FitResult.analyzeMe()}}} and {{{calculate_Rex.m}}}
 
 === Exchange timescale alpha ===
+  * *Goal*: _Estimate scaling factor α for time regime of chemical exchange_
 
-  The scaling factor α quantifies the timescale of chemical exchange, and is calculated α = d( ln(R,,ex,,) ) / d( ln(Δω) ) [Millet2000].
+  * Input
+    # R,,ex,, at at least two field strengths
+    # Δω at the same field strengths
+  * Output
+    # α = d( ln(R,,ex,,) ) / d( ln(Δω) )
 
-  * *Location in code*: {{{FitResult.analyzeMe()}}}
+  * 0 <= α < 1	_Slow exchange_
+  * α = 1 	_Intermediate exchange_
+  * 1 < α <= 2	_Fast exchange_
 
-  * Reference
-
-
-=== Basic Statistics ===
-  To fit dispersion data, this program minimizes a target function quantifying the goodness of fit
-  Here, the goodness of fit is quantified by either χ2 or SSE
-
-  [formula] is the "chi squared" metric
-  [formula] is the "sum of squred errors" metric
-
-  [formula] is the total number of observations
-  [formula] is the calculated value for the ith data point
-  [formula] represents the values of each adjustable model parameter
-  [formula] is the observed value for the ith data point
-  [formula] is the experimental uncertainty in the ith data point
-
-
-  Both χ2 and SSE become smaller as the curve fit more closely matches the observed data
-  χ2 is normalized to errors in measurement (SSE is not) and each can be used for statistical tests
-
-  Note: This program uses χ2 but SSE may appear in notes and source code as they are conceptually identical in some respects
-  (E.g., both are minimized at "best fit") 
-
+  * *Location in code*: {{{FitResult.analyzeMe()}}} and {{{calculate_alpha.m}}}
+  * Reference: Millet, et al. (2000)
 
 === Arrhenius: Determining activation energy ===
   * *Goal*: Obtain activation energy and pre-exponential rate to characterize temperature-dependence of rate
@@ -911,8 +967,8 @@ _Datasets contain Curves, which are linked to by Curvesets within Groups_
 
 <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-arrhenius.png" alt="[UNLOADED IMAGE]"> </img>
 
-  * Notes
-    * *Location in code*: {{{RateAnalysis.analyzeMe()}}}
+  
+  * *Location in code*: {{{RateAnalysis.analyzeMe()}}}
   * Reference: Winzor & Jackson
 
 === vant Hoff: Determining enthalpy ===
@@ -933,7 +989,7 @@ _Datasets contain Curves, which are linked to by Curvesets within Groups_
 
   * Notes
     * Entropy is unreliable since it is highly sensitive to relatively noisy input data
-    * *Location in code*: {{{RateAnalysis.analyzeMe()}}}
+  * *Location in code*: {{{RateAnalysis.analyzeMe()}}}
   * Reference: Winzor & Jackson
 
 === Kinetic simulator ===
@@ -985,7 +1041,7 @@ Finally, using kB(T0) and EBA, the Arrhenius relation yields PBA
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a>
 
-  Residuals are calculated for each observed νCPMG value in a given dispersion Curve as . The set of residuals is used to create a normal distribution for the Curve. Next, a synthetic dispersion Curve is created using the best fit at each observed νCPMG value plus a random sample from this normal distribution: . This is repeated for each Curve in the Group such that a synthetic Group is produced. The synthetic Group is fit using initial conditions from the best fit of the actual data. This is repeated 100 times to create 100 synthetic Groups and 100 sets of optimized fit parameters. The error in a given parameter is estimated as the standard deviation of the optimized fit parameter from its 100 element distribution. Errors in subsequent quantities (e.g., kA, kB, ln(kA), etc.) are estimated using propagation of error assuming all parameters are uncorrelated (zero covariance).
+  * Residuals are calculated for each observed νCPMG value in a given dispersion Curve as . The set of residuals is used to create a normal distribution for the Curve. Next, a synthetic dispersion Curve is created using the best fit at each observed νCPMG value plus a random sample from this normal distribution: . This is repeated for each Curve in the Group such that a synthetic Group is produced. The synthetic Group is fit using initial conditions from the best fit of the actual data. This is repeated 100 times to create 100 synthetic Groups and 100 sets of optimized fit parameters. The error in a given parameter is estimated as the standard deviation of the optimized fit parameter from its 100 element distribution. Errors in subsequent quantities (e.g., kA, kB, ln(kA), etc.) are estimated using propagation of error assuming all parameters are uncorrelated (zero covariance).
 
   * *Location in code*: {{{FitResult.calculateErrors}}}
 
