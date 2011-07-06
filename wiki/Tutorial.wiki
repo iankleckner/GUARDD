@@ -58,6 +58,7 @@ OBJECT TYPE (Doesn't work)
 == Requirements ==
   # 60-90 min
   # Matlab software [http://www.mathworks.com/ Mathworks]
+  # Matlab optimization toolbox [http://www.mathworks.com/products/optimization/ link]
   # GUARDD program [http://code.google.com/p/guardd/downloads/list download]
     # Matlab .m and .fig files
   # Tutorial files for this example [http://code.google.com/p/guardd/downloads/list download]
