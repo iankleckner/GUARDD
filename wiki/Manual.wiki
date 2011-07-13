@@ -420,7 +420,7 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
 
 == GUARDD Graphical Interface ==
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--05.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--05.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/main-GUARDD-2011.07.13--01.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/main-GUARDD-2011.07.13--01.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 === GUARDD Input menu ===
 
