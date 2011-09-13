@@ -63,7 +63,10 @@ OBJECT TYPE (Doesn't work)
     # Matlab .m and .fig files
   # Tutorial files for this example [http://code.google.com/p/guardd/downloads/list download]
 
-== General notes ==  
+== General notes ==
+  # Tutorial images shown below are from GUARDD v.2011.07.01 and associated {{{GUARDD-Session-Tutorial.mat}}} file
+    # This tutorial is *also* compatible with GUARDD v.2011.09.11 and associated {{{GUARDD-Session-Tutorial.mat}}} file, 
+    # v.2011.09.11 session uses more points in grid search than the v.2011.07.01 session (150 vs. 60)
   # See Manual for Glossary [Manual#Glossary here]
   # <u>Underlined</u> items are GUARDD window titles
   # *Boldface* items are commands (buttons, menus) and important points
@@ -75,7 +78,7 @@ OBJECT TYPE (Doesn't work)
   # GUARDD is sometimes slow. Turn on CPU monitor to see when program is processing
     # *Win*: Ctrl+Alt+Del, click _Task Manager_, watch icon in task bar
     # *Mac*: _Applications_ folder → _Utilities_ folder → launch _Activity Monitor_
-  # "Tooltips" are revealed by hovering mouse cursor over buttons, tables, etc. 
+  # "Tooltips" are revealed by hovering mouse cursor over buttons, tables, etc.
 
 == Tutorial ==
 
@@ -84,7 +87,7 @@ OBJECT TYPE (Doesn't work)
   # Unpack files
     # E.g., {{{/home/user/Desktop/}}} or {{{C:\My_Favorite_Folder\}}}
   # Ensure proper directory structure
-    # GUARDD--YYYY.MM.DD/	(*Note*: {{{YYYY.MM.DD}}} codes for the date (e.g., {{{2011.06.17}}}))
+    # GUARDD--YYYY.MM.DD/ (*Note*: {{{YYYY.MM.DD}}} codes for the date (e.g., {{{2011.06.17}}}))
       # {{{tutorial/}}}
       # (Many .m files)
       # (Many .fig files)
@@ -93,8 +96,8 @@ OBJECT TYPE (Doesn't work)
   # Start *Matlab*  
   # Open Matlab command window: *Desktop...Command Window*
   # Navigate to GUARDD/ directory and start program
-    # <u>Matlab command window</u>: *{{{cd 'c:\My_Favorite_Folder\GUARDD--YYYY-MM-DD\'}}}*
-    # *Note*: _{{{YYYY-MM-DD}}} is replaced by the date corresponding to the GUARDD version (e.g., {{{2011-06-08}}})_
+    # <u>Matlab command window</u>: *{{{cd 'c:\My_Favorite_Folder\GUARDD--YYYY.MM.DD\'}}}*
+    # *Note*: _{{{YYYY.MM.DD}}} is replaced by the date corresponding to the GUARDD version (e.g., {{{2011.06.08}}})_
     # <u>Matlab command window</u>: *{{{clear; GUARDD}}}*
   # *Important*: _Main window must remain open (it controls all other GUI windows)_
   # Check Matlab command window for additional output
@@ -179,7 +182,7 @@ OBJECT TYPE (Doesn't work)
     * _Determine optimal Δω,,H,,, Δω,,X,,, for each curveset (x1) → propagated to all curves in curveset_
     * _Determine and R,,2,,^0^ for each curve (x4)_
   * *Goal*: _Demonstrate basic fitting options (Simulate vs. Optimize, Individual vs. Grid)_
-  * *Details*: Read more about the <u>Fit RD</u> window in the [ManualFit_Dispersion Manual]
+  * *Details*: Read more about the <u>Fit RD</u> window in the [Manual#Fit_Dispersion Manual]
 
   # <u>Main</u>
     # Check *Fit dispersion*
@@ -223,7 +226,7 @@ OBJECT TYPE (Doesn't work)
 	# *Note*: _Progress can also be viewed in the MATLAB <u>Command Window</u>_
       # (3) SELECT fit and view results
 	# The {{{Fit-G}}} result listed is the best fit (lowest χ^2^) out of all the 12 fits in the grid search
-	# The remaining 11 fits can be viewed in the <u>Chi2 Map</u> window (see [Manual#Display_Chi2_Map Manual]
+	# The remaining 11 fits can be viewed in the <u>Chi2 Map</u> window (see [Manual#Display_Chi2_Map Manual])
       # (6) Designate which parameters are OK
       # Click *All*
 
@@ -498,6 +501,8 @@ OBJECT TYPE (Doesn't work)
 || *Max* 	|| 0.1  	|| 3.00  	|| 99.9  	|| 3000  	||
 || *Steps*	|| 1  		|| 2  		|| 2  		|| 3  		||
 
+    * *Note*: The tutorial file included in GUARDD v.2011.09.11 session uses *Steps* = 2, 3, 5, 5 for a total of 150 points, instead of *Steps* = 1, 2, 2, 3 (60 points) shown here in v.2011.07.01
+
     # Click *Save to Selected* to save thid grid to all of the groups in the batch
     # Estimate time required
       # _This calculator will help plan the time required for an estimated steptime_
@@ -540,7 +545,7 @@ OBJECT TYPE (Doesn't work)
   * *Goal*: _Load GUARDD session with data already fit_
   # <u>Main</u>
     # *Input...Load session...*
-      # Select tutorial file: {{{tutorial/data/GUARDD-Session--Tutorial.mat}}}
+      # Select tutorial file: {{{tutorial/data/GUARDD-Session-Tutorial.mat}}} (or {{{GUARDD-Session--Tutorial-After_Break.mat}}} in v.2011.09.11
     * This session contains data from above, with completed 60-point grid search and MC errors
     * Focus on two examples
     # *Leu 22delta1 *, a good fit with known parameters
@@ -589,7 +594,7 @@ OBJECT TYPE (Doesn't work)
   * *Goal*: _Interpret the *Grid Search* results the <u>Chi2 Map</u> window_
     # Each subplot shows a single parameter on the X-axis, and its different values in different fits
     # Each *black point* corresponds to ONE optimized fit result
-      # There are 60 fits in this example (hence 60 points in each subplot), each of which started from a different location in parameter space
+      # There are 60 fits in this example (hence 60 points in each subplot), each of which started from a different location in parameter space (*note* tutorial file in GUARDD v.2011.09.11 uses 150 points instead of 60)
       # Those initial locations can be displayed by setting *Results to display*: Initial
     # The *red circle* designates the currently selected fit result
     # The *blue square* designates the best fit from the grid search
@@ -667,7 +672,7 @@ OBJECT TYPE (Doesn't work)
     * Parameters: P,,A,, and Δω unknown
 
   # <u>Main</u>
-    # Select *Leu 22delta1*
+    # Select *Ile 43 delta1*
     # *Output...Display chi2 map...*
     # *Analysis...Fit dispersion...*
   # <u>Chi2 Map</u>    
@@ -685,7 +690,7 @@ OBJECT TYPE (Doesn't work)
   * *Goal*: _Add the higher-χ^2^ fit to the fit list for further inspection_
   # <u>Chi2 Map</u>
     # Check *Pick grid fit*
-    # Scroll to the right, and select fit number 60, chi2=20.9464
+    # Scroll to the right, and select fit number 60, chi2=20.9464 (or number 93, 20.9456 in v.2011/09/11)
       # The green diamond should highlight this fit
     # Click *Add to list*
       # The fit {{{FIT-G[--] Chi2=20.95}}} is now highlighted by the green diamond and red circle (since it is selected)
@@ -709,6 +714,7 @@ OBJECT TYPE (Doesn't work)
     # *Results to Display*: Final
     # *Display Mode*: Scatter
     * *Observe*: _A wide range of Δω and P,,A,, values can describe these data → Δω and P,,A,, are not OK!_
+    # Close <u>Chi2 Map</u> window
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--28.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--28.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
@@ -723,6 +729,7 @@ OBJECT TYPE (Doesn't work)
     # *Group parameters*: uncheck PA
     # *Curveset parameters*: uncheck both dwH and dwX
     # Make note of this in the *(5) Log notes for group* panel (_or take note of the current note_)
+    # Close <u>Fit RD</u> window
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--29.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--29.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
@@ -746,8 +753,8 @@ OBJECT TYPE (Doesn't work)
   * *Goal*: _Load GUARDD session with data already fit (in case this has not been done already)_
   # <u>Main</u>
     # *Input...Load session...*
-      # Select tutorial file: {{{tutorial/data/GUARDD-Session--Tutorial.mat}}}
-      * This session contains data from above, with completed 60-point grid search and MC errors
+      # Select tutorial file: {{{tutorial/data/GUARDD-Session-Tutorial.mat}}} (or {{{GUARDD-Session--Tutorial-After_Break.mat}}} in v.2011.09.11
+      * This session contains data from above, with completed 60-point grid search and MC errors (150 point grid for tutorial file in GUARDD v.2011.09.11)
 
   * *Goal*: _Create two display groups to compare different fiting constraints_  
   # <u>Main</u>
@@ -794,6 +801,7 @@ OBJECT TYPE (Doesn't work)
     # *Output...Display results table...*
   # <u>Results Table</u>
     # Select all display parameters in left-most list
+    # Select all conditions in the following three lists
   # Click *Export to CSV* [FileFormats#Output:_Parameter_Table details]
 
   * *Bug*: Selecting all items in the table results in an error in some versions of MATLAB (at least R2009a on Windows)
