@@ -8,7 +8,7 @@
   * Details on GUARDD data organization, features, and reference materials
 
 
-== Theroetical and technical details == 
+== Theoretical and technical details == 
 
 === Scientific questions addressed by RD NMR ===
 
@@ -87,7 +87,7 @@ _From Kleckner and Foster, 2011_
       # k,,B,, (/s): Average frequency (not velocity!) of transition from state B to state A
   * *Relaxation parameter (1 per Curve per NMR probe)*
     # R,,2,,^0^ (Hz): Relaxation rate of the A state in the absence of exchange
-  * *(b)* The MQ Curve shown here is simulated using |ΔωH| = 8 Hz, |ΔωX| = 201 Hz, kex = 1000 /s, P,,A,, = 90%, and  = 10 Hz.
+  * *(b)* The MQ Curve shown here is simulated using |ΔωH| = 8 Hz, |ΔωX| = 201 Hz, k,,ex,, = 1000 /s, P,,A,, = 90%, and  = 10 Hz.
 
 
 == Assigning parameters for fitting ==
@@ -374,7 +374,7 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
     * vantHoff_isOK
 
   * Key functions in code: *{{{RateAnalyis.m}}}*
-    * *{{{analyzeMe}}}*, Update kinetic quantities using P,,A,,(T) and kex(T)
+    * *{{{analyzeMe}}}*, Update kinetic quantities using P,,A,,(T) and k,,ex,,(T)
     * *{{{getArrheniusPlotA}}}*, Return X and Y vectors for the Arrhenius plots A (ln(kA) vs. 1/T (or ln(kB) vs 1/T))
     * *{{{getVantHoffPlot}}}*, Return X and Y vectors for van't Hoff plot (ln(K) vs 1/T)
 
@@ -396,7 +396,7 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
 
 == General use ==
 
-=== Acqquire and prepare data ===
+=== Acquire and prepare data ===
   * Acquire CPMG RD NMR spectra
     * Multiple temperatures, B,,0,, fields, SQ and/or MQ dispersion for either ^13^C or ^15^N sites
   * Extract peak intensities wtih NMRPipe [http://guardd.googlecode.com/files/Processing-RD--2008.07.07.zip download]
@@ -817,14 +817,16 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
 
 === Fitting tips ===
   * Usually dispersions with larger R,,ex,, have a more well-defined solution
-    * Small R,,ex,, and/or noisy data are usually accompanied by challenges in 
+    * Small R,,ex,, and/or noisy data are usually accompanied by challenges in fitting
 
-  * If unsure about the fit, then don't use it
+  * If unsure about the fit, then don't interpret fitted parameters quantitatively
     * Additional inaccurate information can obscure proper interpretation of dynamics
+    * A poor fit to the two-state model may indicate more complex exchange, such as three-state
+    * Note this residue, and consider other fitting equations or more complex exchange models (unfortunately, not available in GUARDD v.2011.09.11)
 
   * Three solutions for ill-defined fits
     # Select one of the fits, but mark the ill-defined parameters as “Not OK,”  thus preventing their mis-interpretation in subsequent analyses.
-    # Alter the Group and re-fit. One may remove noisy Curves and/or add additional Curvesets to help constrain the values of kex and PA.
+    # Alter the Group and re-fit. One may remove noisy Curves and/or add additional Curvesets to help constrain the values of k,,ex,, and P,,A,,.
     # Acquire more data and re-fit the new Group. The RD Simulator can help determine optimal conditions of temperature, magnetic field strength, and/or quantum coherence for efficient use of spectrometer time, [Manual#RD_Simulator here]
 
   * Check for outliers in fitted data
@@ -844,6 +846,22 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
     * k,,ex,, should increase with temperature (e.g., Arrhenius)
     * P,,A,, may increase (ΔH < 0), decrease (ΔH > 0) or remain constant (ΔH=0) with temperature
 
+=== GUARDD approach to fast exchange and PhiEx ===
+  * *Issue*: _In fast exchange (k,,ex,, >> Δν = Δω / (2π)), the quantities P,,A,,P,,B,, and Δω are correlated, and therefore cannot be independently defined_
+
+  * *Solution*: sometimes although neither quantity can be defined independently, the quantity Φ,,ex,,^X^ = P,,A,,P,,B,,Δω,,X,,^2^ = P,,A,,(1-P,,A,,)Δω,,X,,^2^ , where X refers to the X nucleus, can be well-defined (Luz, 1963; Ishima, 1999)
+
+  * Examine Φ,,ex,,^X^ in the <u>Chi2 Map</u> window to help assess the sensitivity of the final fit to either initial conditions (via grid search) or to noise in the data (via Monte Carlo error estimation)
+    * In some cases, the parameters P,,A,, and Δω,,X,, are relatively sensitive to initial conditions (wide χ^2^ maps), whereas Φ,,ex,, is relatively less sensitive (more narrow χ^2^ map), which may indicate that it is reasonable to interpret Φ,,ex,,, but not P,,A,,.
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/GUARDD-Update-2011.09.13--01.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/GUARDD-Update-2011.09.13--01.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+
+  * The <u>Chi2 Map</u> window displays a correlation plot of the optimized values of Δω,,X,,^2^ and P,,A,,P,,B,,. In fast exchange, a strong correlation between these parameters yields a line of points, facilitating detection of fast exchange. 
+
+<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/GUARDD-Update-2011.09.06--02.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/GUARDD-Update-2011.09.06--02.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+
+  * Check for fast exchange via the Fit RD window by comparing values of k,,ex,, and Δω as well as the exchange parameter α, which indicates fast exchange in the range 1.0 to 2.0 (Millet et al., 2000). 
+
 == Limitations ==
   * Liabilities of linkage to MATLAB
     # GUARDD is slower than if it were coded using C or Python, for example
@@ -854,10 +872,14 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
       # However, enhancements to MATLAB may imbue enhancements to GUARDD
     # User must have access to MATLAB (i.e., GUARDD is not a standalone program)
       # However, MATLAB is a convenient cross-platform solution for dissemination of software
+    # Cannot be run using Octave, which can run many other MATLAB programs [http://www.gnu.org/software/octave/ link]
+      # Octave does not support the graphical user interface that is a key feature of GUARDD [http://www.gnu.org/software/octave/FAQ.html#MATLAB-compatibility link]
+      # For what its worth, Octave supports a distinct GUI library called “Zenity” [http://octave.sourceforge.net/zenity/ link]
+
   # Limitations of GUARDD functionality
-    # exchange model is restricted to two-state using the all-timescales MQ Carver-Richards-Jones formulation
-      # No simplifications assuming skewed populations (PB < PA) [Ishima1999]
-      # No simplifications assuming fast-exchange (kex > Δν)
+    # Exchange model is restricted to two-state using the all-timescales MQ Carver-Richards-Jones formulation
+      # No simplifications assuming skewed populations (P,,B,, < P,,A,,) (Ishima, 1999)
+      # No simplifications assuming fast-exchange (k,,ex,, > Δν)
     # No three-site exchange
     # No ZQ or DQ coherences
     # No pressure-dependence of RD
@@ -1020,6 +1042,24 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
 
   α = d( ln(R,,ex,,) ) / d( ln(Δω) )
 
+=== Exchange quantity PhiEx ===
+  * *Goal*: _Calculate quantity Φ,,ex,, that appears in fast-exchange approximation to RD equations_
+    * Sometimes this quantity is well-defined despite correlated/ill-defined P,,A,, and Δω
+
+  * *Input*
+    # P,,A,,
+    # Δω,,X,, where X is the X nucleus
+  * *Output*
+    # Φ,,ex,,^X^ (Hz^2^)
+  * *Location in code*
+    * {{{FitResult.analyzeMe()}}}
+  * *Reference*
+    * Luz & Meiboom (1963)
+    * Ishima & Torchia (1999)
+
+  Φ,,ex,,^X^ = P,,A,,P,,B,,Δω,,X,,^2^ = P,,A,,(1-P,,A,,)Δω,,X,,^2^
+
+
 === Arrhenius: Determining activation energy ===
   * *Goal*: Obtain activation energy and pre-exponential rate to characterize temperature-dependence of rate
 
@@ -1105,7 +1145,7 @@ which, with ΔH, determines P,,A,, at any temperature via van't Hoff
 
 <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-04.png" alt="[UNLOADED IMAGE]"> </img>
 
-Next, using P,,A,, and kex at T,,0,, determines k,,A,, and k,,B,, at T,,0,,
+Next, using P,,A,, and k,,ex,, at T,,0,, determines k,,A,, and k,,B,, at T,,0,,
 
 <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-05.png" alt="[UNLOADED IMAGE]"> </img>
 
@@ -1119,7 +1159,7 @@ which, with E,,AB,,, yields k,,A,, at any temperature via Arrhenius
 
 <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-08.png" alt="[UNLOADED IMAGE]"> </img>
 
-Next, knowledge of P,,A,, and k,,A,, at any temperature yields kex at any temperature
+Next, knowledge of P,,A,, and k,,A,, at any temperature yields k,,ex,, at any temperature
 
 <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-09.png" alt="[UNLOADED IMAGE]"> </img>
 
@@ -1283,13 +1323,16 @@ _Monte Carlo procedure generates and fits synthetic data consistent with observe
 
 == References ==
   * *Please cite your usage of GUARDD in BOTH ways*
-    # Kleckner, I. R., & Foster, M. P. (n.d.). GUARDD: User-friendly MATLAB software for rigorous analysis of CPMG RD NMR data. (in preparation).
+    # Kleckner, I. R., & Foster, M. P. (2011). GUARDD: User-friendly MATLAB software for rigorous analysis of CPMG RD NMR data. (accepted).
     # http://code.google.com/p/guardd/
   * *Review on protein dynamics via NMR*
     * Kleckner, I. R., & Foster, M. P. (2011). An introduction to NMR-based approaches for measuring protein dynamics. Biochimica et biophysica acta, 1814(8), 942-968. Elsevier B.V. doi: 10.1016/j.bbapap.2010.10.012.
   * *Fitting RD data is poorly determined*
     * Kovrigin, E. L., Kempf, J. G., Grey, M. J., & Loria, J. P. (2006). Faithful estimation of dynamics parameters from CPMG relaxation dispersion measurements. Journal of magnetic resonance (San Diego, Calif. : 1997), 180(1), 93-104. doi: 10.1016/j.jmr.2006.01.010.
     * Ishima, R., & Torchia, D. a. (2005). Error estimation and global fitting in transverse-relaxation dispersion experiments to determine chemical-exchange parameters. Journal of biomolecular NMR, 32(1), 41-54. doi: 10.1007/s10858-005-3593-z.
+  * *Fast exchange approximation*
+    * Luz, Z. & Meiboom, S. (1963). Nuclear magnetic resonance study of protolysis of trimethylammonium ion in aqueous solution - order of reaction with respect to solvent. J. Chem. Phys., 39, 366-370.
+    * Ishima, R. & Torchia, D.A. (1999). Estimating the time scale of chemical exchange of proteins from measurements of transverse relaxation rates in solution. Journal of Biomolecular NMR, 14, 369-72. [http://view.ncbi.nlm.nih.gov/pubmed/10526408]
   * *MQ dispersion*
     * Korzhnev, D. M., Kloiber, K., & Kay, L. E. (2004). Multiple-quantum relaxation dispersion NMR spectroscopy probing millisecond time-scale dynamics in proteins: theory and application. Journal of the American Chemical Society, 126(23), 7320-9. doi: 10.1021/ja049968b.
   * *Quantum Coherences in dispersion*
