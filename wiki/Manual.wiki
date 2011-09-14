@@ -1240,13 +1240,19 @@ _Monte Carlo procedure generates and fits synthetic data consistent with observe
 
     ε(ν,,CPMG,,) = R,,2Eff,,^Obs^(ν,,CPMG,,) - R,,2Eff,,^Calc^(ν,,CPMG,,)
 
-  (2) The residuals are used to create a normal distribution for the Curve with mean and variance
+  (2a) The residuals are used to create a normal distribution for the Curve with mean and variance
 
   Norm(mean(ε), var(ε))
+
+  (2b) Alternatively, the experimental errors σ(R,,2Eff,,^Obs^) can be used
+
+  Norm(mean(σ), var(σ))
 
   (3) Generate a synthetic dispersion Curve using the fit at each ν,,CPMG,, plus a random sample from the distribution
 
     R,,2Eff,,^Synth^ = R,,2Eff,,^Calc^(ν,,CPMG,,) + Sample( Norm(mean(ε), var(ε)) )
+
+    _or using Norm(mean(σ), var(σ))_
 
   (4) Repeat for each Curve in the Group such that a synthetic Group is produced
 
