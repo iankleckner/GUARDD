@@ -1322,7 +1322,9 @@ _Monte Carlo procedure generates and fits synthetic data consistent with observe
   * The Ohio State University [http://www.osu.edu/ link]
   * National Institutes of Health [http://www.nih.gov/ link]
 
-== Citing GUARDD ==
+== Citing GUARDD ==  
+  * GUARDD manuscript: [http://dx.doi.org/10.1007/s10858-011-9589-y http://dx.doi.org/10.1007/s10858-011-9589-y]
+
   * *Please cite your usage of GUARDD in BOTH ways*
     # Kleckner, I. R., & Foster, M. P. (in press). GUARDD: User-friendly MATLAB software for rigorous analysis of CPMG RD NMR data. Journal of Biomolecular NMR. doi: 10.1007/s10858-011-9589-y
     # http://code.google.com/p/guardd/
@@ -1352,7 +1354,7 @@ _Monte Carlo procedure generates and fits synthetic data consistent with observe
     *  Winzor, D. J., & Jackson, C. M. (2006). Interpretation of the temperature dependence of equilibrium and rate constants. Journal of Molecular Recognition, c(August), 389-407. doi: 10.1002/jmr.
 
 == Author ==
-  * (C) Ian Kleckner
+  * (C) [http://ianrobertkleckner.blogspot.com Ian Kleckner]
   * Mark Foster's Lab
   * The Ohio State University
   * Columbus, OH, USA
