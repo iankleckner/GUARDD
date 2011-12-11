@@ -1324,7 +1324,7 @@ _Monte Carlo procedure generates and fits synthetic data consistent with observe
 
 == Citing GUARDD ==
   * *Please cite your usage of GUARDD in BOTH ways*
-    # Kleckner, I. R., & Foster, M. P. (n.d.). GUARDD: User-friendly MATLAB software for rigorous analysis of CPMG RD NMR data. (in preparation).
+    # Kleckner, I. R., & Foster, M. P. (in press). GUARDD: User-friendly MATLAB software for rigorous analysis of CPMG RD NMR data. Journal of Biomolecular NMR. doi: 10.1007/s10858-011-9589-y
     # http://code.google.com/p/guardd/
 
 == References ==
