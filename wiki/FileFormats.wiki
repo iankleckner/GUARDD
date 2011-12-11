@@ -496,8 +496,15 @@ AA|Num	Residue	Atom	Group|Name	B0|(MHz)	Temp|(C)	Exchange?	Best fit|OK?	Constrai
   * The Ohio State University [http://www.osu.edu/ link]
   * National Institutes of Health [http://www.nih.gov/ link]
 
+== Citing GUARDD ==  
+  * GUARDD manuscript: [http://dx.doi.org/10.1007/s10858-011-9589-y http://dx.doi.org/10.1007/s10858-011-9589-y]
+
+  * *Please cite your usage of GUARDD in BOTH ways*
+    # Kleckner, I. R., & Foster, M. P. (in press). GUARDD: User-friendly MATLAB software for rigorous analysis of CPMG RD NMR data. Journal of Biomolecular NMR. doi: 10.1007/s10858-011-9589-y
+    # http://code.google.com/p/guardd/
+
 == Author ==
-  * (C) Ian Kleckner
+  * (C) [http://ianrobertkleckner.blogspot.com Ian Kleckner]
   * Mark Foster's Lab
   * The Ohio State University
   * Columbus, OH, USA
