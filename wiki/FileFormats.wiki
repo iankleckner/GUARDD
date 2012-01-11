@@ -11,7 +11,7 @@
   * Some files can be read/prepared with spreadsheet programs like Excel, OpenOffice, or Gnumeric
   * *Note*: when using spreadsheet programs to create a file for input to GUARDD, *copy* the contents from the spreadsheet, then *paste* them into a text editor
     * Issues may occur if File...Save as text... (or similar) is used
-  * The preferred method to load data to GUARDD is the Script file [http://code.google.com/p/guardd/w/edit.do#Input:_Script_file_to_load_data here]
+  * The preferred method to load data to GUARDD is the [FileFormats#Input:_Script_file_to_load_data Script file]
 
 
 == Input: Script file to load data ==
@@ -505,6 +505,8 @@ AA|Num	Residue	Atom	Group|Name	B0|(MHz)	Temp|(C)	Exchange?	Best fit|OK?	Constrai
 
 == Author ==
   * (C) [http://ianrobertkleckner.blogspot.com Ian Kleckner]
+
+  * Work completed as part of PhD Dissertation
   * Mark Foster's Lab
   * The Ohio State University
   * Columbus, OH, USA
