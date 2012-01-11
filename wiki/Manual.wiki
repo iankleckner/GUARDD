@@ -1355,6 +1355,8 @@ _Monte Carlo procedure generates and fits synthetic data consistent with observe
 
 == Author ==
   * (C) [http://ianrobertkleckner.blogspot.com Ian Kleckner]
+
+  * Work completed as part of PhD Dissertation
   * Mark Foster's Lab
   * The Ohio State University
   * Columbus, OH, USA
