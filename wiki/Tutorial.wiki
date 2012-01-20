@@ -573,9 +573,9 @@ OBJECT TYPE (Doesn't work)
   * *Goal*: _Assess the extent to which fitting is sensitive to initial conditions_
   * *Key info on features of chi2 maps*    
     * A Chi2 map displays a set of parameter values (e.g., for k,,ex,,) on the X-axis and the goodness of fit (χ^2^) associated with that value on the Y-axis
-    * The most precies fit is at the min(χ^2^)
+    * The most precise fit is at the min(χ^2^)
     * Chi2 maps take a variety of shapes, such as ".", "U", "W", and "-"
-    * *Details*: Read more in the [Manual#Grid_Search Manual]
+    * *Details*: Read more in the [Manual#Grid_search Manual]
 
 <a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chi2_maps/figure-chi2_maps.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chi2_maps/figure-chi2_maps.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
