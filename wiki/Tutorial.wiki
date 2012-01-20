@@ -60,6 +60,7 @@ OBJECT TYPE (Doesn't work)
   # [http://www.mathworks.com MATLAB software]
   # [http://www.mathworks.com/products/optimization/ MATLAB Optimization Toolbox]
   # [http://www.mathworks.com/products/curvefitting/ MATLAB Curve Fitting Toolbox]
+  # [http://www.mathworks.com/products/statistics/ MATLAB Statistics Toolbox]
   # GUARDD program [http://code.google.com/p/guardd/downloads/list download]
     # Matlab .m and .fig files
   # Tutorial files for this example [http://code.google.com/p/guardd/downloads/list download]
