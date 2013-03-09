@@ -500,7 +500,7 @@ AA|Num	Residue	Atom	Group|Name	B0|(MHz)	Temp|(C)	Exchange?	Best fit|OK?	Constrai
   * GUARDD manuscript: [http://dx.doi.org/10.1007/s10858-011-9589-y http://dx.doi.org/10.1007/s10858-011-9589-y]
 
   * *Please cite your usage of GUARDD in BOTH ways*
-    # Kleckner, I. R., & Foster, M. P. (in press). GUARDD: User-friendly MATLAB software for rigorous analysis of CPMG RD NMR data. Journal of Biomolecular NMR. doi: 10.1007/s10858-011-9589-y
+    # Kleckner, I. R., & Foster, M. P. (2012). GUARDD: user-friendly MATLAB software for rigorous analysis of CPMG RD NMR data. Journal of biomolecular NMR, 52(1), 11–22. doi:10.1007/s10858-011-9589-y
     # http://code.google.com/p/guardd/
 
 == Author ==
