@@ -196,6 +196,7 @@ OBJECT TYPE (Doesn't work)
     # (1b) Task: *Simulate*
     # (2) INITIAL CONDITIONS: _(Leave default)_
       # *Note*: Often, one may change starting P,,A,,, k,,ex,,, Δω,,H,,, and Δω,,X,,
+      # To change starting R20, see https://groups.google.com/d/topic/guardd/Dzby-J-6Q18/discussion
     # Click *Go!* (1-5 sec)
       # Note that these initial conditions are reasonable (fit is somewhat close to data)
     # (1b) Task: *Optimize fit*
