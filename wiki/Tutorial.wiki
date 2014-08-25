@@ -104,7 +104,7 @@ OBJECT TYPE (Doesn't work)
   # *Important*: _Main window must remain open (it controls all other GUI windows)_
   # Check Matlab command window for additional output
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--01.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--01.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--01.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--01.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 === Load data ===
   * *Goal*: _Get RD data into the program for analysis_
@@ -120,7 +120,7 @@ OBJECT TYPE (Doesn't work)
     # 25, 32, and 37^o^C
     # SQ and MQ coherence
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--02.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--02.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--02.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--02.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 === Create groups for fitting ===
   * *Goal*: _Aggregate RD curves from the same NMR signal (assignment) for group fitting_  
@@ -143,7 +143,7 @@ OBJECT TYPE (Doesn't work)
     # Click *Generate groups*
 
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--03.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--03.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--03.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--03.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 
   # <u>Data Manager</u>
@@ -157,7 +157,7 @@ OBJECT TYPE (Doesn't work)
     # *Group...Sort groups*
   # Close the <u>Data Manager</u> window
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--04.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--04.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--04.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--04.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 === Select groups that exhibit exchange ===
   * *Goal*: _Determine which groups exhibit flexibility, and therefore warrant further analysis_  
@@ -168,7 +168,7 @@ OBJECT TYPE (Doesn't work)
     # Check *Exch?* if the data are not horizontal (i.e., if R,,ex,, > 0)
       # *Note*: all residues exhibit exchange except Ile 61δ,,1,, and Ile 68δ,,1,,
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--05.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--05.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--05.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--05.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 === Fit RD data ===
   * *Goal*: _Obtain best-fit values for the 4-5 parameters required to describe each curve_
@@ -211,7 +211,7 @@ OBJECT TYPE (Doesn't work)
       # Click *All*
       # *Note*: In general, one should more carefully check if the best fit is OK (see [Manual#Determining_which_parameters_are_OK Manual])
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--06.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--06.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--06.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--06.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
   * *Goal*: _If unsure about which initial conditions to use, the grid search fits multiple times with different initial conditions_
@@ -236,7 +236,7 @@ OBJECT TYPE (Doesn't work)
       # *Observe*: _Becuase the initial conditions used for {{{Fit-1}}} above were appropriate, both {{{Fit-1}}} and {{{Fig-G}}} yield the same result_
       # *Note*: _The grid search can demonstrate success if the optimal fit is *insensitive* to inital conditions_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--07.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--07.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--07.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--07.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
  * *Note*: Saving data and output plots are discussed [Tutorial#View_results_in_display_cluster below]
 
@@ -289,7 +289,7 @@ OBJECT TYPE (Doesn't work)
       # Check *Best fit is OK*
       # Click *All*
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--08.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--08.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--08.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--08.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
   * *Goal*: _Fit with rate constraints (Method B)_
@@ -316,7 +316,7 @@ OBJECT TYPE (Doesn't work)
       # Check *Best fit is OK*
       # Click *All*
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--09.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--09.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--09.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--09.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 ==== Examine rate analysis (vant Hoff and Arrhenius) ====
   * *Goal*: _Use <u>Rates</u> window to examine temperature-dependence of rates (vant Hoff and Arrenius)_
@@ -332,7 +332,7 @@ OBJECT TYPE (Doesn't work)
     # _Save the figure to a file_
     # Close <u>Rates</u>
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--10.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--10.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--10.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--10.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 ==== View fits to RD data ====
   * *Goal*: _Use <u>Display RD</u> window to assess the fit to the RD data, and prepare an output figure_
@@ -351,7 +351,7 @@ OBJECT TYPE (Doesn't work)
     # _GUARDD will prepare a filename for saving, and you must type the file extension_
     # Type *ps* to save as a postscript file and click *Save* (or hit *Enter*)
     
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--11.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--11.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--11.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--11.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
   * *Goal*: _Create a 2D plot with residuals that highlights the fit to some of the data_
   # <u>Display RD</u>
@@ -367,7 +367,7 @@ OBJECT TYPE (Doesn't work)
     # Type *ps* to save as a postscript file and click *Save* (or hit *Enter*)
     # Close the <u>Display RD</u> window
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--12.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--12.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--12.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--12.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
   * *Save the session often*
     # <u>Main</u>
@@ -396,7 +396,7 @@ OBJECT TYPE (Doesn't work)
       # Click *Select*
       # (Repeat this process with the second curveset, *Leu 22\delta2*)
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--13.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--13.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--13.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--13.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
     # *Group...Sort groups...*
     # Make sure that group _Leu 22_ contains two curvesets: _Cp(Leu 22\delta1)_ and _Cp(Leu 22\delta2)_
@@ -405,7 +405,7 @@ OBJECT TYPE (Doesn't work)
       # See [Manual#Organizing_data Manual] for more on organizing data
     # Close <u>Data Manager</u>
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--14.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--14.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--14.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--14.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 ===== Fit a multi-curveset, multi-temperature group =====
   * *Goal*: _Use <u>Fit RD</u> window to manually fit one group containing multiple curvesets_
@@ -441,7 +441,7 @@ OBJECT TYPE (Doesn't work)
       # Check *Best fit is OK*
       # Click *All*
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--16.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--16.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--16.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--16.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
   
   * *Goal*: _Demonstrate issue that some optimized fits are sensitive to initial conditions (especially noisy and/or many data)_  
@@ -477,7 +477,7 @@ OBJECT TYPE (Doesn't work)
     * Close <u>Fit RD</u> window
     
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--17.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--17.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--17.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--17.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
   * *Save the session often*
     # <u>Main</u>
@@ -518,7 +518,7 @@ OBJECT TYPE (Doesn't work)
       # In case the program crashes, progress is saved
       # Allows the user to start a batch task on one computer (e.g., at work), then download/view the results remotely on another computer (e.g., at home)
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--18.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--18.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--18.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--18.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
 === Time for a break? ===
@@ -526,7 +526,7 @@ OBJECT TYPE (Doesn't work)
   * _The batch task does not need to be completed_
   * _The tutorial proceeds using a pre-saved GUARDD session_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/take-a-break-from-work.jpg"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/take-a-break-from-work.jpg" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/take-a-break-from-work.jpg"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/take-a-break-from-work.jpg" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
 
@@ -568,7 +568,7 @@ OBJECT TYPE (Doesn't work)
   * *Goal*: _View the RD fit and residuals to help assess fit quality_
   * Confer prior tutorial steps on using the <u>Display RD</u> window [Tutorial#View_fits_to_RD_data here]
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--12.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--12.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--12.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--12.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 ==== View Grid Search Chi2 Map for good fit ====
   * *Goal*: _Assess the extent to which fitting is sensitive to initial conditions_
@@ -578,7 +578,7 @@ OBJECT TYPE (Doesn't work)
     * Chi2 maps take a variety of shapes, such as ".", "U", "W", and "-"
     * *Details*: Read more in the [Manual#Grid_search Manual]
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chi2_maps/figure-chi2_maps.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chi2_maps/figure-chi2_maps.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/manual/figure-chi2_maps/figure-chi2_maps.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/manual/figure-chi2_maps/figure-chi2_maps.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
   * *Goal*: _Use both <u>Chi2 Map</u> window and <u>Fit RD</u> window to view data_
   # <u>Main</u>
@@ -605,7 +605,7 @@ OBJECT TYPE (Doesn't work)
       # The *green diamond* designates the currently selected fit from the displayed grid list
       # Any of these can be added to the list of fits, if desired
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--20.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--20.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--20.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--20.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * *Observe*: _The fit to the no exchange model is inappropriate_
     # <u>Chi2 Map</u>
@@ -622,7 +622,7 @@ OBJECT TYPE (Doesn't work)
       # Move the *Top%* slider down to 50% in 4-6 small steps
       # *Observe*: _The chi2 map remains U-shaped even as the poorest fits are eliminated from display_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--21.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--21.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--21.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--21.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 ==== View Monte Carlo Errors Chi2 Map for good fit  ====
   * *Goal*: _Assess the extent to which fitting is sensitive to noise in the data_
@@ -633,7 +633,7 @@ OBJECT TYPE (Doesn't work)
     * Example: A worse optimal fit to the original data yields *more different* MC datasets and therefore *more different* optimal parameter values
     * *Details*: Read more about Monte Carlo error estimation in the [Manual#Monte_Carlo_error_estimation Manual]
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd/manual/figure-monte_carlo/figure-monte_carlo.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/manual/figure-monte_carlo/figure-monte_carlo.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   # <u>Chi2 Map</u>
     # Make sure *Fit*: {{{* FIT-G[--] Chi2=93.33}}} is selected
@@ -656,13 +656,13 @@ OBJECT TYPE (Doesn't work)
     # *Note*: it is usually best to use a *Top%*=100% for MC errors
       * Sometimes anomalous fits yield very large χ^2^, and can be discarded, but this is rare
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--22.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--22.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--22.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--22.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * *Observe*: _The symmetry of the MC chi2 maps indicate reliable estimation of error, and is consistent with reasonable parameter values_
     * The scatter plot illustrates a circular distribution about the optimal result      
     * The histogram is roughly symmetric, and is well-described by the standard deviation
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--23.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--23.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--23.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--23.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 
 ==== View Grid Search Chi2 Map for fit with uknown parameters ====
@@ -688,7 +688,7 @@ OBJECT TYPE (Doesn't work)
     # *Display Mode*: Scatter
   * *Observe*: _The grid search illutrates solutions at two distinct points_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--26.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--26.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--26.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--26.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * *Goal*: _Add the higher-χ^2^ fit to the fit list for further inspection_
   # <u>Chi2 Map</u>
@@ -705,7 +705,7 @@ OBJECT TYPE (Doesn't work)
 
   * For now, we will continue to analyze the lower-χ^2^ fit
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--27.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--27.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--27.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--27.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 
 ==== View Monte Carlo Errors Chi2 Map for fit with uknown parameters ====
@@ -719,7 +719,7 @@ OBJECT TYPE (Doesn't work)
     * *Observe*: _A wide range of Δω and P,,A,, values can describe these data → Δω and P,,A,, are not OK!_
     # Close <u>Chi2 Map</u> window
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--28.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--28.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--28.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--28.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * *Goal*: _Mark these parameters as "Not OK" in the <u>Fit RD</u> window_
   # <u>Fit RD</u>
@@ -734,7 +734,7 @@ OBJECT TYPE (Doesn't work)
     # Make note of this in the *(5) Log notes for group* panel (_or take note of the current note_)
     # Close <u>Fit RD</u> window
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--29.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--29.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--29.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--29.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 ==== Document notes for organization ====
   * *Goal*: View and maintain organized notes for interpreting fit results
@@ -745,7 +745,7 @@ OBJECT TYPE (Doesn't work)
       # Notes on the session can be created and edited in the <u>Notes</u> window
       # Close the <u>Notes</u> window
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--19.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--19.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--19.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--19.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 === Output results ===
   * *Goal*: _Aggregate and output any/all results for dissemination_
@@ -796,7 +796,7 @@ OBJECT TYPE (Doesn't work)
     # Close <u>Groups</u> window
   * *Bug*: Selecting *dwX_ppm* results in an error involving {{{iscolumn()}}} in some versions of MATLAB (at least R2009a on Windows)
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--24.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--24.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--24.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--24.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 ==== View results in table ====
   * *Goal*: _Aggregate and output any/all results for dissemination_
@@ -809,7 +809,7 @@ OBJECT TYPE (Doesn't work)
 
   * *Bug*: Selecting all items in the table results in an error in some versions of MATLAB (at least R2009a on Windows)
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--25.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--25.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--25.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--25.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 ==== Export data and groups ====
   * *Goal*: _Aggregate and output results for dissemination_
@@ -841,7 +841,7 @@ OBJECT TYPE (Doesn't work)
       # Set *B0(MHz)* to _500_
       # CURVES: Click *New*
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-01.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-01.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--Sim-01.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--Sim-01.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
 ==== Simulate multi-field, multi-temperature dataset ====
@@ -866,7 +866,7 @@ OBJECT TYPE (Doesn't work)
       # CURVES: Click *New*
       # Set *Temp(C)* to _35_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-02.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-02.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--Sim-02.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--Sim-02.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
 ==== Explore experimental condtions for observing RD ====
@@ -894,7 +894,7 @@ OBJECT TYPE (Doesn't work)
       # _At higher field strength, dispersions are larger, becuse Δω,,X,,(Hz) is increased_
 
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-03.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-03.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--Sim-03.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--Sim-03.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 ==== Explore temperature-dependence of exchange kinetics ====
   * *Goal*: _Explore the nature of exchange kinetics using the <u>Kinetic Simulator</u>_
@@ -923,7 +923,7 @@ OBJECT TYPE (Doesn't work)
   # <u>Kinetic Simulator</u>
     # Close the window (X)
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-04.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-04.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--Sim-04.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--Sim-04.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 ==== Export simulated data ====
   * *Goal*: _Assess accuracy of fitting procedure by analyzing data with "known" solution_
@@ -946,7 +946,7 @@ OBJECT TYPE (Doesn't work)
     # Fits of these data should achieve within 10% accuracy of the simulation conditions
 
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-05.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-05.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--Sim-05.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd/tutorial/tutorial-GUARDD-2011.06.17--Sim-05.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 
 == Acknowledgements ==
