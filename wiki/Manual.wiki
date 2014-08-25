@@ -43,7 +43,7 @@
 === Chemical exchange phenomenon ===
   * *Goal*: _Present the NMR phenomenon that enables characterization of μs-ms dynamics_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chemical_exchange/figure-chem_exchange_NMR-GUARDD.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chemical_exchange/figure-chem_exchange_NMR-GUARDD.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd//manual/figure-chemical_exchange/figure-chem_exchange_NMR-GUARDD.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//manual/figure-chemical_exchange/figure-chem_exchange_NMR-GUARDD.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 _Adapted from Kleckner and Foster, 2011_
 
@@ -55,7 +55,7 @@ _Adapted from Kleckner and Foster, 2011_
 === The RD experiment refocuses chemical exchange broadening R,,ex,, ===
   * *Goal*: _Present the NMR experiment that quantitatively characterizes μs-ms dynamics_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-CPMG_RD/figure-CPMG_RD--experiment.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-CPMG_RD/figure-CPMG_RD--experiment.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd//manual/figure-CPMG_RD/figure-CPMG_RD--experiment.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//manual/figure-CPMG_RD/figure-CPMG_RD--experiment.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 _From Kleckner and Foster, 2011_
 
@@ -69,7 +69,7 @@ _From Kleckner and Foster, 2011_
 == Two-state exchange model ==
   * *Goal*: _Present the simplest and most commonly used model to describe μs-ms dynamics_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-RD_Parameters/figure-rd_parameters.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-RD_Parameters/figure-rd_parameters.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd//manual/figure-RD_Parameters/figure-rd_parameters.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//manual/figure-RD_Parameters/figure-rd_parameters.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a> 
   
    * *(a) *A single NMR probe (e.g., Ala 12N^H^) is considered to alternate between local structures designated A and B, which have distinct NMR chemical shifts in 1H and/or AX dimensions.
     * Although two signals are shown here, the “minor” B state is not detected directly because its NMR signal is too weak and/or too broad. However, the A↔B exchange yields a quantitative effect on the measured RD Curve of signal A.
@@ -94,7 +94,7 @@ _From Kleckner and Foster, 2011_
   * *Goal*: _Fitting requries five parameters per Curve, but often parameters can be shared when Curves are aggregated into Curvesets, which are aggregated into Groups_
     * Details on Curves, Curvesets, and Groups are [Manual#Organizing_Data here]
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-example/figure-data_management-example.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-example/figure-data_management-example.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//manual/data_management-example/figure-data_management-example.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//manual/data_management-example/figure-data_management-example.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a>
 
 _(Figure above) (a) Hierarchical data structures used in GUARDD, (b) example data structure [Manual#Example_parameter_assignment shown here]_
 
@@ -131,7 +131,7 @@ _(Figure above) (a) Hierarchical data structures used in GUARDD, (b) example dat
   * *Goal*: _Check the command window output for itemization of each parameter in a given Group_
     * Use the debugging output option {{{OUTPUT_DEBUG_UPDATE_FIT_PARAMS}}} (in [Manual#Settings Settings window], on by default)
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-example/figure-data_management-example.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-example/figure-data_management-example.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd//manual/data_management-example/figure-data_management-example.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//manual/data_management-example/figure-data_management-example.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a> 
 
 _(Figure above) (a) Hierarchical data structures used in GUARDD, (b) example data structure discussed below_
 
@@ -240,7 +240,7 @@ Working on CS=2, Leu 22\delta_1
 == Organizing data ==
  * *Goal*: _Organize data in hierarchical manner to provide framework for fitting procedures_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-large/figure-data_management-large.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/data_management-large/figure-data_management-large.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd//manual/data_management-large/figure-data_management-large.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//manual/data_management-large/figure-data_management-large.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a> 
 
 _(Figure above) Datasets contain Curves, which are linked to by Curvesets within Groups_
 
@@ -403,7 +403,7 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
 
 === Analyze data using GUARDD ===
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-flowchart-fitting/figure-flowchart-fitting.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-flowchart-fitting/figure-flowchart-fitting.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//manual/figure-flowchart-fitting/figure-flowchart-fitting.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//manual/figure-flowchart-fitting/figure-flowchart-fitting.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a>
 
   # Load the data and execute the grid search on exchanging Groups
   # For each Group, the grid search fit is selected, otherwise an individual fit is performed
@@ -420,7 +420,7 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
 
 == GUARDD Graphical Interface ==
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/main-GUARDD-2011.07.13--01.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/main-GUARDD-2011.07.13--01.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//manual/main-GUARDD-2011.07.13--01.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//manual/main-GUARDD-2011.07.13--01.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 === GUARDD Input menu ===
 
@@ -438,7 +438,7 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
 ==== Settings ====
   * *Goal*: Change program settings here
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/manual-GUARDD-2011.06.16--settings.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/manual-GUARDD-2011.06.16--settings.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd//manual/manual-GUARDD-2011.06.16--settings.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//manual/manual-GUARDD-2011.06.16--settings.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
   * Take special note of OUTPUT_DEBUG flags, which are helpful to see program logic during execution
   * The items on this list are set in the code via {{{Session.param_info}}}
@@ -446,7 +446,7 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
 ==== Data Manger ====
   * *Goal*: _Manage datasets, Curves, Curvesets, and Groups for analysis (input and basic output)_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--04.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--04.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--04.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--04.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 *<u>Menu items</u>*
   * *Input...*
@@ -519,14 +519,14 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
   * *Goal*: _Create a set of Groups using a subset of the data_
     * Helpful when only part of a large dataset is desired
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--03.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--03.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--03.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--03.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * Tutorial: Advanced Group creation [Tutorial#Create_a_multi-curveset,_multi-temperature_group here]
 
 ===== Select Group =====
   * *Goal*: _Select a Group so that the selected Curveset can be copied to it_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--13.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--13.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--13.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--13.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * Tutorial: Advanced Group creation  [Tutorial#Create_a_multi-curveset,_multi-temperature_group here]
 
@@ -539,7 +539,7 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
 ==== RD Simulator ====
   * *Goal*: _Explore the nature of RD pheneomnea and create simulated Group data for planning experiments and edification_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-03.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-03.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--Sim-03.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--Sim-03.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * Tutorial: Data simulation [Tutorial#Simulate_and_export_RD_data here]
   * Key sections of code
@@ -550,7 +550,7 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
 ===== Kinetic Simulator =====
   * *Goal*: _Explore the nature of two-state exchange pheneomnea for planning experiments and edification_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-04.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--Sim-04.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--Sim-04.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--Sim-04.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * Tutorial: Kinetic simulation [Tutorial#Explore_temperature-dependence_of_exchange_kinetics here]
   * See related: Kinetic simulation equations [Manual#Kinetic_simulator here]
@@ -563,7 +563,7 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
   * *Goal*: _The "product" is a *best* fitResult, and its parameters which are OK (those are used/displayed in subsequent analyses)_
   * *Note*: Tasks completed in this  window are autoamatically committed (no need for an "OK" or "Save" command)
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--16.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--16.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--16.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--16.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * This window contains six panels for fitting tasks
   * *Panel: (1a) Procedure*
@@ -629,14 +629,14 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
 ==== Batch Task ====
   * *Goal*: _Queue up lengthy computations for sequential processing_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--18.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--18.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--18.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--18.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * Tutorial: set up a batch task [Tutorial#Perform_batch_task here]  
 
 ==== Notes ====
   * *Goal*: _Document notes on Session, and read notes on all Groups_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--19.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--19.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--19.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--19.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * Group notes can be modified in the <u>Fit RD</u> window [Manual#Fit_Dispersion here]
   * Group notes can be read and exported to plain-text in the <u>Results Table</u> [Manual#Display_results_table here]
@@ -657,9 +657,9 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
 ==== Display Dispersion ====
   * *Goal*: _Display RD Curves in a Group to assess fit quality (via residuals) and prepare figures for dissemination_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--11.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--11.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--11.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--11.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--12.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--12.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--12.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--12.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * Tutorial: display the dispersion [Tutorial#View_fits_to_RD_data here]
 
@@ -673,7 +673,7 @@ _(Figure above) Datasets contain Curves, which are linked to by Curvesets within
     * The goal is to obtain paramters at the *global* minimum of χ^2^
     * Issue: the nonlinear nature of RD yields a "rough" χ^2^ map that can trap the fitting routine in local minima
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chi2_maps/figure-chi2_maps.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chi2_maps/figure-chi2_maps.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
+<a href="http://chemistry.osu.edu/~foster.281/guardd//manual/figure-chi2_maps/figure-chi2_maps.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//manual/figure-chi2_maps/figure-chi2_maps.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a> 
 
 _(Figure above) The response of χ^2^ to just one parameter, k,,ex,,, produces a 2D slice through the hypersurface to illustrate four commonly encountered shapes that pose distinct challenges in obtaining an accurate fit._
 
@@ -689,13 +689,13 @@ _(Figure above) The response of χ^2^ to just one parameter, k,,ex,,, produces a
       # The *green diamond* designates the currently selected fit from the displayed grid list
       # Any of these can be added to the list of fits, if desired
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--20.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--20.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--20.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--20.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 
   * Initial conditions sampled from the grid search are uniformly distributed across paramter values
     * This is shown by selecting *Initial* conditions and *Histogram* mode
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--30.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--30.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--30.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--30.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * Tutorial: View grid search results for a good fit [Tutorial#View_Grid_Search_Chi2_Map_for_good_fit here]
   * Tutorial: View grid search results for a bad fit [Tutorial#View_Grid_Search_Chi2_Map_for_fit_with_uknown_parameters here]
@@ -704,9 +704,9 @@ _(Figure above) The response of χ^2^ to just one parameter, k,,ex,,, produces a
 
 ===== Select fit from grid search =====
   * *Goal*: _To examine a particular fit from the grid search that is not the min(χ^2^), it must be selected from the list_
-  * This is helpful for checking another well in χ^2^ space (e.g., [http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-chi2_maps/figure-chi2_maps.png Figure_C])
+  * This is helpful for checking another well in χ^2^ space (e.g., [http://chemistry.osu.edu/~foster.281/guardd//manual/figure-chi2_maps/figure-chi2_maps.png Figure_C])
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--31.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--31.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--31.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--31.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * Tutorial: select fit from grid search [Tutorial#View_Grid_Search_Chi2_Map_for_fit_with_uknown_parameters here]
 
@@ -719,7 +719,7 @@ _(Figure above) The response of χ^2^ to just one parameter, k,,ex,,, produces a
     * Example: A worse optimal fit to the original data yields *more different* MC datasets and therefore *more different* optimal parameter values
 
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//manual/figure-monte_carlo/figure-monte_carlo.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//manual/figure-monte_carlo/figure-monte_carlo.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a>
 
 _(Figure above) The example data contains 5 observations (black), 5 residuals (red), and 10 synthetic datasets (green squares), each with their own fit (green dotted lines) and set of optimized parameter values_
 
@@ -737,9 +737,9 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
     # *Note*: it is usually best to use a *Top%*=100% for MC errors
       * Sometimes anomalous fits yield very large χ^2^, and can be discarded, but this is rare
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--22.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--22.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--22.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--22.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--23.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--23.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--23.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--23.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
 
   * Tutorial: View Monte Carlo results for a good fit [Tutorial#View_Monte_Carlo_Errors_Chi2_Map_for_good_fit here]
@@ -750,7 +750,7 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
 ==== Display rates ====
   * *Goal*: _Display results of rate analysis using Arrhenius and vant Hoff relations_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--10.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--10.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--10.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--10.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * Tutorial: view the rates [Tutorial#Examine_rate_analysis_(vant_Hoff_and_Arrhenius) here]
   * See related: Arrhenius equations [Manual#Arrhenius:_Determining_activation_energy here]
@@ -780,7 +780,7 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
     * Otherwise there would be too many points on the plot
   
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/GUARDD-Groups-2011.06.23--05.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/GUARDD-Groups-2011.06.23--05.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//manual/GUARDD-Groups-2011.06.23--05.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//manual/GUARDD-Groups-2011.06.23--05.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * Tutorial: display Group results [Tutorial#View_results_in_display_cluster here]
   * Key sections of code
@@ -800,7 +800,7 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
     * One is easier for plotting in external programs
     * Another is easier for preparing a publication quality table
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--25.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/tutorial/tutorial-GUARDD-2011.06.17--25.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--25.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//tutorial/tutorial-GUARDD-2011.06.17--25.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * Tutorial: display results table [Tutorial#View_results_in_table here]
 
@@ -854,11 +854,11 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
   * Examine Φ,,ex,,^X^ in the <u>Chi2 Map</u> window to help assess the sensitivity of the final fit to either initial conditions (via grid search) or to noise in the data (via Monte Carlo error estimation)
     * In some cases, the parameters P,,A,, and Δω,,X,, are relatively sensitive to initial conditions (wide χ^2^ maps), whereas Φ,,ex,, is relatively less sensitive (more narrow χ^2^ map), which may indicate that it is reasonable to interpret Φ,,ex,,, but not P,,A,,.
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/GUARDD-Update-2011.09.13--01.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/GUARDD-Update-2011.09.13--01.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//manual/GUARDD-Update-2011.09.13--01.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//manual/GUARDD-Update-2011.09.13--01.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * The <u>Chi2 Map</u> window displays a correlation plot of the optimized values of Δω,,X,,^2^ and P,,A,,P,,B,,. In fast exchange, a strong correlation between these parameters yields a line of points, facilitating detection of fast exchange. 
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/GUARDD-Update-2011.09.06--02.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/GUARDD-Update-2011.09.06--02.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//manual/GUARDD-Update-2011.09.06--02.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//manual/GUARDD-Update-2011.09.06--02.png" alt="[UNLOADED IMAGE]" width="200"> </img> </a>
 
   * Check for fast exchange via the Fit RD window by comparing values of k,,ex,, and Δω as well as the exchange parameter α, which indicates fast exchange in the range 1.0 to 2.0 (Millet et al., 2000). 
 
@@ -943,25 +943,25 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
   * *Reference*
     * Korzhnev (2004)
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-01.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-MQ_RD-Korzhnev-01.png" alt="[UNLOADED IMAGE]"> </img>
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-02.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-MQ_RD-Korzhnev-02.png" alt="[UNLOADED IMAGE]"> </img>
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-03.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-MQ_RD-Korzhnev-03.png" alt="[UNLOADED IMAGE]"> </img>
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-04.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-MQ_RD-Korzhnev-04.png" alt="[UNLOADED IMAGE]"> </img>
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-05.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-MQ_RD-Korzhnev-05.png" alt="[UNLOADED IMAGE]"> </img>
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-06.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-MQ_RD-Korzhnev-06.png" alt="[UNLOADED IMAGE]"> </img>
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-07.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-MQ_RD-Korzhnev-07.png" alt="[UNLOADED IMAGE]"> </img>
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-08.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-MQ_RD-Korzhnev-08.png" alt="[UNLOADED IMAGE]"> </img>
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-09.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-MQ_RD-Korzhnev-09.png" alt="[UNLOADED IMAGE]"> </img>
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-MQ_RD-Korzhnev-10.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-MQ_RD-Korzhnev-10.png" alt="[UNLOADED IMAGE]"> </img>
 
 
 === Fitting data ===
@@ -994,7 +994,7 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
     * Bevington (2003)
     * Motulsky (2003)
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-chi2_target.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-chi2_target.png" alt="[UNLOADED IMAGE]"> </img>
 
 
 === Exchange broadening ===
@@ -1079,7 +1079,7 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
   * *Reference*
     * Winzor & Jackson (2006)
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-arrhenius.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-arrhenius.png" alt="[UNLOADED IMAGE]"> </img>
 
 
 === vant Hoff: Determining enthalpy ===
@@ -1101,7 +1101,7 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
   * *Reference*
     * Winzor & Jackson (2006)
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-vanthoff.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-vanthoff.png" alt="[UNLOADED IMAGE]"> </img>
 
 === Kinetic simulator ===
   * *Goal*: Itemizes all kinetic parameters of interest for two-state exchange, given minimal input required
@@ -1139,41 +1139,41 @@ _(Figure above) The example data contains 5 observations (black), 5 residuals (r
 
 Using ΔH and P,,A,,(T0), the van't Hoff relation yields ΔS
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-03.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-kinetic_simulator-03.png" alt="[UNLOADED IMAGE]"> </img>
 
 which, with ΔH, determines P,,A,, at any temperature via van't Hoff
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-04.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-kinetic_simulator-04.png" alt="[UNLOADED IMAGE]"> </img>
 
 Next, using P,,A,, and k,,ex,, at T,,0,, determines k,,A,, and k,,B,, at T,,0,,
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-05.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-kinetic_simulator-05.png" alt="[UNLOADED IMAGE]"> </img>
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-06.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-kinetic_simulator-06.png" alt="[UNLOADED IMAGE]"> </img>
 
 and using E,,AB,, and k,,A,, at T,,0,,, the Arrhenius relation yields P,,AB,,
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-07.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-kinetic_simulator-07.png" alt="[UNLOADED IMAGE]"> </img>
 
 which, with E,,AB,,, yields k,,A,, at any temperature via Arrhenius
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-08.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-kinetic_simulator-08.png" alt="[UNLOADED IMAGE]"> </img>
 
 Next, knowledge of P,,A,, and k,,A,, at any temperature yields k,,ex,, at any temperature
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-09.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-kinetic_simulator-09.png" alt="[UNLOADED IMAGE]"> </img>
 
 and therefore k,,B,, at any temperature
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-10.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-kinetic_simulator-10.png" alt="[UNLOADED IMAGE]"> </img>
 
 Knowledge of k,,B,, at any temperature yields E,,BA,, via the Arrhenius relation and selection of any two temperatures T,,1,, and T,,2,, (e.g., 280 K and 320 K)
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-11.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-kinetic_simulator-11.png" alt="[UNLOADED IMAGE]"> </img>
 
 Finally, using k,,B,,(T,,0,,) and E,,BA,,, the Arrhenius relation yields P,,BA,,
 
-<img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/formulae/formula-kinetic_simulator-12.png" alt="[UNLOADED IMAGE]"> </img>
+<img src="http://chemistry.osu.edu/~foster.281/guardd//manual/formulae/formula-kinetic_simulator-12.png" alt="[UNLOADED IMAGE]"> </img>
 
 
 
@@ -1230,7 +1230,7 @@ Finally, using k,,B,,(T,,0,,) and E,,BA,,, the Arrhenius relation yields P,,BA,,
   * *Motivation*: _The final fit to RD data are sometimes very sensitive to noise in the data_
   * *Goal*: _Generate and fit multiple synthetic data to assess sensitivity of final fit to noise in data_
 
-<a href="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png"> <img src="http://web.chemistry.ohio-state.edu/~ikleckne/GUARDD/images/manual/figure-monte_carlo/figure-monte_carlo.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a>
+<a href="http://chemistry.osu.edu/~foster.281/guardd//manual/figure-monte_carlo/figure-monte_carlo.png"> <img src="http://chemistry.osu.edu/~foster.281/guardd//manual/figure-monte_carlo/figure-monte_carlo.png" alt="[UNLOADED IMAGE]" width="300"> </img> </a>
 
 _Monte Carlo procedure generates and fits synthetic data consistent with observed residuals (related to noise)_
 
