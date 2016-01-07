@@ -1,0 +1,510 @@
+## Contents ##
+
+
+## Goals ##
+  * Detail specifications for file formats
+
+## General notes ##
+  * Most files provided are ASCII text files (read/write via text editor)
+  * Some files can be read/prepared with spreadsheet programs like Excel, OpenOffice, or Gnumeric
+  * **Note**: when using spreadsheet programs to create a file for input to GUARDD, **copy** the contents from the spreadsheet, then **paste** them into a text editor
+    * Issues may occur if File...Save as text... (or similar) is used
+  * The preferred method to load data to GUARDD is the [Script file](FileFormats#Input:_Script_file_to_load_data.md)
+
+
+## Input: Script file to load data ##
+  * Contains commands to load data files and/or specifies data itself
+  * **This is the preferred method for loading data into GUARDD**
+  * Example for the tutorial: `tutorial/data/example_files/GUARDD-import-example-01.txt`
+
+```
+# Ian Kleckner
+# GUARDD Load data script
+# Apo TRAP data
+# 
+# 2011/04/27
+# 2011/05/20 Updated for individual DATA in table format
+# 2011/06/06 Updated for reading script via SCRIPTFILE
+# 2011/06/16 Updated for tutorial
+# 
+#
+# Syntax
+#  #		-> Comment (ignore rest of line)
+#
+# Input a dataset which contains RD curves
+#  DATASET	-> Start a new dataset
+#	Executes command: dataset = Dataset()
+#
+#	NAME	-> (Required) Specify name (or [] for auto-name)
+#	AX	-> (Required) Specify AX nucleus (13C, 15N)
+#	B0	-> (Required) Magnetic field strength (MHz)
+#	TEMPC	-> (Required) Celcius temperature (can also use TEMP for Kelvin)
+#	TCPMG	-> (Required) CPMG time (sec)
+#	SQX	-> (Required) Single quantum mode (true=SQ, false=MQ)
+#  SETSPECS	-> (Required) Set prior specifications for dataset
+#    		-> Must set these arguments first:
+#		-> Executes command: dataset.setSpecs( NAME, AX, B0, TEMP, TCPMG, SQX )
+#
+# To add individual RD curves to a dataset
+# Input curves mode (1/2)
+#  INDEX 	-> (Required) Specify NMR signal index (AA#, peak#) for subsequent data
+#  ATOM		-> (Required) Specify atom string (NH, C, CO, \delta_1)
+#  RESIDUE	-> (Required) Specify residue name (Ile, Leu, Val)
+#  OBS		-> (Required) Turns observation mode ON
+#		-> Next column is VCPMG (the X-MODE)
+#		-> Next column is R2 or INTENSITY (the Y-MODE)
+#		-> Next column is ERROR (this is optional)
+#		-> Observation mode will store data points until ADDDATA
+#		-> Errors can be specified explicitly, calculated via repeat VCPMG values or not specified at all
+#		-> All curves in the same dataset must have the same VCPMG values
+#  ADDDATA 	-> (Required) Add all the data from last OBS mode
+#  		-> Executes command: dataset.addData(INDEX, ATOM, RESIDUE, X, Y, Y_E, Y_MODE);
+#
+# Input curves mode (2/2)
+#  NLINFILE 	-> (Required) Specify nlin.tab file (NMRPipe)
+#  VCPMGFILE 	-> (Required) Specify vcpmg.txt file (VCPMG values for to nlin.tab)
+#  READNLIN	-> Read the previously specified NLIN file
+#		-> Executes command: dataset.readNlin(NLINFILE, VCPMGFILE);
+#
+# (Optional) Add a list of residue names corresponding to each index
+#  SEQUENCEFILE	-> (Optional) Specify and read sequence file
+#	This will overwrite the RESIDUE labels used
+#  	This can only be used at the end (just once)
+#
+# (Optional) Run another scriptfile (this may contain different data, or one script file per dataset, etc.)
+#  SCRIPTFILE	-> Execute a different script file (formatted just like this one)
+
+
+# EXAMPLES BELOW
+
+# (1) Specify data for 3 NMR signals from the same dataset
+DATASET			
+NAME	[]		
+AX	13C		
+B0	800.130981		
+TEMPC	25		
+TCPMG	0.02		
+SQX	FALSE		
+SETSPECS			
+
+# (1a) R2 and Errors specified explicity
+INDEX	10		
+ATOM	NH		
+RESIDUE	Trp
+OBS	VCPMG	R2	ERROR
+1	100	50	5
+2	200	45	4
+3	300	40	3
+4	400	35	3
+5	500	35	2
+ADDDATA			
+
+# (1b) Intensity and Errors specified explicity
+INDEX	11		
+ATOM	NH		
+RESIDUE	Val
+OBS	VCPMG	INTENSITY	ERROR
+1	0	1	0
+1	100	0.5	0.1
+2	200	0.6	0.1
+3	300	0.7	0.1
+4	400	0.8	0.1
+5	500	0.8	0.1
+ADDDATA			
+
+# (1c) Intensity specified, with errors calculated via repeat VCPMG measures (300 Hz acquired twice)
+INDEX	12		
+ATOM	\delta_1		
+RESIDUE	Ile
+OBS	VCPMG	INTENSITY	
+1	0	1	
+1	100	0.5	
+2	200	0.6	
+3	300	0.7	
+3	300	0.8
+4	400	0.8	
+5	500	0.8	
+ADDDATA			
+			
+			
+# (2) Load data from NMRPipe file (prepared elsewhere)
+DATASET			
+NAME	[]		
+AX	13C		
+B0	800.130981		
+TEMPC	25		
+TCPMG	0.02		
+SQX	FALSE		
+SETSPECS			
+NLINFILE	tutorial/data/example_files/TRAP-SteApo-A26I-25C-800MHz-MQ-14ppm-nlin.tab	
+VCPMGFILE	tutorial/data/example_files/TRAP-SteApo-A26I-25C-800MHz-MQ-14ppm-taufile.txt
+READNLIN			
+
+
+# (3) Different dataset may have different VCPMG values used
+# Custom dataset name can be applied
+DATASET			
+NAME	CustomName		
+AX	15N		
+B0	999
+TEMPC	25		
+TCPMG	0.02		
+SQX	TRUE		
+SETSPECS			
+
+# R2 and Errors specified explicity
+# Not sure what the assignment is
+INDEX	999		
+ATOM	NH		
+RESIDUE	Unassigned
+OBS	VCPMG	R2	ERROR
+1	100	50	5
+2	200	45	4
+3	300	40	3
+4	400	35	3
+5	500	35	2
+6	1000	30	2
+ADDDATA			
+
+# (4) Read another script file
+SCRIPTFILE	tutorial/data/example_files/GUARDD-import-example-02.txt
+
+# (5) Add a sequence file (only specify this one, anywhere in file)
+# This will overwrite the RESIDUE specified above
+SEQUENCEFILE	tutorial/data/example_files/TRAP-Ste-A26I-AAseq.txt
+```
+
+## Input: NMRPipe nlin.tab and taufile.txt ##
+  * Contains peak intensities at a series of ν<sub>CPMG</sub> spectra
+  * Tutorial on preparing NMRPipe nlin.tab files [here](http://guardd.googlecode.com/files/Processing-RD--2008.07.07.zip)
+  * **Note**: This may not work for newer versions of NMRPipe, therefore the ScriptFile is preferred for input
+  * Example from tutorial: `tutorial/data/example_files/TRAP-SteApo-A26I-25C-800MHz-MQ-14ppm-nlin.tab`
+    * Each column Z\_A0 Z\_A1 Z\_A2 ... corresponds to a particular VCPMG frequency (supplied below via `taufile.txt`)
+
+```
+REMARK GDB System Thu Jan Thu Jan 15 13:29:32 2009 (2009.015.13.29)
+REMARK Table table, File nlin.tab, ID 3
+REMARK 38 Variables, 7 Entries
+
+DATA DB_NAME  
+DATA TAB_NAME table
+DATA TAB_ID   3
+
+
+REMARK NLINLS: Nonlinear Spectral Modeling
+REMARK Frank Delaglio NIH/NIDDK/LCP Feb 1994
+REMARK Files: aux.tab ft/test001.ft2 Jtype: PEAK Dim: 3 Iter: 750 Eval: 750
+REMARK X PROFILE (+/-10) GAUSS1D
+REMARK Y PROFILE (+/-10) GAUSS1D
+REMARK Z PROFILE (+/-0) SCALE1D
+REMARK Model-Based Volumes at +/-3 LW in Pts Scale: 1.000000
+REMARK Constraint on X_AXIS: (1*X_AXIS + -2.22):(1*X_AXIS + 2.22)
+REMARK Constraint on XW: (0*XW + 0):(0*XW + 17.74)
+REMARK Constraint on Y_AXIS: (1*Y_AXIS + -2.16):(1*Y_AXIS + 2.16)
+REMARK Constraint on YW: (0*YW + 0):(0*YW + 17.27)
+REMARK Fixed Parameters: None
+REMARK F77 Optimization Modules
+
+VARS   INDEX X_AXIS Y_AXIS DX DY X_PPM Y_PPM X_HZ Y_HZ XW YW XW_HZ YW_HZ X1 X3 Y1 Y3 HEIGHT DHEIGHT VOL PCHI2 TYPE ASS CLUSTID MEMCNT Z_A0 Z_A1 Z_A2 Z_A3 Z_A4 Z_A5 Z_A6 Z_A7 Z_A8 Z_A9 Z_A10 Z_A11 Z_A12
+FORMAT %5d %9.3f %9.3f %6.3f %6.3f %8.3f %8.3f %9.3f %9.3f %7.3f %7.3f %8.3f %8.3f %4d %4d %4d %4d %+e %+e %+e %.5f %d %s %4d %4d %7.4f %7.4f %7.4f %7.4f %7.4f %7.4f %7.4f %7.4f %7.4f %7.4f %7.4f %7.4f %7.4f
+
+   68   449.072   788.238  0.007  0.008    0.796   15.405   636.643  3099.488   7.315   6.030   15.721   18.956  445  453  784  792 +1.058537e+08 +3.294070e+04 +5.290947e+09 0.00000 1 \delta_1    1    1  1.0000  0.5716  0.5922  0.5904  0.5866  0.5630  0.5814  0.5786  0.5920  0.5856  0.5637  0.5886  0.5924
+   10   520.200   792.227  0.218  0.277    0.605   15.343   483.780  3086.948  12.297  14.466   26.428   45.475  514  526  784  800 +1.070680e+07 +3.301217e+04 +2.158019e+09 0.00000 1 \delta_1    2    1  1.0000  0.1640  0.2478  0.2339  0.2168  0.1304  0.1957  0.1814  0.2437  0.2104  0.1318  0.2301  0.2494
+   43   513.808   836.165  0.100  0.156    0.622   14.657   497.517  2948.824  13.872  12.927   29.813   40.637  508  520  829  843 +1.389258e+07 +3.286658e+04 +2.822930e+09 0.00000 1 \delta_1    5    2  1.0000  0.2011  0.2553  0.2494  0.2352  0.1827  0.2239  0.2159  0.2521  0.2339  0.1802  0.2456  0.2576
+   61   489.673   838.522  0.049  0.067    0.687   14.620   549.386  2941.415  11.874   8.358   25.519   26.274  484  496  834  844 +2.542411e+07 +3.300053e+04 +2.858950e+09 0.00000 1 \delta_1    5    2  1.0000  0.3500  0.3696  0.3673  0.3624  0.3387  0.3592  0.3565  0.3711  0.3639  0.3395  0.3684  0.3731
+   20   489.978   869.457  0.069  0.073    0.686   14.136   548.731  2844.167  11.800   9.486   25.360   29.820  484  496  865  875 +2.714812e+07 +3.310500e+04 +3.443310e+09 0.00000 1 \delta_1    6    1  1.0000  0.3060  0.3602  0.3526  0.3406  0.2932  0.3260  0.3176  0.3568  0.3358  0.2928  0.3480  0.3619
+   26   482.693   943.255  0.064  0.140    0.705   12.983   564.387  2612.175  11.717  12.315   25.181   38.714  477  489  937  949 +1.931959e+07 +3.288200e+04 +3.158574e+09 0.00000 1 \delta_1    7    1  1.0000  0.1854  0.2769  0.2571  0.2380  0.1705  0.2191  0.2058  0.2682  0.2299  0.1705  0.2503  0.2750
+   53   663.541   954.156  1.054  0.744    0.220   12.813   175.722  2577.906  17.740  15.165   38.125   47.673  653  673  946  962 +4.213144e+06 +3.281408e+04 +1.284343e+09 0.00000 1 \delta_1    8    1  1.0000  0.0788  0.1022  0.0926  0.0919  0.0714  0.0842  0.0789  0.1000  0.0924  0.0648  0.0929  0.1015
+```
+
+  * Taufile
+  * Each row is the VCPMG frequency in Hz corresponding to the spectra specified above
+  * Must start with 0 Hz
+  * Example from tutorial: `tutorial/data/example_files/TRAP-SteApo-A26I-25C-800MHz-MQ-14ppm-taufile.txt`
+
+```
+0
+200
+1000
+800
+600
+100
+400
+300
+900
+500
+100
+700
+1000
+```
+
+## Input: Sequence file ##
+  * Contains residue name for entire sequence of molecule
+  * This file is **optional** and is helpful for use with NMRPipe files (since they do not specify the residue name)
+  * One residue per row
+  * Row number corresponds to the residue number
+  * Example from tutorial: `tutorial/data/example_files/TRAP-Ste-A26I-AAseq.txt`
+
+```
+Met
+Tyr
+Thr
+Asn
+Ser
+Asp
+Phe
+Val
+Val
+Ile
+Lys
+Ala
+Leu
+Glu
+Asp
+Gly
+```
+
+## Input/Output: GUARDD Session file ##
+  * Contains all the variables (Session, Datasets, Curves, Curvesets, Groups, FitResults)
+  * Formatted for MATLAB using the save() and load() functions
+    * Binary file for read/write via MATLAB (cannot be read via text editor)
+    * This can be loaded directly into MATLAB
+  * Example is provided in the tutorial: `tutorial/data/GUARDD-Session-Tutorial.mat`
+
+## Output: Datasets ##
+  * Contains all the data from each loaded dataset
+  * This is useful for saving all the data loaded from multiple different files
+  * This can also used as a ScriptFile loaded via the Data Manager [Input: Script to load data]
+  * Part of example file from tutorial: `tutorial/data/example_files/output-GUARDD-Datasets--2011.06.18-23-24.txt`
+
+```
+# GUARDD v.2011.06.17
+# (C) Ian Kleckner 2010-2011
+# Exported RD Data from datasets
+# This file can be loaded as a script via Data Manager
+# Created on 2011.06.18-23-24
+
+# Dataset 1/14
+DATASET
+NAME	800-MQ-25C
+AX	13C
+B0	800.130981
+TEMPC	25.000000
+TCPMG	0.020000
+SQX	FALSE
+SETSPECS
+
+# Dataset 800-MQ-25C, Curve 1/7
+INDEX	68
+ATOM	\delta_1
+RESIDUE	Ile
+OBS	VCPMG	R2	ERROR
+1	200.000000	27.965792	1.000000
+2	1000.000000	26.187101	1.000000
+3	800.000000	26.347750	1.000000
+4	600.000000	26.670606	1.000000
+5	100.000000	28.692709	1.000000
+6	400.000000	27.115815	1.000000
+7	300.000000	27.357194	1.000000
+8	900.000000	26.212432	1.000000
+9	500.000000	26.755916	1.000000
+10	700.000000	26.500422	1.000000
+ADDDATA
+
+# Dataset 800-MQ-25C, Curve 2/7
+INDEX	10
+ATOM	\delta_1
+RESIDUE	Ile
+OBS	VCPMG	R2	ERROR
+1	200.000000	90.394443	1.000000
+2	1000.000000	69.595505	1.000000
+3	800.000000	72.643080	1.000000
+4	600.000000	76.439000	1.000000
+5	100.000000	101.589744	1.000000
+6	400.000000	81.558620	1.000000
+7	300.000000	85.352537	1.000000
+8	900.000000	70.590866	1.000000
+9	500.000000	77.937240	1.000000
+10	700.000000	73.462064	1.000000
+ADDDATA
+```
+
+
+## Output: Groups ##
+  * Contains all the groups of curves currently in the session
+  * Useful for listing **how** your data are organized for fitting
+  * Example part of an output file (created using the tutorial session file)
+  * Part of example file from tutorial: `tutorial/data/example_files/output-GUARDD-Groups--2011.06.18-23-24.txt`
+
+```
+GUARDD v.2011.06.17
+(C) Ian Kleckner 2010-2011
+Exported groups made from datasets
+Created on 2011.06.18-23-24
+
+Group 1/10
+  Name	Ile 10\delta_1 RIle 25C
+  Index	10
+  NumCurvesets	1
+
+  Curveset 1/1
+    Name	Ile 10\delta_1
+    Index	10
+    Atom	\delta_1
+    Residue	Ile
+    NumCurvesets	4
+
+    Curve 1/4
+      Name	Ile 10\delta_1
+      Index	10
+      Atom	\delta_1
+      Residue	Ile
+      B0	800.130981	MHz
+      Temp	25.000000	C
+      TCPMG	0.020000	sec
+      SQX	0
+      AX	13C
+      Nobs	10
+      OBS	vCPMG(Hz)	R2Eff(Hz)	eR2Eff(Hz)
+      1	200.000000	90.394443	1.000000
+      2	1000.000000	69.595505	1.000000
+      3	800.000000	72.643080	1.000000
+      4	600.000000	76.439000	1.000000
+      5	100.000000	101.589744	1.000000
+      6	400.000000	81.558620	1.000000
+      7	300.000000	85.352537	1.000000
+      8	900.000000	70.590866	1.000000
+      9	500.000000	77.937240	1.000000
+      10	700.000000	73.462064	1.000000
+
+    Curve 2/4
+      Name	Ile 10\delta_1
+      Index	10
+      Atom	\delta_1
+      Residue	Ile
+      B0	600.171021	MHz
+      Temp	25.000000	C
+      TCPMG	0.020000	sec
+      SQX	0
+      AX	13C
+      Nobs	10
+      OBS	vCPMG(Hz)	R2Eff(Hz)	eR2Eff(Hz)
+      1	200.000000	80.471896	1.000000
+      2	400.000000	72.493667	1.000000
+      3	1000.000000	64.403966	1.000000
+      4	300.000000	73.094017	1.000000
+      5	700.000000	65.226503	1.000000
+      6	100.000000	83.872456	1.000000
+      7	800.000000	67.778559	1.000000
+      8	900.000000	66.913320	1.000000
+      9	500.000000	68.837007	1.000000
+      10	600.000000	67.720409	1.000000
+```
+
+## Output: GUARDD Simulator ##
+  * Contains all simulation specifications for each Curveset and Curve
+  * Useful for loading into other programs
+  * Part of example file from tutorial: `tutorial/data/example_files/output-GUARDD-Sim--2011.06.17-13-29.txt`
+
+
+```
+GUARDD v.2011.06.17
+(C) Ian Kleckner 2010-2011
+Exported data from RD Simulator
+Created on 2011.06.17-13-29
+
+Curveset 1/2, General Specifications
+NameCurveset	Simple
+NumCurves	2
+dwH	0.000000	ppm
+dwX	1.000000	ppm
+AX	13C	-
+Eab	2000.000000	cal/mol
+Pab	2900.000000	/sec
+Eba	12000.000000	cal/mol
+Pba	580000000000.000000	/sec
+dH	-10000.000000	cal/mol
+dS	-37.900000	cal/mol/K
+Temp0	25.000000	C
+PA0	90.000000	%
+kex0	1000.000000	/sec
+
+Curveset 1/2, Curve 1/2
+NameCurve	500-SQ-25C
+NameParentCurveset	Simple
+Temp	25.000000	C
+B0	500.000000	MHz
+TCPMG	0.020000	sec
+SQX	1	-
+dwH	0.000000	Hz
+dwX	125.714706	Hz
+PA	89.906866	%
+kex	978.687224	/sec
+R20	10.000000	Hz
+
+NObs	15
+Noise	0.050000
+Obs	vcpmg(Hz)	R2Eff(Hz)	eR2Eff(Hz)	Intensity	eIntensity
+1	100.000000	36.618398	1.823631	0.480769	0.017535
+2	164.285714	27.535028	1.445293	0.576546	0.016666
+3	228.571429	23.550549	1.153789	0.624371	0.014408
+4	292.857143	19.830905	0.959081	0.672591	0.012901
+5	357.142857	17.339377	0.831317	0.706956	0.011754
+6	421.428571	14.397469	0.745641	0.749800	0.011182
+7	485.714286	14.035805	0.686368	0.755243	0.010367
+8	550.000000	12.945965	0.644058	0.771885	0.009943
+9	614.285714	12.765964	0.612980	0.774669	0.009497
+10	678.571429	12.107498	0.589570	0.784938	0.009256
+11	742.857143	11.944019	0.571542	0.787509	0.009002
+12	807.142857	11.074233	0.557389	0.801328	0.008933
+13	871.428571	10.841380	0.546088	0.805069	0.008793
+14	935.714286	11.279721	0.536931	0.798042	0.008570
+15	1000.000000	9.463950	0.529412	0.827556	0.008762
+```
+
+## Output: Parameter Table ##
+  * Contains information on groups, fit results, and notes
+  * Useful for loading into other programs and creating tables for sharing results
+  * Part of example file from tutorial: `tutorial/data/example_files/GUARDD-Paramter_Table-2011.06.19-09-29-formatted.csv`
+
+```
+GUARDD v.2011.06.17												
+(C) Ian Kleckner 2010-2011												
+Exported results table												
+Created on 2011.06.18-23-24												
+												
+AA|Num	Residue	Atom	Group|Name	B0|(MHz)	Temp|(C)	Exchange?	Best fit|OK?	Constrain|Rates?	dwH|(ppm)	dwX|(ppm)	Pa|(Percent)	kex|(/s)
+  10	  Ile	  -delta_1	Ile 10-delta_1 RIle 25C	  600.13	  25.0	TRUE	TRUE	FALSE	Param Not OK	Param Not OK	Param Not OK	 1775.8±145.3
+  20	  Ile	  -delta_1	Ile 20-delta_1 RIle 25C	  600.13	  25.0	TRUE	TRUE	FALSE	 0.0±0.0	 1.5±0.2	 98.6±0.3	 1315.5±311.6
+  22	  Leu	  -delta_1	Leu 22	  600.13	  25.0	TRUE	TRUE	FALSE	 0.1±0.0	 0.5±0.0	 87.3±0.6	 1105.2±42.3
+  22	  Leu	  -delta_2	Leu 22	  600.13	  25.0	TRUE	TRUE	FALSE	 0.1±0.0	 1.0±0.0	 87.3±0.6	 1105.2±42.3
+
+```
+
+
+## References ##
+  1. NMRPipe [link](http://spin.niddk.nih.gov/NMRPipe/)
+  1. Tutorial on preparing NMRPipe nlin.tab files [here](http://guardd.googlecode.com/files/Processing-RD--2008.07.07.zip)
+
+## Acknowledgements ##
+  * Foster Lab members for debugging during development
+  * Advisor Prof. Mark Foster [link](http://chemistry.osu.edu/~foster.281/)
+  * The Ohio State University Biochemistry Dept. [link](http://www.biosci.ohio-state.edu/~biochem/)
+  * The Ohio State University Biophysics Program [link](http://www.biosci.ohio-state.edu/~biophys/)
+  * The Ohio State University [link](http://www.osu.edu/)
+  * National Institutes of Health [link](http://www.nih.gov/)
+
+## Citing GUARDD ##
+  * GUARDD manuscript: [http://dx.doi.org/10.1007/s10858-011-9589-y](http://dx.doi.org/10.1007/s10858-011-9589-y)
+
+  * **Please cite your usage of GUARDD in BOTH ways**
+    1. Kleckner, I. R., & Foster, M. P. (2012). GUARDD: user-friendly MATLAB software for rigorous analysis of CPMG RD NMR data. Journal of biomolecular NMR, 52(1), 11–22. doi:10.1007/s10858-011-9589-y
+    1. http://code.google.com/p/guardd/
+
+## Author ##
+  * (C) [Ian Kleckner](http://ianrobertkleckner.blogspot.com)
+
+  * Work completed as part of PhD Dissertation
+  * Mark Foster's Lab
+  * The Ohio State University
+  * Columbus, OH, USA
